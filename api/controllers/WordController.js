@@ -8,24 +8,37 @@
 module.exports = {
 
   create: function (req, res) {
-    console.log(req.body);
-    Word.create({value: req.body.word}).exec(function (err, data) {
 
-      var translations = [];
+    var reqObj = JSON.parse(JSON.stringify(req.body)),
+      answerId = parseInt(reqObj.isAnswer), translations = [];
 
-      req.body.translations[parseInt(req.body.isAnswer)].isAnswer = true;
 
-      for (var i = 0; i < req.body.translations.length; i++) {
-        req.body.translations[i].term = data.id;
+    Word.create({value: reqObj.word}).exec(function (err, data) {
+
+
+      for (var i = 0; i < reqObj.translations.length; i++) {
+        var tmpObj = {};
+        tmpObj.term = data.id;
+        if (i === answerId) {
+          tmpObj.isAnswer = true;
+        }
+
+        tmpObj.value = reqObj.translations[i];
+        translations.push(tmpObj);
       }
 
-      Translation.create(req.body.translations).exec(function (err, data) {
-
-        res.ok(data);
+      Translation.create(translations).exec(function (err, data) {
+        return res.ok(data, 'homepage');
       });
 
     });
 
+  },
+
+  find: function (req, res) {
+    Word.find().populate('translations').exec(function (err, data) {
+      return res.ok(data);
+    });
   }
 
 };

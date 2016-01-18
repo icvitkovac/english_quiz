@@ -34,7 +34,12 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+  '/admin': {
+    view: 'admin'
+  },
+
+  //'post /settings': 'SettingsController.handle'
 
   /***************************************************************************
    *                                                                          *
