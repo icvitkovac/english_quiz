@@ -21,10 +21,7 @@ module.exports = {
     translations: {
       collection: 'translation',
       via: 'term'
-***REMOVED***/*,
-    correctTranslation: {
-      model: 'answer'
-***REMOVED****/
+***REMOVED***
 
 ***REMOVED***
 ***REMOVED***
