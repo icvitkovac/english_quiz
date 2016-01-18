@@ -21,10 +21,7 @@ module.exports = {
     translations: {
       collection: 'translation',
       via: 'term'
-    }/*,
-    correctTranslation: {
-      model: 'answer'
-    }*/
+    }
 
   }
 };

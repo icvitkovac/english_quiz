@@ -1,18 +1,9 @@
-<form action="/word/create" method="post">
-  Word: <input type="text" name="word"><br>
-
-  Translation 1: <input type="text" name="translations"><br>
-  Translation 2: <input type="text" name="translations"><br>
-  Translation 3: <input type="text" name="translations"><br>
-  Translation 4: <input type="text" name="translations"><br>
-
-
-
-   <input type="radio" name="isAnswer" value="0"><br>
-      <input type="radio" name="isAnswer" value="1"> <br>
-      <input type="radio" name="isAnswer" value="2"> <br>
-      <input type="radio" name="isAnswer" value="3">
-
-  <button type="submit" value="Submit">Add word</button>
-</form>
-
+<h1 id="randomEnglishWord"></h1>
+<div id="possibleAnswers"></div>
+<button onclick="writeWordAndAswers()">Skip question</button>
+<button onclick="gameOver()">Finish game</button>
+<button onclick="admin()">Admin panel</button>
+<button id="startGame" style="display: none;" onclick="startGame()">Start game</button>
+<p id="result"></p>
+<p id="gameOver"></p>
+<div id="answerReaction" style="width: 20px; height: 20px;"></div>
