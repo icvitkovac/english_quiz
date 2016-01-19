@@ -9,12 +9,14 @@ module.exports = {
 
   create: function (req, res) {
 
-    var reqObj = JSON.parse(JSON.stringify(req.body)),
-      answerId = parseInt(reqObj.isAnswer), translations = [];
-
+    var reqObj = req.body,
+      answerId = parseInt(reqObj.answerIndex), translations = [];
 
     Word.create({value: reqObj.word}).exec(function (err, data) {
 
+      if (err) {
+        res.badRequest();
+      }
 
       for (var i = 0; i < reqObj.translations.length; i++) {
         var tmpObj = {};
@@ -28,7 +30,8 @@ module.exports = {
       }
 
       Translation.create(translations).exec(function (err, data) {
-        return res.ok(data, 'admin');
+        //return res.ok(data, 'admin');
+        return res.ok();
       });
 
     });
