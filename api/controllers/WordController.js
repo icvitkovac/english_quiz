@@ -28,7 +28,7 @@ module.exports = {
   ***REMOVED***
 
       Translation.create(translations).exec(function (err, data) {
-        return res.ok(data, 'homepage');
+        return res.ok(data, 'admin');
   ***REMOVED***);
 
 ***REMOVED***);
