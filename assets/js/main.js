@@ -12,36 +12,34 @@ var elements = {
 
 var dataSet = [];
 //array of english terms / words - SQL equivalent would be table with word and id columns
-var englishTermsArray = ['requires', 'drowned', 'to bid', 'developing', 'development', 'beneficial', 'violate', 'discouraged'];
+/*var englishTermsArray = ['requires', 'drowned', 'to bid', 'developing', 'development', 'beneficial', 'violate', 'discouraged'];
 
-var answersArray = [];
+ var answersArray = [];
 
-answersArray[0] = ['zahteva', 'pripreme', 'odbija', 'dostavlja'];
-answersArray[1] = ['izbedačen', 'oboren', 'udavljen', 'zajapuren'];
-answersArray[2] = ['pasti', 'kladiti se', 'priviđati', 'pomaći'];
-answersArray[3] = ['razvijati', 'farbati', 'spavati', 'kopati'];
-answersArray[4] = ['kopanje', 'farbanje', 'razvoj', 'spavanje'];
-answersArray[5] = ['loš', 'zao', 'dobar', 'koristan'];
-answersArray[6] = ['spotaći', 'gurnuti', 'šutnuti', 'prekršiti'];
-answersArray[7] = ['obeshrabren', 'pohvaljen', 'miran', 'spokojan'];
+ answersArray[0] = ['zahteva', 'pripreme', 'odbija', 'dostavlja'];
+ answersArray[1] = ['izbedačen', 'oboren', 'udavljen', 'zajapuren'];
+ answersArray[2] = ['pasti', 'kladiti se', 'priviđati', 'pomaći'];
+ answersArray[3] = ['razvijati', 'farbati', 'spavati', 'kopati'];
+ answersArray[4] = ['kopanje', 'farbanje', 'razvoj', 'spavanje'];
+ answersArray[5] = ['loš', 'zao', 'dobar', 'koristan'];
+ answersArray[6] = ['spotaći', 'gurnuti', 'šutnuti', 'prekršiti'];
+ answersArray[7] = ['obeshrabren', 'pohvaljen', 'miran', 'spokojan'];
 
-var solutionsArray = [];
-solutionsArray[0] = answersArray[0][0];
-solutionsArray[1] = answersArray[1][2];
-solutionsArray[2] = answersArray[2][1];
-solutionsArray[3] = answersArray[3][0];
-solutionsArray[4] = answersArray[4][2];
-solutionsArray[5] = answersArray[5][3];
-solutionsArray[6] = answersArray[6][3];
-solutionsArray[7] = answersArray[7][0];
-
+ var solutionsArray = [];
+ solutionsArray[0] = answersArray[0][0];
+ solutionsArray[1] = answersArray[1][2];
+ solutionsArray[2] = answersArray[2][1];
+ solutionsArray[3] = answersArray[3][0];
+ solutionsArray[4] = answersArray[4][2];
+ solutionsArray[5] = answersArray[5][3];
+ solutionsArray[6] = answersArray[6][3];
+ solutionsArray[7] = answersArray[7][0];*/
 
 function getRandomIndex() {
 
-  if (englishTermsArray.length) {
-    questionId = Math.floor((Math.random() * englishTermsArray.length));
+  if (dataSet.length) {
+    questionId = Math.floor((Math.random() * dataSet.length));
 ***REMOVED***
-
 
   // returns number between 0 and length of the array, currently 0-7
   return questionId;
@@ -61,27 +59,27 @@ function getRandomEnglishTerm() {
 ***REMOVED***
   //example : englishTermsArray[7]; ---> discouraged
 
-  return englishTermsArray[index];
+  //return _.map(dataSet[index].translations, 'value');
+  return dataSet[index].value;
 
 }
-
 
 function writeWordAndAswers() {
   elements.startGame.style.display = 'none';
 
   elements.randomEnglishWord.innerHTML = getRandomEnglishTerm();
-  makeUL(answersArray[questionId]);
+  makeUL(_.map(dataSet[questionId].translations, 'value'));
 
   var ul = document.getElementsByTagName('ul')[0];
   ul.onclick = function (event) {
 
-    if (getEventTarget(event) == solutionsArray[questionId]) {
+    if (_.filter(dataSet[questionId].translations, {value: getEventTarget(event)})[0].isAnswer) {
       setColor(elements.answerReaction, 'green');
       localStorage.result++;
 
       elements.resultField.innerHTML = 'Number of points: ' + localStorage.result;
       answeredQuestions.push(questionId);
-      if (answeredQuestions.length === englishTermsArray.length) {
+      if (answeredQuestions.length === dataSet.length) {
         gameOver();
         return;
         //all questions have been answered
@@ -102,7 +100,6 @@ function writeWordAndAswers() {
 ***REMOVED***;
 }
 
-
 document.addEventListener("DOMContentLoaded", function (event) {
   if (window.location.pathname === '/admin') {
     return null;
@@ -112,17 +109,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
     httpGetAsync('/word', function (data) {
       dataSet = JSON.parse(data);
 
-      /*for (var i = 0; i < dataSet.length; i++) {
-
-        englishTermsArray.push(dataSet[i].value);
-  ***REMOVED****/
+      startGame();
 ***REMOVED***);
-    startGame()
+
 ***REMOVED***
 
-
 });
-
 
 function makeUL(array) {
 
@@ -144,7 +136,6 @@ function makeUL(array) {
   // Finally, return the constructed list:
   document.getElementById('possibleAnswers').appendChild(list);
 }
-
 
 function getEventTarget(e) {
   e = e || window.event;
@@ -198,5 +189,24 @@ function httpGetAsync(theUrl, callback) {
 
 
  }*/
+
+$('#addWord').submit(function (event) {
+
+  var formData = {}, data = $(this).serializeArray();
+
+  formData.translations = _.map(_.filter(data, {name: 'translations'}), 'value');
+  formData.word = _.filter(data, {name: 'word'})[0].value;
+  formData.answerIndex = _.filter(data, {name: 'isAnswer'})[0].value;
+  $.ajax({
+      type: 'POST',
+      url: '/word/create',
+      data: formData
+***REMOVED***)
+    .done(function () {
+      $('#addWord')[0].reset();
+      alert('word added');
+***REMOVED***);
+  event.preventDefault();
+});
 
 
