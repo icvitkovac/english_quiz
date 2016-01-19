@@ -1,6 +1,10 @@
-var questionId = 0; // id of the current question
-var answeredQuestions = [];
-var practiceMode = true;
+var questionId = 0, // id of the current question
+  answeredQuestions = [],
+  dataSet = [],
+  settings = {
+    practiceMode: true,
+    questionsNumber: 3
+***REMOVED***;
 
 var elements = {
   answerReaction: null,
@@ -9,31 +13,6 @@ var elements = {
   gameOver: null,
   randomEnglishWord: null
 ***REMOVED***
-
-var dataSet = [];
-//array of english terms / words - SQL equivalent would be table with word and id columns
-/*var englishTermsArray = ['requires', 'drowned', 'to bid', 'developing', 'development', 'beneficial', 'violate', 'discouraged'];
-
- var answersArray = [];
-
- answersArray[0] = ['zahteva', 'pripreme', 'odbija', 'dostavlja'];
- answersArray[1] = ['izbedačen', 'oboren', 'udavljen', 'zajapuren'];
- answersArray[2] = ['pasti', 'kladiti se', 'priviđati', 'pomaći'];
- answersArray[3] = ['razvijati', 'farbati', 'spavati', 'kopati'];
- answersArray[4] = ['kopanje', 'farbanje', 'razvoj', 'spavanje'];
- answersArray[5] = ['loš', 'zao', 'dobar', 'koristan'];
- answersArray[6] = ['spotaći', 'gurnuti', 'šutnuti', 'prekršiti'];
- answersArray[7] = ['obeshrabren', 'pohvaljen', 'miran', 'spokojan'];
-
- var solutionsArray = [];
- solutionsArray[0] = answersArray[0][0];
- solutionsArray[1] = answersArray[1][2];
- solutionsArray[2] = answersArray[2][1];
- solutionsArray[3] = answersArray[3][0];
- solutionsArray[4] = answersArray[4][2];
- solutionsArray[5] = answersArray[5][3];
- solutionsArray[6] = answersArray[6][3];
- solutionsArray[7] = answersArray[7][0];*/
 
 function getRandomIndex() {
 
@@ -59,12 +38,11 @@ function getRandomEnglishTerm() {
 ***REMOVED***
   //example : englishTermsArray[7]; ---> discouraged
 
-  //return _.map(dataSet[index].translations, 'value');
   return dataSet[index].value;
 
 }
 
-function writeWordAndAswers() {
+function writeWordAndAnswers() {
   elements.startGame.style.display = 'none';
 
   elements.randomEnglishWord.innerHTML = getRandomEnglishTerm();
@@ -79,15 +57,15 @@ function writeWordAndAswers() {
 
       elements.resultField.innerHTML = 'Number of points: ' + localStorage.result;
       answeredQuestions.push(questionId);
-      if (answeredQuestions.length === dataSet.length) {
+      if (answeredQuestions.length == settings.questionsNumber || answeredQuestions.length === dataSet.length) {
         gameOver();
         return;
         //all questions have been answered
   ***REMOVED***
-      writeWordAndAswers();
+      writeWordAndAnswers();
 ***REMOVED***
     else {
-      if (!practiceMode) {
+      if (!settings.practiceMode) {
         gameOver();
   ***REMOVED***
 
@@ -101,18 +79,39 @@ function writeWordAndAswers() {
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
-  if (window.location.pathname === '/admin') {
-    return null;
+
+  httpGetAsync('/settings', function (data) {
+    settings = JSON.parse(data)[0] || settings;
+    if (window.location.pathname === '/admin') {
+      $.each(settings, function (name, val) {
+        var $el = $('[name="' + name + '"]'),
+          type = $el.attr('type');
+
+        switch (type) {
+          case 'checkbox':
+            $el.attr('checked', 'checked');
+            break;
+          case 'radio':
+            $el.filter('[value="' + val + '"]').attr('checked', 'checked');
+            break;
+          default:
+            $el.val(val);
+    ***REMOVED***
+  ***REMOVED***);
+      return null;
 ***REMOVED***
 
-  else {
-    httpGetAsync('/word', function (data) {
-      dataSet = JSON.parse(data);
+    else {
+      httpGetAsync('/word', function (data) {
+        dataSet = JSON.parse(data);
+        if (dataSet.length) {
+          startGame();
+    ***REMOVED***
 
-      startGame();
+  ***REMOVED***);
+***REMOVED***
+
 ***REMOVED***);
-
-***REMOVED***
 
 });
 
@@ -161,11 +160,11 @@ function gameOver() {
 }
 
 function startGame() {
-  practiceMode = confirm("Press OK for practice mode, CANCEL for real game:");
+
   if (!localStorage.result) localStorage.result = 0;
   answeredQuestions = [];
   mapDOMElements();
-  writeWordAndAswers();
+  writeWordAndAnswers();
 
   elements.resultField.innerHTML = 'Number of points: ' + localStorage.result;
 }
@@ -185,10 +184,24 @@ function httpGetAsync(theUrl, callback) {
   xmlHttp.send(null);
 }
 
-/*function settings() {
+$('#settings').submit(function (event) {
 
+  var formData = {}, data = $(this).serializeArray();
 
- }*/
+  formData.practiceMode = _.map(_.filter(data, {name: 'practiceMode'}), 'value')[0];
+  formData.questionsNumber = _.map(_.filter(data, {name: 'questionsNumber'}), 'value')[0];
+
+  $.ajax({
+      type: 'PUT',
+      url: '/settings',
+      data: formData
+***REMOVED***)
+    .done(function () {
+      alert('Settings stored');
+
+***REMOVED***);
+  event.preventDefault();
+});
 
 $('#addWord').submit(function (event) {
 
