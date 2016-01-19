@@ -39,7 +39,7 @@ module.exports.routes = {
     view: 'admin'
   },
 
-  //'post /settings': 'SettingsController.handle'
+  'put /settings': 'SettingsController.handle'
 
   /***************************************************************************
    *                                                                          *
