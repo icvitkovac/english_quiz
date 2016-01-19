@@ -19,7 +19,8 @@ module.exports = {
     id: {
       type: 'integer',
       primaryKey: true,
-      autoincrement: true
+      unique: true,
+      autoIncrement: true
     },
     isAnswer: {
       type: 'boolean',
