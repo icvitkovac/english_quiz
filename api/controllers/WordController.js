@@ -28,7 +28,7 @@ module.exports = {
       }
 
       Translation.create(translations).exec(function (err, data) {
-        return res.ok(data, 'homepage');
+        return res.ok(data, 'admin');
       });
 
     });
