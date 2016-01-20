@@ -18,6 +18,8 @@ module.exports = {
         res.badRequest();
       }
 
+      var wordData = data;
+
       for (var i = 0; i < reqObj.translations.length; i++) {
         var tmpObj = {};
         tmpObj.term = data.id;
@@ -30,8 +32,11 @@ module.exports = {
       }
 
       Translation.create(translations).exec(function (err, data) {
-        //return res.ok(data, 'admin');
-        return res.ok();
+
+        if (err) {
+          res.badRequest();
+        }
+        return res.ok(wordData.value);
       });
 
     });
@@ -39,9 +44,23 @@ module.exports = {
   },
 
   find: function (req, res) {
-    Word.find().populate('translations').exec(function (err, data) {
+
+    Word.find(req.query).populate('translations').exec(function (err, data) {
+      if (err) res.badRequest(err);
       return res.ok(data);
     });
+  },
+
+  update: function (req, res) {
+    var reqObj = req.body;
+    var id = parseInt(reqObj.id);
+    delete reqObj.id;
+
+    Word.update(id, reqObj)
+      .exec(function (err, data) {
+        if (err) res.badRequest(err);
+        return res.ok(data);
+      });
   }
 
 };

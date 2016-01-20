@@ -270,3 +270,7 @@ textarea {
         page-break-after: avoid;
     }
 }
+
+.info {
+  font-weight: bold;
+}
