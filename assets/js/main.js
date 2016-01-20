@@ -175,6 +175,7 @@ function startGame() {
   $('#questionsNumber').append(settings.questionsNumber);
   $('#practiceMode').append(settings.practiceMode);
   $('#only_hard').append('' + settings.only_hard);
+  $('#totalQuestions').append(dataSet.length);
   elements.resultField.innerHTML = 'Number of points: ' + localStorage.result;
 }
 
