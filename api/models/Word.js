@@ -21,6 +21,11 @@ module.exports = {
     translations: {
       collection: 'translation',
       via: 'term'
+    },
+    is_hard: {
+      type: 'boolean',
+      required: false,
+      defaultsTo: false
     }
 
   }
