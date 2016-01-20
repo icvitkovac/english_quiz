@@ -3,7 +3,8 @@ var questionId = 0, // id of the current question
   dataSet = [],
   settings = {
     practiceMode: true,
-    questionsNumber: 3
+    questionsNumber: 10,
+    only_hard: false
 ***REMOVED***;
 
 var elements = {
@@ -46,7 +47,7 @@ function writeWordAndAnswers() {
   elements.startGame.style.display = 'none';
 
   elements.randomEnglishWord.innerHTML = getRandomEnglishTerm();
-  makeUL(_.map(dataSet[questionId].translations, 'value'));
+  makeUL(_.shuffle(_.map(dataSet[questionId].translations, 'value')));
 
   var ul = document.getElementsByTagName('ul')[0];
   ul.onclick = function (event) {
@@ -70,6 +71,7 @@ function writeWordAndAnswers() {
   ***REMOVED***
 
       else {
+        update(dataSet[questionId].id);
         setColor(elements.answerReaction, 'red');
         localStorage.result -= 0.5;
         elements.resultField.innerHTML = 'Number of points: ' + localStorage.result;
@@ -102,7 +104,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
 ***REMOVED***
 
     else {
-      httpGetAsync('/word', function (data) {
+      var term = '/word';
+      if(settings.only_hard){
+        term+='?is_hard=true';
+  ***REMOVED***
+      httpGetAsync(term, function (data) {
         dataSet = JSON.parse(data);
         if (dataSet.length) {
           startGame();
@@ -166,6 +172,9 @@ function startGame() {
   mapDOMElements();
   writeWordAndAnswers();
 
+  $('#questionsNumber').append(settings.questionsNumber);
+  $('#practiceMode').append(settings.practiceMode);
+  $('#only_hard').append('' + settings.only_hard);
   elements.resultField.innerHTML = 'Number of points: ' + localStorage.result;
 }
 
@@ -190,6 +199,7 @@ $('#settings').submit(function (event) {
 
   formData.practiceMode = _.map(_.filter(data, {name: 'practiceMode'}), 'value')[0];
   formData.questionsNumber = _.map(_.filter(data, {name: 'questionsNumber'}), 'value')[0];
+  formData.only_hard = _.map(_.filter(data, {name: 'only_hard'}), 'value')[0];
 
   $.ajax({
       type: 'PUT',
@@ -215,11 +225,24 @@ $('#addWord').submit(function (event) {
       url: '/word/create',
       data: formData
 ***REMOVED***)
-    .done(function () {
+    .done(function (data) {
       $('#addWord')[0].reset();
-      alert('word added');
+      $('.info').html("Word added: " + data);
 ***REMOVED***);
   event.preventDefault();
 });
+
+function update(id) {
+
+  $.ajax({
+      type: 'PUT',
+      url: '/word/update',
+      data: {id: id, is_hard: true}
+***REMOVED***)
+    .done(function () {
+      console.log('Word updated');
+***REMOVED***);
+  event.preventDefault();
+}
 
 
