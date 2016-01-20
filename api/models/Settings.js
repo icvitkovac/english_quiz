@@ -21,6 +21,11 @@ module.exports = {
     practiceMode: {
       type: 'boolean',
       defaultsTo: true
+***REMOVED***,
+    only_hard: {
+      type: 'boolean',
+      defaultsTo: false,
+      required: false
 ***REMOVED***
 
 ***REMOVED***

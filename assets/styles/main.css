@@ -270,3 +270,7 @@ textarea {
         page-break-after: avoid;
 ***REMOVED***
 }
+
+.info {
+  font-weight: bold;
+}
