@@ -105,8 +105,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     else {
       var term = '/word';
-      if(settings.only_hard){
-        term+='?is_hard=true';
+      if (settings.only_hard) {
+        term += '?is_hard=true';
       }
       httpGetAsync(term, function (data) {
         dataSet = JSON.parse(data);
@@ -220,16 +220,29 @@ $('#addWord').submit(function (event) {
 
   formData.translations = _.map(_.filter(data, {name: 'translations'}), 'value');
   formData.word = _.filter(data, {name: 'word'})[0].value;
-  formData.answerIndex = _.filter(data, {name: 'isAnswer'})[0].value;
-  $.ajax({
-      type: 'POST',
-      url: '/word/create',
-      data: formData
-    })
-    .done(function (data) {
-      $('#addWord')[0].reset();
-      $('.info').html("Word added: " + data);
-    });
+  formData.answerIndex = _.filter(data, {name: 'isAnswer'}).length ? _.filter(data, {name: 'isAnswer'})[0].value : null;
+  if (_.isEmpty(formData) || !formData.translations.length || !formData.word || !formData.answerIndex) {
+    alert('Please fill out all fields!');
+
+  }
+  else {
+    $.ajax({
+        type: 'POST',
+        url: '/word/create',
+        data: formData
+      })
+      .done(function (data) {
+        $('#addWord')[0].reset();
+        $('.info').html("Word added: " + data);
+      })
+      .complete(function(data){
+        if(data.status === 302){
+          alert('Word already exists in the DB!');
+        }
+      })
+    ;
+  }
+
   event.preventDefault();
 });
 

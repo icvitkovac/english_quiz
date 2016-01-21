@@ -12,33 +12,42 @@ module.exports = {
     var reqObj = req.body,
       answerId = parseInt(reqObj.answerIndex), translations = [];
 
-    Word.create({value: reqObj.word}).exec(function (err, data) {
-
-      if (err) {
-        res.badRequest();
+    Word.find({value: reqObj.word}).exec(function (err, data) {
+      if (err) res.badRequest(err);
+      if (data.length) {
+        res.status(302);
+        res.send('Word already added');
       }
+      else {
+        Word.create({value: reqObj.word}).exec(function (err, data) {
 
-      var wordData = data;
+          if (err) {
+            res.badRequest();
+          }
 
-      for (var i = 0; i < reqObj.translations.length; i++) {
-        var tmpObj = {};
-        tmpObj.term = data.id;
-        if (i === answerId) {
-          tmpObj.isAnswer = true;
-        }
+          var wordData = data;
 
-        tmpObj.value = reqObj.translations[i];
-        translations.push(tmpObj);
+          for (var i = 0; i < reqObj.translations.length; i++) {
+            var tmpObj = {};
+            tmpObj.term = data.id;
+            if (i === answerId) {
+              tmpObj.isAnswer = true;
+            }
+
+            tmpObj.value = reqObj.translations[i];
+            translations.push(tmpObj);
+          }
+
+          Translation.create(translations).exec(function (err, data) {
+
+            if (err) {
+              res.badRequest();
+            }
+            return res.ok(wordData.value);
+          });
+
+        });
       }
-
-      Translation.create(translations).exec(function (err, data) {
-
-        if (err) {
-          res.badRequest();
-        }
-        return res.ok(wordData.value);
-      });
-
     });
 
   },
