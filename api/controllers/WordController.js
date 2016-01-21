@@ -12,33 +12,42 @@ module.exports = {
     var reqObj = req.body,
       answerId = parseInt(reqObj.answerIndex), translations = [];
 
-    Word.create({value: reqObj.word}).exec(function (err, data) {
-
-      if (err) {
-        res.badRequest();
+    Word.find({value: reqObj.word}).exec(function (err, data) {
+      if (err) res.badRequest(err);
+      if (data.length) {
+        res.status(302);
+        res.send('Word already added');
   ***REMOVED***
+      else {
+        Word.create({value: reqObj.word}).exec(function (err, data) {
 
-      var wordData = data;
+          if (err) {
+            res.badRequest();
+      ***REMOVED***
 
-      for (var i = 0; i < reqObj.translations.length; i++) {
-        var tmpObj = {***REMOVED***
-        tmpObj.term = data.id;
-        if (i === answerId) {
-          tmpObj.isAnswer = true;
-    ***REMOVED***
+          var wordData = data;
 
-        tmpObj.value = reqObj.translations[i];
-        translations.push(tmpObj);
+          for (var i = 0; i < reqObj.translations.length; i++) {
+            var tmpObj = {***REMOVED***
+            tmpObj.term = data.id;
+            if (i === answerId) {
+              tmpObj.isAnswer = true;
+        ***REMOVED***
+
+            tmpObj.value = reqObj.translations[i];
+            translations.push(tmpObj);
+      ***REMOVED***
+
+          Translation.create(translations).exec(function (err, data) {
+
+            if (err) {
+              res.badRequest();
+        ***REMOVED***
+            return res.ok(wordData.value);
+      ***REMOVED***);
+
+    ***REMOVED***);
   ***REMOVED***
-
-      Translation.create(translations).exec(function (err, data) {
-
-        if (err) {
-          res.badRequest();
-    ***REMOVED***
-        return res.ok(wordData.value);
-  ***REMOVED***);
-
 ***REMOVED***);
 
 ***REMOVED***,
