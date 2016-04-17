@@ -28,11 +28,20 @@ var jsFilesToInject = [
   'js/dependencies/sails.io.js',
 
   // Dependencies like jQuery, or Angular are brought in here
+
+
+  'js/dependencies/**/underscore.js',
+  'js/dependencies/**/jquery.js',
+  'js/dependencies/**/json2.js',
+  'js/dependencies/**/backbone.js',
+  'js/dependencies/**/backbone.babysitter.js',
+  'js/dependencies/**/backbone.wreqr.js',
+  'js/dependencies/**/backbone.marionette.js',
   'js/dependencies/**/*.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
-  'js/**/*.js',
+  'js/**/*.js'
 
   // Use the "exclude" operator to ignore files
   // '!js/ignore/these/files/*.js'
