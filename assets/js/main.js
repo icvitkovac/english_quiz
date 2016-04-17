@@ -233,10 +233,11 @@ $('#addWord').submit(function (event) {
       })
       .done(function (data) {
         $('#addWord')[0].reset();
+        $('#addWord').find('input:first').focus();
         $('.info').html("Word added: " + data);
       })
-      .complete(function(data){
-        if(data.status === 302){
+      .complete(function (data) {
+        if (data.status === 302) {
           alert('Word already exists in the DB!');
         }
       })
@@ -248,15 +249,17 @@ $('#addWord').submit(function (event) {
 
 function update(id) {
 
-  $.ajax({
-      type: 'PUT',
-      url: '/word/update',
-      data: {id: id, is_hard: true}
-    })
-    .done(function () {
-      console.log('Word updated');
+  DataApi().update('/word/update',
+    {id: id, is_hard: true},
+    function(data){
+      console.log(data)
     });
   event.preventDefault();
 }
+
+
+/*$(document).ready(function () {
+  EnglishQuiz.start();
+});*/
 
 
