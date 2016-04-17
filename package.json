@@ -38,8 +38,8 @@
     "typings": "^0.7.12"
   },
   "scripts": {
+    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "debug": "node debug app.js",
-    "start": "node app.js",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "lite": "lite-server",
