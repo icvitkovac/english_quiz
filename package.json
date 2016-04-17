@@ -23,11 +23,28 @@
     "rc": "~0.5.0",
     "sails": "~0.11.4",
     "sails-disk": "~0.10.0",
-    "sails-postgresql": "^0.11.0"
+    "sails-postgresql": "^0.11.0",
+    "angular2": "2.0.0-beta.15",
+    "systemjs": "0.19.26",
+    "es6-shim": "^0.35.0",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.2",
+    "zone.js": "0.6.10"
+  },
+  "devDependencies": {
+    "concurrently": "^2.0.0",
+    "lite-server": "^2.2.0",
+    "typescript": "^1.8.10",
+    "typings": "^0.7.12"
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "lite": "lite-server",
+    "typings": "typings",
+    "postinstall": "typings install"
   },
   "main": "app.js",
   "repository": {
