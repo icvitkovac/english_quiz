@@ -7,6 +7,8 @@
 
 module.exports = {
 
+  wordCount: null,
+
   attributes: {
 
     value: {
