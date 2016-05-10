@@ -1,10 +1,4 @@
-<h1>{{title}}</h1>
-<h2>My Heroes</h2>
-<ul class="words">
-  <li *ngFor="#word of words"
-      [class.selected]="word === selectedWord"
-      (click)="onSelect(word)">
-    <span class="badge">{{word.value}}</span>
-  </li>
-</ul>
-<my-word-detail [word]="selectedWord"></my-word-detail>
+<router-outlet></router-outlet>
+
+<a [routerLink]="['Main']">Main</a>
+<a [routerLink]="['Admin']">Admin</a>

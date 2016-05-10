@@ -1,25 +1,29 @@
 /**
  * WordController
  *
- * @description :: Server-side logic for managing words
+ * @description :: Something
 
  */
 
+'use strict';
+
 module.exports = {
+
+  //todo findOrCreate
 
   create: function (req, res) {
 
     var reqObj = req.body,
       answerId = parseInt(reqObj.answerIndex), translations = [];
 
-    Word.find({value: reqObj.word}).exec(function (err, data) {
+    Word.find({value: reqObj.value}).exec(function (err, data) {
       if (err) res.badRequest(err);
       if (data.length) {
         res.status(302);
         res.send('Word already added');
       }
       else {
-        Word.create({value: reqObj.word}).exec(function (err, data) {
+        Word.create({value: reqObj.value}).exec(function (err, data) {
 
           if (err) {
             res.badRequest();
@@ -54,7 +58,27 @@ module.exports = {
 
   find: function (req, res) {
 
+
     Word.find(req.query).populate('translations').exec(function (err, data) {
+      if (err) res.badRequest(err);
+      return res.ok(data);
+    });
+  },
+
+  count: function (req, res) {
+
+
+    Word.count(req.query).exec(function (err, data) {
+      if (err) res.badRequest(err);
+      Word.wordCount = parseInt(data);
+      return res.ok({count: data});
+    });
+  },
+
+  search: function (req, res) {
+
+
+    Word.find({value: {'startsWith': req.query.value}}).populate('translations').exec(function (err, data) {
       if (err) res.badRequest(err);
       return res.ok(data);
     });
