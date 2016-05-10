@@ -1,0 +1,10 @@
+<div *ngIf="word">
+  <h2>{{word.value}}</h2>
+  <ul>
+    <li *ngFor="#t of word.translations" [class.selected]="word === selectedWord"
+        (click)="onSelect(t)">{{t.value}}
+    </li>
+  </ul>
+</div>
+
+<p>{{points}}</p>

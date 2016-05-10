@@ -3,46 +3,21 @@ import {Injectable} from 'angular2/core';
 import {Observable}     from 'rxjs/Observable';
 
 @Injectable()
-export class WordService {
+export class SettingsService {
+  baseUrl:string;
 
   constructor(private http:Http) {
+    this.baseUrl = '/settings';
   }
 
-  search(value:string) {
+
+  get() {
     return this.http
-      .get('word/search?value=' + value)
+      .get(this.baseUrl)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
-  count() {
-    return this.http
-      .get('word/count')
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
-  add(data) {
-    let reqObj = JSON.stringify(data);
-    return this.http
-      .post('word/create', reqObj)
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
-  start() {
-    return this.http
-      .get('game/start')
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
-  checkAnswer(pickedWord) {
-    return this.http
-      .get(`word/${pickedWord.term}/translations/${pickedWord.id}`)
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
 
   private extractData(res:Response) {
     if (res.status < 200 || res.status >= 300) {

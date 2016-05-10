@@ -35,11 +35,15 @@ module.exports.routes = {
   '/': {
     view: 'homepage'
   },
+  '/main': {
+    view: 'homepage'
+  },
+  '/administration': {
+    view: 'homepage'
+  },
   '/admin': {
     view: 'admin'
   },
-
-  'put /settings': 'SettingsController.handle'
 
   /***************************************************************************
    *                                                                          *
@@ -50,5 +54,9 @@ module.exports.routes = {
    * for configuration options and examples.                                  *
    *                                                                          *
    ***************************************************************************/
+
+  'put /settings': 'SettingsController.handle',
+  
+  'GET /game/check/:translationId': 'GameController.checkAnswer'
 
 };
