@@ -1,0 +1,13 @@
+<div *ngIf="word">
+  <h2>{{word.value}} details!</h2>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="word.value" placeholder="name"/>
+  </div>
+
+  <ul>
+    <li *ngFor="#t of word.translations">
+      <input [(ngModel)]="t.value" />
+    </li>
+  </ul>
+</div>

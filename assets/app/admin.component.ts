@@ -1,0 +1,52 @@
+import {Component, OnInit} from 'angular2/core';
+import {Control, ControlGroup, FormBuilder} from 'angular2/common';
+import {WordService} from './word.service';
+import {SettingsService} from './settings.service';
+import {Word} from './word';
+import {Settings} from './settings';
+import {WordDetailComponent} from './word-detail.component';
+import {WordAddComponent} from './word-add.component';
+import 'rxjs/Rx';
+
+@Component({
+  selector: 'admin-form',
+  providers: [WordService, SettingsService],
+  directives: [WordDetailComponent, WordAddComponent],
+  templateUrl: 'app/admin.component.html'
+})
+
+
+export class AdminComponent implements OnInit{
+  searchField:Control;
+  coolForm:ControlGroup;
+  words:Word[];
+  settings:Settings;
+  selectedWord:Word;
+
+
+  constructor(private wordService:WordService, private fb:FormBuilder, private _settingsService:SettingsService) {
+    this.searchField = new Control();
+    this.coolForm = fb.group({search: this.searchField});
+
+    this.searchField.valueChanges
+      .debounceTime(400)
+      .flatMap((term:string) => this.wordService.search(term))
+      .subscribe((result:Word[]) => {
+        this.words = result;
+  ***REMOVED***);
+***REMOVED***
+
+  onSelect(word:Word) {
+    this.selectedWord = word;
+***REMOVED***
+
+  ngOnInit() {
+    this._settingsService.get()
+      .subscribe((settings:Settings[]) => {
+        this.settings = settings[0];
+  ***REMOVED***);
+
+***REMOVED***
+
+
+}

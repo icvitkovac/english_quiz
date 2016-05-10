@@ -1,41 +1,33 @@
-import {Component, OnInit} from 'angular2/core';
-import {Word} from './word';
-import {WordDetailComponent} from './word-detail.component';
-import {WordService} from './word.service';
+import {Component} from 'angular2/core';
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+
+import {AdminComponent} from './admin.component';
+import {MainComponent} from './main.component';
 
 
 @Component({
   selector: 'english-quiz',
-  directives: [WordDetailComponent],
-  providers: [WordService],
+  directives: [MainComponent, AdminComponent, ROUTER_DIRECTIVES],
   templateUrl: 'app/app.component.html'
+
 })
-export class AppComponent implements OnInit {
-  title = 'All words';
-  errorMessage = '';
-  words:Word[];
-  selectedWord:Word;
 
-  constructor(private _wordService:WordService) {
-***REMOVED***
+@RouteConfig([
+  {
+    path: '/administration',
+    name: 'Admin',
+    component: AdminComponent
+***REMOVED***,
+  {
+    path: '/main/...',
+    name: 'Main',
+    component: MainComponent,
+    useAsDefault: true
+***REMOVED***,
+])
 
 
-  getWords() {
-    this._wordService.getWords()
-      .subscribe(
-        words => this.words = words,
-        error => this.errorMessage = <any>error);
-***REMOVED***
+export class AppComponent {
 
-  ngOnInit() {
-    this.getWords();
-***REMOVED***
 
-  onSelect(word:Word) {
-    this.selectedWord = word;
-***REMOVED***
 }
-
-
-
-

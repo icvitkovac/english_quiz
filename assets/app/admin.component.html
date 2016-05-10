@@ -1,0 +1,15 @@
+
+<h4>Find/edit/delete existing words</h4>
+<ul class="words">
+  <form [ngFormModel]="coolForm"><input ngControl="search" placeholder="Start typing the word"></form>
+  <li *ngFor="#word of words"
+
+      [class.selected]="word === selectedWord"
+      (click)="onSelect(word)">
+    <span class="badge">{{word.value}}</span>
+  </li>
+</ul>
+
+<my-word-detail [word]="selectedWord"></my-word-detail>
+
+<word-add></word-add>

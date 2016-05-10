@@ -1,5 +1,9 @@
 export class Word {
-  id: number;
-  value: string;
-  isHard: boolean;
+
+  constructor(public id:number,
+              public value:string,
+              public isHard:boolean,
+              public translations,
+              private answerIndex:number) {
+***REMOVED***
 }
