@@ -1,9 +1,9 @@
 import {Component, Input} from 'angular2/core';
-import {WordService} from './word.service';
-import {Word} from './word';
+import {WordService} from '../services/word.service';
+import {Word} from '../models/word';
 @Component({
   selector: 'word-add',
-  templateUrl: 'app/add.word.html',
+  templateUrl: 'app/word.add.html',
   providers: [WordService]
 })
 export class WordAddComponent {
