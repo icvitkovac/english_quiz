@@ -1,10 +1,11 @@
 <p> There are total of {{count}} words in the database.</p>
 
-<button (click)="onClick()" *ngIf="!isStarted">START</button>
-<button (click)="onClick()" *ngIf="isStarted">END</button>
+<button [disabled]="buttonState()" (click)="onClick()" *ngIf="!isStarted">START</button>
+<button [disabled]="buttonState()" (click)="onClick()" *ngIf="isStarted">END</button>
 <random-word [word]="guessWord"></random-word>
 
+
 <div *ngIf="settings">
-  {{settings.questionsNumber}}
+  {{settings.questionsNumber}} questions in the game.
 </div>
 

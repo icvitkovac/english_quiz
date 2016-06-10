@@ -10,15 +10,14 @@ export class WordAddComponent {
   @Input()
   submitted = false;
   active = true;
-  word = new Word(0, '', false, [], 0);
+  word = new Word(0, '', false, []);
 
   onSubmit() {
     this.submitted = true;
-    console.log(this.word);
     this._wordService
       .add(this.word)
-      .subscribe((result:Word) => {
-        console.log(result);
+      .subscribe(() => {
+        alert('word added');
       });
 
   }

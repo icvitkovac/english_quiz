@@ -9,50 +9,32 @@
 
 module.exports = {
 
-  //todo findOrCreate
 
   create: function (req, res) {
 
-    var reqObj = req.body,
-      answerId = parseInt(reqObj.answerIndex), translations = [];
+    var reqObj = req.body, translations = [];
 
-    Word.find({value: reqObj.value}).exec(function (err, data) {
-      if (err) res.badRequest(err);
-      if (data.length) {
-        res.status(302);
-        res.send('Word already added');
-      }
-      else {
-        Word.create({value: reqObj.value}).exec(function (err, data) {
+    Word.findOrCreate({value: reqObj.value}, {value: reqObj.value, author: req.session.user.id})
+      .exec(function (err, wordData) {
+        if (err) res.badRequest(err);
 
-          if (err) {
-            res.badRequest();
-          }
+        for (let value of reqObj.translations) {
+          translations.push({value: value})
+        }
 
-          var wordData = data;
+        translations[0].isAnswer = true;
 
-          for (var i = 0; i < reqObj.translations.length; i++) {
-            var tmpObj = {};
-            tmpObj.term = data.id;
-            if (i === answerId) {
-              tmpObj.isAnswer = true;
-            }
+        //populate child collection
 
-            tmpObj.value = reqObj.translations[i];
-            translations.push(tmpObj);
-          }
+        wordData.translations.add(translations);
 
-          Translation.create(translations).exec(function (err, data) {
-
-            if (err) {
-              res.badRequest();
-            }
-            return res.ok(wordData.value);
-          });
+        wordData.save(function (err) {
+          if (err) res.badRequest(err);
+          return res.json(wordData.value);
 
         });
-      }
-    });
+
+      });
 
   },
 
@@ -68,9 +50,9 @@ module.exports = {
   count: function (req, res) {
 
 
-    Word.count(req.query).exec(function (err, data) {
+    Word.count({author: req.session.user.id}).exec(function (err, data) {
       if (err) res.badRequest(err);
-      Word.wordCount = parseInt(data);
+      req.session.wordCount = parseInt(data);
       return res.ok({count: data});
     });
   },
@@ -78,10 +60,15 @@ module.exports = {
   search: function (req, res) {
 
 
-    Word.find({value: {'startsWith': req.query.value}}).populate('translations').exec(function (err, data) {
-      if (err) res.badRequest(err);
-      return res.ok(data);
-    });
+    Word.find({
+      value: {'startsWith': req.query.value},
+      author: req.session.user.id
+    })
+      .populate('translations')
+      .exec(function (err, data) {
+        if (err) res.badRequest(err);
+        return res.ok(data);
+      });
   },
 
   update: function (req, res) {
