@@ -1,6 +1,7 @@
 var passport = require('passport'),
   FacebookStrategy = require('passport-facebook'),
-  express = require('express');
+  express = require('express'),
+  port = process.env.PORT;
 
 
 module.exports.http = {
@@ -13,8 +14,8 @@ module.exports.http = {
     passport.use(new FacebookStrategy({
         clientID: '566624130177759',
         clientSecret: '4400b12009fc53fed297653a30e0a99b',
-        callbackURL: "http://localhost:1234/auth/facebook/callback"
-        // callbackURL: "http://localhost:1234/main"
+        // callbackURL: "http://localhost:1234/auth/facebook/callback"
+        callbackURL: "english-quiz.herokuapp.com/auth/facebook/callback"
       },
       function (accessToken, refreshToken, profile, cb) {
 
