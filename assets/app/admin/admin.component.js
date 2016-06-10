@@ -69,7 +69,7 @@ System.register(['angular2/core', 'angular2/common', '../services/word.service',
                     selector: 'admin-form',
                     providers: [word_service_1.WordService, settings_service_1.SettingsService],
                     directives: [word_detail_component_1.WordDetailComponent, word_add_component_1.WordAddComponent],
-                    templateUrl: 'app/main/admin.component.html'
+                    templateUrl: 'app/admin/admin.component.html'
             ***REMOVED***), 
                 __metadata('design:paramtypes', [word_service_1.WordService, common_1.FormBuilder, settings_service_1.SettingsService])
             ], AdminComponent);
