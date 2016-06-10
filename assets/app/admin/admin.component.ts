@@ -12,7 +12,7 @@ import 'rxjs/Rx';
   selector: 'admin-form',
   providers: [WordService, SettingsService],
   directives: [WordDetailComponent, WordAddComponent],
-  templateUrl: 'app/main/admin.component.html'
+  templateUrl: 'app/admin/admin.component.html'
 })
 
 
