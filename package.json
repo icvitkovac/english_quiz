@@ -1,7 +1,10 @@
 {
-  "name": "English Quiz",
+  "name": "EnglishQuiz",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "engines": {
+    "node": "5.8.0"
+  }
   "description": "English quiz adjusted to your needs.",
   "keywords": [],
   "dependencies": {
