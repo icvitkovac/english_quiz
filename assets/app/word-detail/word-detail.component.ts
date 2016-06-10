@@ -4,7 +4,7 @@ import {WordService} from '../services/word.service';
 
 @Component({
   selector: 'my-word-detail',
-  templateUrl: 'app/word-detail.component.html',
+  templateUrl: 'app/word-detail/word-detail.component.html',
   providers: [WordService]
 })
 export class WordDetailComponent {
