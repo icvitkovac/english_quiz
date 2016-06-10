@@ -33,16 +33,24 @@ module.exports.routes = {
    ***************************************************************************/
 
   '/': {
-    view: 'homepage'
+    controller: 'HomeController',
+    action: 'homepage'
 ***REMOVED***,
   '/main': {
-    view: 'homepage'
+    controller: 'HomeController',
+    action: 'homepage'
 ***REMOVED***,
   '/administration': {
-    view: 'homepage'
+    controller: 'HomeController',
+    action: 'homepage'
 ***REMOVED***,
-  '/admin': {
-    view: 'admin'
+  '/login': {
+    controller: 'AuthController',
+    action: 'login'
+***REMOVED***,
+  '/logout': {
+    controller: 'AuthController',
+    action: 'logout'
 ***REMOVED***,
 
   /***************************************************************************
@@ -56,7 +64,7 @@ module.exports.routes = {
    ***************************************************************************/
 
   'put /settings': 'SettingsController.handle',
-  
+
   'GET /game/check/:translationId': 'GameController.checkAnswer'
 
 ***REMOVED***

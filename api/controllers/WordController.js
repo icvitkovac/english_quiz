@@ -9,50 +9,32 @@
 
 module.exports = {
 
-  //todo findOrCreate
 
   create: function (req, res) {
 
-    var reqObj = req.body,
-      answerId = parseInt(reqObj.answerIndex), translations = [];
+    var reqObj = req.body, translations = [];
 
-    Word.find({value: reqObj.value}).exec(function (err, data) {
-      if (err) res.badRequest(err);
-      if (data.length) {
-        res.status(302);
-        res.send('Word already added');
-  ***REMOVED***
-      else {
-        Word.create({value: reqObj.value}).exec(function (err, data) {
+    Word.findOrCreate({value: reqObj.value}, {value: reqObj.value, author: req.session.user.id})
+      .exec(function (err, wordData) {
+        if (err) res.badRequest(err);
 
-          if (err) {
-            res.badRequest();
-      ***REMOVED***
+        for (let value of reqObj.translations) {
+          translations.push({value: value})
+    ***REMOVED***
 
-          var wordData = data;
+        translations[0].isAnswer = true;
 
-          for (var i = 0; i < reqObj.translations.length; i++) {
-            var tmpObj = {***REMOVED***
-            tmpObj.term = data.id;
-            if (i === answerId) {
-              tmpObj.isAnswer = true;
-        ***REMOVED***
+        //populate child collection
 
-            tmpObj.value = reqObj.translations[i];
-            translations.push(tmpObj);
-      ***REMOVED***
+        wordData.translations.add(translations);
 
-          Translation.create(translations).exec(function (err, data) {
-
-            if (err) {
-              res.badRequest();
-        ***REMOVED***
-            return res.ok(wordData.value);
-      ***REMOVED***);
+        wordData.save(function (err) {
+          if (err) res.badRequest(err);
+          return res.json(wordData.value);
 
     ***REMOVED***);
-  ***REMOVED***
-***REMOVED***);
+
+  ***REMOVED***);
 
 ***REMOVED***,
 
@@ -68,9 +50,9 @@ module.exports = {
   count: function (req, res) {
 
 
-    Word.count(req.query).exec(function (err, data) {
+    Word.count({author: req.session.user.id}).exec(function (err, data) {
       if (err) res.badRequest(err);
-      Word.wordCount = parseInt(data);
+      req.session.wordCount = parseInt(data);
       return res.ok({count: data});
 ***REMOVED***);
 ***REMOVED***,
@@ -78,10 +60,15 @@ module.exports = {
   search: function (req, res) {
 
 
-    Word.find({value: {'startsWith': req.query.value}}).populate('translations').exec(function (err, data) {
-      if (err) res.badRequest(err);
-      return res.ok(data);
-***REMOVED***);
+    Word.find({
+      value: {'startsWith': req.query.value},
+      author: req.session.user.id
+***REMOVED***)
+      .populate('translations')
+      .exec(function (err, data) {
+        if (err) res.badRequest(err);
+        return res.ok(data);
+  ***REMOVED***);
 ***REMOVED***,
 
   update: function (req, res) {
