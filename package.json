@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "engines": {
     "node": "5.8.0"
-***REMOVED***
+***REMOVED***,
   "description": "English quiz adjusted to your needs.",
   "keywords": [],
   "dependencies": {
