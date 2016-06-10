@@ -3,7 +3,7 @@ import {WordService} from '../services/word.service';
 import {Word} from '../models/word';
 @Component({
   selector: 'word-add',
-  templateUrl: 'app/word.add.html',
+  templateUrl: 'app/word-add/word-add.component.html',
   providers: [WordService]
 })
 export class WordAddComponent {

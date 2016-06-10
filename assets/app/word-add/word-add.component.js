@@ -47,7 +47,7 @@ System.register(['angular2/core', '../services/word.service', '../models/word'],
             WordAddComponent = __decorate([
                 core_1.Component({
                     selector: 'word-add',
-                    templateUrl: 'app/word.add.html',
+                    templateUrl: 'app/word-add/word-add.component.html',
                     providers: [word_service_1.WordService]
                 }), 
                 __metadata('design:paramtypes', [word_service_1.WordService])

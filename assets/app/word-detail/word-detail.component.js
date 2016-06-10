@@ -41,7 +41,7 @@ System.register(['angular2/core', '../models/word', '../services/word.service'],
             WordDetailComponent = __decorate([
                 core_1.Component({
                     selector: 'my-word-detail',
-                    templateUrl: 'app/word-detail.component.html',
+                    templateUrl: 'app/word-detail/word-detail.component.html',
                     providers: [word_service_1.WordService]
                 }), 
                 __metadata('design:paramtypes', [word_service_1.WordService])
