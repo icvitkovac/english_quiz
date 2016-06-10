@@ -1,11 +1,11 @@
 import {Component, OnInit} from 'angular2/core';
 import {Control, ControlGroup, FormBuilder} from 'angular2/common';
-import {WordService} from './word.service';
-import {SettingsService} from './settings.service';
-import {Word} from './word';
-import {Settings} from './settings';
-import {WordDetailComponent} from './word-detail.component';
-import {WordAddComponent} from './word-add.component';
+import {WordService} from '../services/word.service';
+import {SettingsService} from '../services/settings.service';
+import {Word} from '../models/word';
+import {Settings} from '../models/settings';
+import {WordDetailComponent} from '../word-detail/word-detail.component';
+import {WordAddComponent} from '../word-add/word-add.component';
 import 'rxjs/Rx';
 
 @Component({

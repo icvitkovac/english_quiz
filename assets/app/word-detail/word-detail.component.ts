@@ -1,6 +1,6 @@
 import {Component, Input} from 'angular2/core';
-import {Word} from './word';
-import {WordService} from './word.service';
+import {Word} from '../models/word';
+import {WordService} from '../services/word.service';
 
 @Component({
   selector: 'my-word-detail',
