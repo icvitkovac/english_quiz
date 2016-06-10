@@ -63,6 +63,7 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.count = 0;
     this._gameService.status()
       .subscribe(game => {
         this.isStarted = game.isStarted;
@@ -73,6 +74,10 @@ export class MainComponent implements OnInit {
         this.count = result.count;
       });
 
+  }
+
+  buttonState(){
+    return this.count ==0;
   }
 
 }

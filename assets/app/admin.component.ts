@@ -16,13 +16,12 @@ import 'rxjs/Rx';
 })
 
 
-export class AdminComponent implements OnInit{
+export class AdminComponent implements OnInit {
   searchField:Control;
   coolForm:ControlGroup;
   words:Word[];
   settings:Settings;
   selectedWord:Word;
-
 
   constructor(private wordService:WordService, private fb:FormBuilder, private _settingsService:SettingsService) {
     this.searchField = new Control();
@@ -40,13 +39,18 @@ export class AdminComponent implements OnInit{
     this.selectedWord = word;
   }
 
+  onDelete(word:Word, event:any) {
+    event.stopPropagation();
+    this.wordService.delete(word).subscribe((result:any) => {
+      alert('word deleted');
+    });
+  }
+
   ngOnInit() {
     this._settingsService.get()
       .subscribe((settings:Settings[]) => {
         this.settings = settings[0];
       });
-
   }
-
 
 }

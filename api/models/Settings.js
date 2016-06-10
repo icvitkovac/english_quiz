@@ -26,6 +26,9 @@ module.exports = {
       type: 'boolean',
       defaultsTo: false,
       required: false
+    },
+    userid:{
+      model: 'user'
     }
 
   }

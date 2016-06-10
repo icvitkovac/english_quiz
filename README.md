@@ -1,3 +1,1 @@
-# engleski
-
-a [Sails](http://sailsjs.org) application
+Your own personal english quiz. Add words, translations, and play against yourself and others.

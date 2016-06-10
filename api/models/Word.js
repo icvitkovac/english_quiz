@@ -7,8 +7,6 @@
 
 module.exports = {
 
-  wordCount: null,
-
   attributes: {
 
     value: {
@@ -24,11 +22,17 @@ module.exports = {
       collection: 'translation',
       via: 'term'
     },
-    is_hard: {
+    isHard: {
       type: 'boolean',
       required: false,
       defaultsTo: false
-    }
+    },
+    hasBeenAsked: {
+      type: 'boolean',
+      required: false,
+      defaultsTo: false
+    },
+    author: 'integer'
 
   }
 };

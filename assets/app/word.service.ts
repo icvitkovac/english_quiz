@@ -1,4 +1,4 @@
-import {Http, Response} from 'angular2/http';
+import {Http, Response, Headers} from 'angular2/http';
 import {Injectable} from 'angular2/core';
 import {Observable}     from 'rxjs/Observable';
 
@@ -26,6 +26,27 @@ export class WordService {
     let reqObj = JSON.stringify(data);
     return this.http
       .post('word/create', reqObj)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  delete(data) {
+
+    return this.http
+      .delete('word/' + data.id)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  update(data) {
+
+    let headers = new Headers();
+    let url = `word/${data.id}`;
+    headers.append('Content-Type', 'application/json');
+
+
+    return this.http
+      .put(url, JSON.stringify(data), {headers: headers})
       .map(this.extractData)
       .catch(this.handleError);
   }
