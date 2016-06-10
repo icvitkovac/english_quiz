@@ -15,7 +15,7 @@ module.exports.http = {
         clientID: '566624130177759',
         clientSecret: '4400b12009fc53fed297653a30e0a99b',
         // callbackURL: `http://localhost:${port}/auth/facebook/callback`
-        callbackURL: "english-quiz.herokuapp.com/auth/facebook/callback"
+        callbackURL: "auth/facebook/callback"
       },
       function (accessToken, refreshToken, profile, cb) {
 
