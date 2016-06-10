@@ -1,6 +1,6 @@
 import {Component, Input} from 'angular2/core';
-import {Word} from './word';
-import {GameService} from './game.service';
+import {Word} from '../models/word';
+import {GameService} from '../services/game.service';
 @Component({
   selector: 'random-word',
   templateUrl: 'app/word-display.component.html'
