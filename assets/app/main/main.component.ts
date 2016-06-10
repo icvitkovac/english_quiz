@@ -1,10 +1,10 @@
 import {Component, OnInit} from 'angular2/core';
-import {WordService} from './word.service';
-import {GameService} from './game.service';
-import {SettingsService} from './settings.service';
-import {Word} from './word';
-import {Settings} from './settings';
-import {WordDisplayComponent} from './word-display.component';
+import {WordService} from '../services/word.service';
+import {GameService} from '../services/game.service';
+import {SettingsService} from '../services/settings.service';
+import {Word} from '../models/word';
+import {Settings} from '../models/settings';
+import {WordDisplayComponent} from '../word-display/word-display.component';
 import {RouteConfig, RouterOutlet} from 'angular2/router';
 import 'rxjs/Rx';
 

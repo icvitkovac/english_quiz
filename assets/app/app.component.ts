@@ -1,8 +1,8 @@
 import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
-import {AdminComponent} from './admin.component';
-import {MainComponent} from './main.component';
+import {AdminComponent} from './admin/admin.component';
+import {MainComponent} from './main/main.component';
 
 
 @Component({
