@@ -82,7 +82,7 @@ System.register(['angular2/core', '../services/word.service', '../services/game.
                     selector: 'main-component',
                     providers: [word_service_1.WordService, game_service_1.GameService, settings_service_1.SettingsService],
                     directives: [word_display_component_1.WordDisplayComponent, router_1.RouterOutlet],
-                    templateUrl: 'app/main.component.html'
+                    templateUrl: 'app/main/main.component.html'
             ***REMOVED***),
                 router_1.RouteConfig([
                     { path: '/', name: 'WordDisplay', component: word_display_component_1.WordDisplayComponent, useAsDefault: true }
