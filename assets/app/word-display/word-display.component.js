@@ -45,7 +45,7 @@ System.register(['angular2/core', '../models/word', '../services/game.service'],
             WordDisplayComponent = __decorate([
                 core_1.Component({
                     selector: 'random-word',
-                    templateUrl: 'app/word-display.component.html'
+                    templateUrl: 'app/word-display/word-detail.component.html'
             ***REMOVED***), 
                 __metadata('design:paramtypes', [game_service_1.GameService])
             ], WordDisplayComponent);

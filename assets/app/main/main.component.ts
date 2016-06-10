@@ -12,8 +12,7 @@ import 'rxjs/Rx';
   selector: 'main-component',
   providers: [WordService, GameService, SettingsService],
   directives: [WordDisplayComponent, RouterOutlet],
-  templateUrl: 'app/main.component.html'
-
+  templateUrl: 'app/main/main.component.html'
 })
 
 @RouteConfig([
@@ -76,8 +75,8 @@ export class MainComponent implements OnInit {
 
 ***REMOVED***
 
-  buttonState(){
-    return this.count ==0;
+  buttonState() {
+    return this.count == 0;
 ***REMOVED***
 
 }

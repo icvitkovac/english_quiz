@@ -3,7 +3,7 @@ import {Word} from '../models/word';
 import {GameService} from '../services/game.service';
 @Component({
   selector: 'random-word',
-  templateUrl: 'app/word-display.component.html'
+  templateUrl: 'app/word-display/word-detail.component.html'
 })
 export class WordDisplayComponent {
   @Input()
