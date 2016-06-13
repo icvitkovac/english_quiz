@@ -48,8 +48,16 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this._settingsService.get()
-      .subscribe((settings:Settings[]) => {
-        this.settings = settings[0];
+      .subscribe((settings:Settings) => {
+        this.settings = settings;
+  ***REMOVED***);
+***REMOVED***
+
+  onSave(settings:Settings) {
+    this._settingsService.update(settings)
+      .subscribe((settings:Settings) => {
+        this.settings = settings;
+        alert('Settings updated');
   ***REMOVED***);
 ***REMOVED***
 

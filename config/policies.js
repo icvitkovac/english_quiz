@@ -26,13 +26,10 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': true,
+  '*': 'sessionAuth',
 
-  'HomeController': {
-    '*': 'sessionAuth'
-***REMOVED***,
-  'GameController': {
-    '*': 'sessionAuth'
+  'AuthController': {
+    '*': true
 ***REMOVED***
 
   /***************************************************************************

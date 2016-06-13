@@ -12,11 +12,26 @@ module.exports = {
     reqObj.questionsNumber = parseInt(reqObj.questionsNumber);
 
 
-    Settings.update(1, reqObj)
+    Settings.update({userId: req.session.user.id}, reqObj)
       .exec(function (err, data) {
         if (err) res.badRequest(err);
-        return res.ok(data);
+        return res.ok(data[0]);
   ***REMOVED***);
+***REMOVED***,
+
+  find: function (req, res) {
+
+    Settings.findOrCreate({userId: req.session.user.id}, {
+      userId: req.session.user.id,
+      questionsNumber: 5,
+      practiceMode: true,
+      onlyHard: false
+***REMOVED***)
+      .exec(function (err, data) {
+        if (err) res.badRequest(err);
+        return res.json(data);
+  ***REMOVED***);
+
 ***REMOVED***
 
 ***REMOVED***
