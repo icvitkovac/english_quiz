@@ -13,3 +13,18 @@
 <my-word-detail [word]="selectedWord"></my-word-detail>
 
 <word-add></word-add>
+
+
+<div *ngIf="settings">
+
+  <ul>
+    <li>Number of questions <input [(ngModel)]="settings.questionsNumber" /></li>
+    <li>Practice mode <input type="checkbox" [(ngModel)]="settings.practiceMode" /></li>
+    <li>Only previously incorrectly guessed words <input type="checkbox" [(ngModel)]="settings.onlyHard" /></li>
+
+    <button class="update-button" (click)="onSave(settings)">Save</button>
+
+  </ul>
+
+</div>
+

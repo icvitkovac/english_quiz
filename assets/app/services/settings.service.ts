@@ -18,6 +18,15 @@ export class SettingsService {
       .catch(this.handleError);
   }
 
+  //todo impure api update call, think about refactoring
+  update(data) {
+    let reqObj = JSON.stringify(data);
+    return this.http
+      .post(this.baseUrl + '/handle', reqObj)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
 
   private extractData(res:Response) {
     if (res.status < 200 || res.status >= 300) {
