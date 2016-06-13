@@ -60,7 +60,14 @@ System.register(['angular2/core', 'angular2/common', '../services/word.service',
                 ngOnInit() {
                     this._settingsService.get()
                         .subscribe((settings) => {
-                        this.settings = settings[0];
+                        this.settings = settings;
+                    });
+                }
+                onSave(settings) {
+                    this._settingsService.update(settings)
+                        .subscribe((settings) => {
+                        this.settings = settings;
+                        alert('Settings updated');
                     });
                 }
             };

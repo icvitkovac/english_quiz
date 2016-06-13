@@ -2,7 +2,8 @@ export class Settings {
 
   constructor(questionsNumber:number,
               public practiceMode:boolean,
-              public only_hard:boolean,
+              public onlyHard:boolean,
+              public userId:number,
               private id:number) {
   }
 }
