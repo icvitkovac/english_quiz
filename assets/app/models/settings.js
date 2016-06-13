@@ -6,9 +6,10 @@ System.register([], function(exports_1, context_1) {
         setters:[],
         execute: function() {
             class Settings {
-                constructor(questionsNumber, practiceMode, only_hard, id) {
+                constructor(questionsNumber, practiceMode, onlyHard, userId, id) {
                     this.practiceMode = practiceMode;
-                    this.only_hard = only_hard;
+                    this.onlyHard = onlyHard;
+                    this.userId = userId;
                     this.id = id;
             ***REMOVED***
         ***REMOVED***

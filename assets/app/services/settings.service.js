@@ -35,6 +35,14 @@ System.register(['angular2/http', 'angular2/core', 'rxjs/Observable'], function(
                         .map(this.extractData)
                         .catch(this.handleError);
             ***REMOVED***
+                //todo impure api update call, think about refactoring
+                update(data) {
+                    let reqObj = JSON.stringify(data);
+                    return this.http
+                        .post(this.baseUrl + '/handle', reqObj)
+                        .map(this.extractData)
+                        .catch(this.handleError);
+            ***REMOVED***
                 extractData(res) {
                     if (res.status < 200 || res.status >= 300) {
                         throw new Error('Bad response status: ' + res.status);

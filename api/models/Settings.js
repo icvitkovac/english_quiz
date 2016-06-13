@@ -22,12 +22,12 @@ module.exports = {
       type: 'boolean',
       defaultsTo: true
 ***REMOVED***,
-    only_hard: {
+    onlyHard: {
       type: 'boolean',
       defaultsTo: false,
       required: false
 ***REMOVED***,
-    userid:{
+    userId:{
       model: 'user'
 ***REMOVED***
 
