@@ -3,28 +3,33 @@
 
 <table>
   <thead>
-  <td>Points</td>
-  <td>Date</td>
-
+  <th>Points</th>
+  <th>Date</th>
   </thead>
+
+  <tbody>
   <tr *ngFor="#h of history" (click)="onSelect(h)">
-    <td>{{h.gamePoints}}</td>
+    <t>{{h.gamePoints}}</t>
     <td>{{h.createdAt}}</td>
   </tr>
-
+  </tbody>
 </table>
+
 
 <div *ngIf="breakdown">
   <table>
     <thead>
-    <td>Word</td>
-    <td>Correct answer</td>
-
+    <th>Word</th>
+    <th>Correct answer</th>
     </thead>
+
+    <tbody>
     <tr *ngFor="#b of breakdown">
       <td>{{b.questionId.value}}</td>
       <td>{{b.correct}}</td>
     </tr>
+    </tbody>
+
 
   </table>
 </div>
