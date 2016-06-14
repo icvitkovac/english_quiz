@@ -15,7 +15,7 @@ module.exports = {
     Settings.update({userId: req.session.user.id}, reqObj)
       .exec(function (err, data) {
         if (err) res.badRequest(err);
-        return res.ok(data[0]);
+        return res.json(data[0]);
       });
   },
 

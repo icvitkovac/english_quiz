@@ -43,17 +43,16 @@ module.exports = {
 
     Word.find(req.query).populate('translations').exec(function (err, data) {
       if (err) res.badRequest(err);
-      return res.ok(data);
+      return res.json(data);
     });
   },
 
   count: function (req, res) {
 
-
     Word.count({author: req.session.user.id}).exec(function (err, data) {
       if (err) res.badRequest(err);
       req.session.wordCount = parseInt(data);
-      return res.ok({count: data});
+      return res.json({count: data});
     });
   },
 
@@ -67,7 +66,7 @@ module.exports = {
       .populate('translations')
       .exec(function (err, data) {
         if (err) res.badRequest(err);
-        return res.ok(data);
+        return res.json(data);
       });
   },
 
@@ -79,7 +78,7 @@ module.exports = {
     Word.update(id, reqObj)
       .exec(function (err, data) {
         if (err) res.badRequest(err);
-        return res.ok(data);
+        return res.json(data);
       });
   }
 
