@@ -1,5 +1,5 @@
 <div *ngIf="word">
-  <h2>{{word.value}} details!</h2>
+  <h5>{{word.value}} details!</h5>
   <div>
     <label>name: </label>
     <input [(ngModel)]="word.value" placeholder="name"/>
@@ -7,7 +7,7 @@
 
   <ul>
     <li *ngFor="#t of word.translations">
-      <input [(ngModel)]="t.value" />
+      <input [(ngModel)]="t.value"/>
     </li>
   </ul>
 
