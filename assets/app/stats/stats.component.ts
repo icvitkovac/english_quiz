@@ -13,6 +13,7 @@ export class StatsComponent implements OnInit {
 
   history = [];
   breakdown = [];
+  gameSelected:boolean;
 
   constructor(private _gameService:GameService) {
 
@@ -31,6 +32,7 @@ export class StatsComponent implements OnInit {
       .breakdown(game.id)
       .subscribe((breakdown:any) => {
         this.breakdown = breakdown;
+        this.gameSelected = true;
   ***REMOVED***);
 
 ***REMOVED***

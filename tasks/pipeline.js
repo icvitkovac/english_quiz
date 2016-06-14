@@ -16,6 +16,9 @@ var tmpPath = '.tmp/public/';
 // (if you're using LESS with the built-in default config, you'll want
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
+
+  'styles/normalize.css',
+  'styles/skeleton.css',
   'styles/**/*.css'
 ];
 
