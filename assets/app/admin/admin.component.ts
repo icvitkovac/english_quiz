@@ -42,7 +42,7 @@ export class AdminComponent implements OnInit {
   onDelete(word:Word, event:any) {
     event.stopPropagation();
     this.wordService.destroy(word).subscribe((result:any) => {
-      alert('word deleted');
+      alert('Word deleted');
     });
   }
 

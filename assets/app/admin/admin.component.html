@@ -1,6 +1,6 @@
 <!-- columns should be the immediate child of a .row -->
 <div class="row">
-  <div class="three columns">
+  <div class="one-third column">
     <h5>Find/edit/delete existing words</h5>
     <ul class="words">
       <form [ngFormModel]="coolForm"><input ngControl="search" placeholder="Start typing the word"></form>
@@ -17,7 +17,7 @@
 
   </div>
 
-  <div class="nine columns">
+  <div class="two-thirds column">
     <word-add></word-add>
   </div>
 </div>

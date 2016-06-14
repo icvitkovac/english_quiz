@@ -1,8 +1,14 @@
-<% if (typeof data === 'undefined') { %>
-<p>Welcome! Please <a href="/login">log in</a>.</p>
-<% } else { %>
-<p>Hello, <%= data.name %>.</p>
-<% } %>
+<div class="container">
+  <div class="row">
+    <div class="offset-by-eight columns">
+      <% if (typeof data === 'undefined') { %>
+      <p>Welcome! Please <a href="/login">log in</a>.</p>
+      <% } else { %>
+      <p>Hello, <%= data.name %>.</p>
+      <% } %>
+    </div>
+  </div>
+</div>
 
 
 <script src="node_modules/es6-shim/es6-shim.min.js"></script>
