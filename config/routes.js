@@ -44,6 +44,10 @@ module.exports.routes = {
     controller: 'HomeController',
     action: 'homepage'
   },
+  '/stats': {
+    controller: 'HomeController',
+    action: 'homepage'
+  },
   '/login': {
     controller: 'AuthController',
     action: 'login'
