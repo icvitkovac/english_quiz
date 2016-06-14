@@ -1,47 +1,41 @@
 <h5>Add new word</h5>
 <form *ngIf="active" (ngSubmit)="onSubmit()" #wordForm="ngForm">
   <div class="row">
-    <div class="three columns">
+    <div class="one-third column">
       <label for="englishTem">English term</label>
-      <input type="text" id="englishTem" class="form-control" required
-             [(ngModel)]="word.value"
-             ngControl="value" #value="ngForm">
-      <div [hidden]="value.valid || value.pristine" class="alert alert-danger">
-        Value is required
-      </div>
+      <input type="text" id="englishTem" required [(ngModel)]="word.value">
     </div>
 
-    <div class="three columns">
-
+    <div class="one-third column">
       <label for="correctAnswer">Correct answer</label>
-      <input type="text" id="correctAnswer" class="form-control" required
-             [(ngModel)]="word.translations[0]">
-
+      <input type="text" id="correctAnswer" required [(ngModel)]="word.translations[0]">
     </div>
   </div>
 
   <div class="row">
-    <label for="falseAnswers">False answers</label>
-    <div class="three columns">
-      <input type="text" id="falseAnswers" class="form-control" required
-             [(ngModel)]="word.translations[1]">
+    <div class="one-third column">
+      <label for="falseAnswers">False answers</label>
     </div>
-
-    <div class="three columns">
-      <input type="text" class="form-control" required
-             [(ngModel)]="word.translations[2]">
-    </div>
-
-    <div class="three columns">
-      <input type="text" class="form-control"
-             [(ngModel)]="word.translations[3]">
-    </div>
-
   </div>
 
   <div class="row">
-    <button type="submit" class="btn btn-default" [disabled]="!wordForm.form.valid">Add word</button>
+    <div class="three columns">
+      <input type="text" id="falseAnswers" required [(ngModel)]="word.translations[1]">
+    </div>
 
+    <div class="three columns">
+      <input type="text" required [(ngModel)]="word.translations[2]">
+    </div>
+
+    <div class="three columns">
+      <input type="text" class="form-control" [(ngModel)]="word.translations[3]">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="one-third column">
+      <button type="submit" class="btn btn-default" [disabled]="!wordForm.form.valid">Add word</button>
+    </div>
   </div>
 
 </form>

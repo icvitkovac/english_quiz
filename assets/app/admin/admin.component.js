@@ -54,7 +54,7 @@ System.register(['angular2/core', 'angular2/common', '../services/word.service',
                 onDelete(word, event) {
                     event.stopPropagation();
                     this.wordService.destroy(word).subscribe((result) => {
-                        alert('word deleted');
+                        alert('Word deleted');
                     });
                 }
                 ngOnInit() {
