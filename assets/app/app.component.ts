@@ -3,6 +3,7 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
 import {AdminComponent} from './admin/admin.component';
 import {MainComponent} from './main/main.component';
+import {StatsComponent} from './stats/stats.component';
 
 
 @Component({
@@ -17,6 +18,11 @@ import {MainComponent} from './main/main.component';
     path: '/administration',
     name: 'Admin',
     component: AdminComponent
+***REMOVED***,
+  {
+    path: '/stats',
+    name: 'Stats',
+    component: StatsComponent
 ***REMOVED***,
   {
     path: '/main/...',

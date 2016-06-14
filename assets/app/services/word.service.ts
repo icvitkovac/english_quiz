@@ -4,20 +4,22 @@ import {Observable}     from 'rxjs/Observable';
 
 @Injectable()
 export class WordService {
+  baseUrl:string;
 
   constructor(private http:Http) {
+    this.baseUrl = 'word/';
 ***REMOVED***
 
   search(value:string) {
     return this.http
-      .get('word/search?value=' + value)
+      .get(`${this.baseUrl}search?value=` + value)
       .map(this.extractData)
       .catch(this.handleError);
 ***REMOVED***
 
   count() {
     return this.http
-      .get('word/count')
+      .get(`${this.baseUrl}count`)
       .map(this.extractData)
       .catch(this.handleError);
 ***REMOVED***
@@ -25,15 +27,15 @@ export class WordService {
   add(data) {
     let reqObj = JSON.stringify(data);
     return this.http
-      .post('word/create', reqObj)
+      .post(`${this.baseUrl}create`, reqObj)
       .map(this.extractData)
       .catch(this.handleError);
 ***REMOVED***
 
-  delete(data) {
+  destroy(data) {
 
     return this.http
-      .delete('word/' + data.id)
+      .delete(this.baseUrl + data.id)
       .map(this.extractData)
       .catch(this.handleError);
 ***REMOVED***
@@ -41,7 +43,7 @@ export class WordService {
   update(data) {
 
     let headers = new Headers();
-    let url = `word/${data.id}`;
+    let url = `${this.baseUrl}${data.id}`;
     headers.append('Content-Type', 'application/json');
 
 
@@ -51,16 +53,9 @@ export class WordService {
       .catch(this.handleError);
 ***REMOVED***
 
-  start() {
-    return this.http
-      .get('game/start')
-      .map(this.extractData)
-      .catch(this.handleError);
-***REMOVED***
-
   checkAnswer(pickedWord) {
     return this.http
-      .get(`word/${pickedWord.term}/translations/${pickedWord.id}`)
+      .get(`${this.baseUrl}${pickedWord.term}/translations/${pickedWord.id}`)
       .map(this.extractData)
       .catch(this.handleError);
 ***REMOVED***
