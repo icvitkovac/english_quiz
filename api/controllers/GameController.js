@@ -78,7 +78,20 @@ module.exports = {
       .limit(10)
       .exec(function (err, history) {
         if (err) res.badRequest(err);
+
         res.json(history);
+
+  ***REMOVED***);
+
+***REMOVED***,
+
+  breakdown: function (req, res) {
+
+    GameBreakdown.find({gameId: req.query.gameId})
+      .populate('questionId')
+      .exec(function (err, breakdown) {
+        if (err) res.badRequest(err);
+        res.json(breakdown);
 
   ***REMOVED***);
 
@@ -107,8 +120,10 @@ module.exports = {
         Game.findOne(req.session.game.id).exec(function (err, game) {
           if (err) res.badRequest(err);
 
+          console.log(data);
+
           game.breakdown.add({
-            questionId: data.id,
+            questionId: data.term,
             correct: correct
       ***REMOVED***);
 

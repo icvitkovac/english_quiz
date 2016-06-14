@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './admin/admin.component', './main/main.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './admin/admin.component', './main/main.component', './stats/stats.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './admin/admin.component', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 ***REMOVED***;
-    var core_1, router_1, admin_component_1, main_component_1;
+    var core_1, router_1, admin_component_1, main_component_1, stats_component_1;
     var AppComponent;
     return {
         setters:[
@@ -25,6 +25,9 @@ System.register(['angular2/core', 'angular2/router', './admin/admin.component', 
         ***REMOVED***,
             function (main_component_1_1) {
                 main_component_1 = main_component_1_1;
+        ***REMOVED***,
+            function (stats_component_1_1) {
+                stats_component_1 = stats_component_1_1;
         ***REMOVED***],
         execute: function() {
             let AppComponent = class AppComponent {
@@ -40,6 +43,11 @@ System.register(['angular2/core', 'angular2/router', './admin/admin.component', 
                         path: '/administration',
                         name: 'Admin',
                         component: admin_component_1.AdminComponent
+                ***REMOVED***,
+                    {
+                        path: '/stats',
+                        name: 'Stats',
+                        component: stats_component_1.StatsComponent
                 ***REMOVED***,
                     {
                         path: '/main/...',

@@ -41,7 +41,7 @@ export class AdminComponent implements OnInit {
 
   onDelete(word:Word, event:any) {
     event.stopPropagation();
-    this.wordService.delete(word).subscribe((result:any) => {
+    this.wordService.destroy(word).subscribe((result:any) => {
       alert('word deleted');
 ***REMOVED***);
 ***REMOVED***
