@@ -22,7 +22,7 @@ function _findRandomWord(req, res, gameData) {
       if (err) res.badRequest(err);
 
       _.extend(data, gameData);
-      return res.ok(data);
+      return res.json(data);
     });
 }
 
@@ -47,7 +47,7 @@ module.exports = {
           if (err) res.badRequest(err);
 
           req.session.game = gameData;
-          res.ok({
+          res.json({
             isStarted: gameData.active,
             points: gameData.gamePoints
           });
@@ -118,9 +118,7 @@ module.exports = {
       function _updateGameStats(correct) {
 
         Game.findOne(req.session.game.id).exec(function (err, game) {
-          if (err) res.badRequest(err);
-
-          console.log(data);
+          if (err) res.badRequest(err)
 
           game.breakdown.add({
             questionId: data.term,
@@ -153,7 +151,7 @@ module.exports = {
 
         req.session.game.gamePoints ? req.session.game.gamePoints -= 0.5 : 0;
 
-        res.ok({
+        res.json({
           points: req.session.game.gamePoints,
           isAnswer: false
         });
