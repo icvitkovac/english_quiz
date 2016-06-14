@@ -9,14 +9,14 @@
 
   <tbody>
   <tr *ngFor="#h of history" (click)="onSelect(h)">
-    <t>{{h.gamePoints}}</t>
+    <td>{{h.gamePoints}}</td>
     <td>{{h.createdAt}}</td>
   </tr>
   </tbody>
 </table>
 
 
-<div *ngIf="breakdown">
+<div [hidden]="!gameSelected">
   <table>
     <thead>
     <th>Word</th>
