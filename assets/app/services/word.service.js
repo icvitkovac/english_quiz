@@ -27,50 +27,45 @@ System.register(['angular2/http', 'angular2/core', 'rxjs/Observable'], function(
             let WordService = class WordService {
                 constructor(http) {
                     this.http = http;
+                    this.baseUrl = 'word/';
                 }
                 search(value) {
                     return this.http
-                        .get('word/search?value=' + value)
+                        .get(`${this.baseUrl}search?value=` + value)
                         .map(this.extractData)
                         .catch(this.handleError);
                 }
                 count() {
                     return this.http
-                        .get('word/count')
+                        .get(`${this.baseUrl}count`)
                         .map(this.extractData)
                         .catch(this.handleError);
                 }
                 add(data) {
                     let reqObj = JSON.stringify(data);
                     return this.http
-                        .post('word/create', reqObj)
+                        .post(`${this.baseUrl}create`, reqObj)
                         .map(this.extractData)
                         .catch(this.handleError);
                 }
-                delete(data) {
+                destroy(data) {
                     return this.http
-                        .delete('word/' + data.id)
+                        .delete(this.baseUrl + data.id)
                         .map(this.extractData)
                         .catch(this.handleError);
                 }
                 update(data) {
                     let headers = new http_1.Headers();
-                    let url = `word/${data.id}`;
+                    let url = `${this.baseUrl}${data.id}`;
                     headers.append('Content-Type', 'application/json');
                     return this.http
                         .put(url, JSON.stringify(data), { headers: headers })
                         .map(this.extractData)
                         .catch(this.handleError);
                 }
-                start() {
-                    return this.http
-                        .get('game/start')
-                        .map(this.extractData)
-                        .catch(this.handleError);
-                }
                 checkAnswer(pickedWord) {
                     return this.http
-                        .get(`word/${pickedWord.term}/translations/${pickedWord.id}`)
+                        .get(`${this.baseUrl}${pickedWord.term}/translations/${pickedWord.id}`)
                         .map(this.extractData)
                         .catch(this.handleError);
                 }

@@ -27,28 +27,41 @@ System.register(['angular2/http', 'angular2/core', 'rxjs/Observable'], function(
             let GameService = class GameService {
                 constructor(http) {
                     this.http = http;
+                    this.baseUrl = 'game/';
                 }
                 startEnd() {
                     return this.http
-                        .get('game/on')
+                        .get(`${this.baseUrl}on`)
                         .map(this.extractData)
                         .catch(this.handleError);
                 }
                 nextWord() {
                     return this.http
-                        .get('game/next')
+                        .get(`${this.baseUrl}next`)
                         .map(this.extractData)
                         .catch(this.handleError);
                 }
                 checkAnswer(pickedWord) {
                     return this.http
-                        .get(`game/check/${pickedWord.id}`)
+                        .get(`${this.baseUrl}check/${pickedWord.id}`)
                         .map(this.extractData)
                         .catch(this.handleError);
                 }
                 status() {
                     return this.http
-                        .get('game/status')
+                        .get(`${this.baseUrl}status`)
+                        .map(this.extractData)
+                        .catch(this.handleError);
+                }
+                history() {
+                    return this.http
+                        .get(`${this.baseUrl}history`)
+                        .map(this.extractData)
+                        .catch(this.handleError);
+                }
+                breakdown(id) {
+                    return this.http
+                        .get(`${this.baseUrl}breakdown/?gameId=${id}`)
                         .map(this.extractData)
                         .catch(this.handleError);
                 }

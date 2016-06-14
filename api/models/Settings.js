@@ -27,10 +27,12 @@ module.exports = {
       defaultsTo: false,
       required: false
     },
-    userId:{
+    userId: {
       model: 'user'
     }
 
-  }
+  },
+  autoCreatedAt: false,
+  autoUpdatedAt: false
 };
 
