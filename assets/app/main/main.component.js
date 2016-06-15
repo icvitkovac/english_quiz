@@ -70,6 +70,7 @@ System.register(['angular2/core', '../services/word.service', '../services/game.
                 }
                 onGameOver(state) {
                     this.isStarted = state;
+                    this.guessWord = null;
                 }
             };
             MainComponent = __decorate([
