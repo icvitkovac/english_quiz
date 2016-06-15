@@ -12,10 +12,10 @@ module.exports = {
     var reqObj = req.body;
     reqObj.questionsNumber = parseInt(reqObj.questionsNumber);
 
-    SettingsService.update(req.session.user.id, reqObj, function (err) {
+    SettingsService.update(req.session.user.id, reqObj, err => {
       res.badRequest(err);
 
-    }, function (data) {
+    }, data => {
       req.session.settings = data[0];
       return res.json(data[0]);
 
@@ -25,15 +25,12 @@ module.exports = {
 
   find: function (req, res) {
 
-    SettingsService.init(req.session.user.id, function (err) {
+    SettingsService.init(req.session.user.id, err => {
       res.badRequest(err);
-
-    }, function (data) {
+    }, data => {
       req.session.settings = data;
       return res.json(data);
-
     });
 
   }
 };
-

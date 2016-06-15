@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../services/word.service', '../services/game.service', '../services/settings.service', '../word-display/word-display.component', 'angular2/router', 'rxjs/Rx'], function(exports_1, context_1) {
+System.register(['angular2/core', '../services/word.service', '../services/game.service', '../word-display/word-display.component', 'angular2/router', 'rxjs/Rx'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', '../services/word.service', '../services/game.
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, word_service_1, game_service_1, settings_service_1, word_display_component_1, router_1;
+    var core_1, word_service_1, game_service_1, word_display_component_1, router_1;
     var MainComponent;
     return {
         setters:[
@@ -23,9 +23,6 @@ System.register(['angular2/core', '../services/word.service', '../services/game.
             function (game_service_1_1) {
                 game_service_1 = game_service_1_1;
             },
-            function (settings_service_1_1) {
-                settings_service_1 = settings_service_1_1;
-            },
             function (word_display_component_1_1) {
                 word_display_component_1 = word_display_component_1_1;
             },
@@ -35,10 +32,9 @@ System.register(['angular2/core', '../services/word.service', '../services/game.
             function (_1) {}],
         execute: function() {
             let MainComponent = class MainComponent {
-                constructor(_wordService, _gameService, _settingsService) {
+                constructor(_wordService, _gameService) {
                     this._wordService = _wordService;
                     this._gameService = _gameService;
-                    this._settingsService = _settingsService;
                 }
                 onClick() {
                     this._gameService.startEnd()
@@ -51,10 +47,6 @@ System.register(['angular2/core', '../services/word.service', '../services/game.
                             return;
                         }
                         /*GAME STARTED*/
-                        this._settingsService.get()
-                            .subscribe((settings) => {
-                            this.settings = settings[0];
-                        });
                         //get random word when game starts
                         this._gameService.nextWord()
                             .subscribe((guessWord) => {
@@ -76,18 +68,21 @@ System.register(['angular2/core', '../services/word.service', '../services/game.
                 buttonState() {
                     return this.count == 0;
                 }
+                onGameOver(state) {
+                    this.isStarted = state;
+                }
             };
             MainComponent = __decorate([
                 core_1.Component({
                     selector: 'main-component',
-                    providers: [word_service_1.WordService, game_service_1.GameService, settings_service_1.SettingsService],
+                    providers: [word_service_1.WordService, game_service_1.GameService],
                     directives: [word_display_component_1.WordDisplayComponent, router_1.RouterOutlet],
                     templateUrl: 'app/main/main.component.html'
                 }),
                 router_1.RouteConfig([
                     { path: '/', name: 'WordDisplay', component: word_display_component_1.WordDisplayComponent, useAsDefault: true }
                 ]), 
-                __metadata('design:paramtypes', [word_service_1.WordService, game_service_1.GameService, settings_service_1.SettingsService])
+                __metadata('design:paramtypes', [word_service_1.WordService, game_service_1.GameService])
             ], MainComponent);
             exports_1("MainComponent", MainComponent);
         }
