@@ -7,3 +7,13 @@
 .login-message{
   margin-top: 22rem;
 }
+
+/*GENERAL STYLES*/
+
+.incorrect {
+  color: darkred;
+}
+
+.correct {
+  color: darkgreen;
+}

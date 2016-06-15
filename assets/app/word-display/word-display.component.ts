@@ -1,9 +1,12 @@
 import {Component, Input} from 'angular2/core';
 import {Word} from '../models/word';
 import {GameService} from '../services/game.service';
+import { HighlightDirective } from '../directives/highlight.directive';
+
 @Component({
   selector: 'random-word',
-  templateUrl: 'app/word-display/word-display.component.html'
+  templateUrl: 'app/word-display/word-display.component.html',
+  directives: [HighlightDirective]
 })
 export class WordDisplayComponent {
   @Input()

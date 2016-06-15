@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../services/game.service', 'rxjs/Rx'], function(exports_1, context_1) {
+System.register(['angular2/core', '../services/game.service', '../directives/highlight.directive', 'rxjs/Rx'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', '../services/game.service', 'rxjs/Rx'], functi
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, game_service_1;
+    var core_1, game_service_1, highlight_directive_1;
     var StatsComponent;
     return {
         setters:[
@@ -20,6 +20,9 @@ System.register(['angular2/core', '../services/game.service', 'rxjs/Rx'], functi
             function (game_service_1_1) {
                 game_service_1 = game_service_1_1;
             },
+            function (highlight_directive_1_1) {
+                highlight_directive_1 = highlight_directive_1_1;
+            },
             function (_1) {}],
         execute: function() {
             let StatsComponent = class StatsComponent {
@@ -27,12 +30,18 @@ System.register(['angular2/core', '../services/game.service', 'rxjs/Rx'], functi
                     this._gameService = _gameService;
                     this.history = [];
                     this.breakdown = [];
+                    this.highScores = [];
                 }
                 ngOnInit() {
                     this._gameService
                         .history()
                         .subscribe((history) => {
                         this.history = history;
+                    });
+                    this._gameService
+                        .highScores()
+                        .subscribe((highScores) => {
+                        this.highScores = highScores;
                     });
                 }
                 onSelect(game) {
@@ -48,6 +57,7 @@ System.register(['angular2/core', '../services/game.service', 'rxjs/Rx'], functi
                 core_1.Component({
                     selector: 'stats-component',
                     providers: [game_service_1.GameService],
+                    directives: [highlight_directive_1.HighlightDirective],
                     templateUrl: 'app/stats/stats.component.html'
                 }), 
                 __metadata('design:paramtypes', [game_service_1.GameService])
