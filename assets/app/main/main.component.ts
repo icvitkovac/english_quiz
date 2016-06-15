@@ -1,18 +1,17 @@
 import {Component, OnInit} from 'angular2/core';
 import {WordService} from '../services/word.service';
 import {GameService} from '../services/game.service';
-import {SettingsService} from '../services/settings.service';
 import {Word} from '../models/word';
-import {Settings} from '../models/settings';
 import {WordDisplayComponent} from '../word-display/word-display.component';
 import {RouteConfig, RouterOutlet} from 'angular2/router';
 import 'rxjs/Rx';
 
 @Component({
   selector: 'main-component',
-  providers: [WordService, GameService, SettingsService],
+  providers: [WordService, GameService],
   directives: [WordDisplayComponent, RouterOutlet],
   templateUrl: 'app/main/main.component.html'
+
 })
 
 @RouteConfig([
@@ -23,11 +22,11 @@ export class MainComponent implements OnInit {
 
   count:number;
   guessWord:Word;
-  settings:Settings;
   isStarted:boolean;
   points:number;
 
-  constructor(private _wordService:WordService, private _gameService:GameService, private _settingsService:SettingsService) {
+  constructor(private _wordService:WordService, private _gameService:GameService) {
+
 ***REMOVED***
 
   onClick() {
@@ -45,11 +44,6 @@ export class MainComponent implements OnInit {
 
 
         /*GAME STARTED*/
-
-        this._settingsService.get()
-          .subscribe((settings:Settings[]) => {
-            this.settings = settings[0];
-      ***REMOVED***);
 
 
         //get random word when game starts
@@ -77,6 +71,10 @@ export class MainComponent implements OnInit {
 
   buttonState() {
     return this.count == 0;
+***REMOVED***
+
+  onGameOver(state: boolean) {
+    this.isStarted = state;
 ***REMOVED***
 
 }
