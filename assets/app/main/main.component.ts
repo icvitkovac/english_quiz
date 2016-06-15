@@ -75,6 +75,7 @@ export class MainComponent implements OnInit {
 
   onGameOver(state: boolean) {
     this.isStarted = state;
+    this.guessWord = null;
   }
 
 }
