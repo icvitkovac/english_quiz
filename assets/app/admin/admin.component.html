@@ -4,11 +4,8 @@
     <h5>Find/edit/delete existing words</h5>
     <ul class="words">
       <form [ngFormModel]="coolForm"><input ngControl="search" placeholder="Start typing the word"></form>
-      <li *ngFor="#word of words"
-
-          [class.selected]="word === selectedWord"
-          (click)="onSelect(word)">
-        <span class="badge">{{word.value}}</span>
+      <li *ngFor="#word of words" (click)="onSelect(word)">
+        <span [myHighlight] class="badge">{{word.value}}</span>
         <button class="delete-button" (click)="onDelete(word, $event)">Delete</button>
       </li>
     </ul>

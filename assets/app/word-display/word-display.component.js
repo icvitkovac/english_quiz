@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../models/word', '../services/game.service'], function(exports_1, context_1) {
+System.register(['angular2/core', '../models/word', '../services/game.service', '../directives/highlight.directive'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', '../models/word', '../services/game.service'],
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 ***REMOVED***;
-    var core_1, word_1, game_service_1;
+    var core_1, word_1, game_service_1, highlight_directive_1;
     var WordDisplayComponent;
     return {
         setters:[
@@ -22,6 +22,9 @@ System.register(['angular2/core', '../models/word', '../services/game.service'],
         ***REMOVED***,
             function (game_service_1_1) {
                 game_service_1 = game_service_1_1;
+        ***REMOVED***,
+            function (highlight_directive_1_1) {
+                highlight_directive_1 = highlight_directive_1_1;
         ***REMOVED***],
         execute: function() {
             let WordDisplayComponent = class WordDisplayComponent {
@@ -45,7 +48,8 @@ System.register(['angular2/core', '../models/word', '../services/game.service'],
             WordDisplayComponent = __decorate([
                 core_1.Component({
                     selector: 'random-word',
-                    templateUrl: 'app/word-display/word-display.component.html'
+                    templateUrl: 'app/word-display/word-display.component.html',
+                    directives: [highlight_directive_1.HighlightDirective]
             ***REMOVED***), 
                 __metadata('design:paramtypes', [game_service_1.GameService])
             ], WordDisplayComponent);
