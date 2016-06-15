@@ -22,6 +22,7 @@ module.exports = {
 ***REMOVED***)
       .exec(function (err, data) {
         if (err) errorCb(err);
+        if (data.length) data = data[0];
         successCb(data);
   ***REMOVED***);
 

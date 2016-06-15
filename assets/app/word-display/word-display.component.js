@@ -30,6 +30,7 @@ System.register(['angular2/core', '../models/word', '../services/game.service', 
             let WordDisplayComponent = class WordDisplayComponent {
                 constructor(_gameService) {
                     this._gameService = _gameService;
+                    this.onGameOver = new core_1.EventEmitter();
             ***REMOVED***
                 onSelect(pickedWord) {
                     this._gameService.checkAnswer(pickedWord)
@@ -38,6 +39,9 @@ System.register(['angular2/core', '../models/word', '../services/game.service', 
                         if (data.isAnswer) {
                             this.word = data;
                     ***REMOVED***
+                        if (data.isStarted === false) {
+                            this.onGameOver.emit(false);
+                    ***REMOVED***
                 ***REMOVED***);
             ***REMOVED***
       ***REMOVED***
@@ -45,6 +49,10 @@ System.register(['angular2/core', '../models/word', '../services/game.service', 
                 core_1.Input(), 
                 __metadata('design:type', word_1.Word)
             ], WordDisplayComponent.prototype, "word", void 0);
+            __decorate([
+                core_1.Output(), 
+                __metadata('design:type', Object)
+            ], WordDisplayComponent.prototype, "onGameOver", void 0);
             WordDisplayComponent = __decorate([
                 core_1.Component({
                     selector: 'random-word',
