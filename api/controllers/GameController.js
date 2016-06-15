@@ -29,6 +29,23 @@ function _findRandomWord(req, res, gameData) {
 ***REMOVED***);
 }
 
+function _gameOver(req, res) {
+
+  Game.update(req.session.game.id, {active: false, gamePoints: req.session.game.gamePoints})
+    .exec(function (err, gameData) {
+      if (err) res.badRequest(err);
+
+      req.session.game = {***REMOVED***
+
+      res.json({
+        isStarted: false,
+        points: gameData[0].gamePoints
+  ***REMOVED***);
+
+***REMOVED***);
+
+}
+
 
 /*
  *@PUBLIC
@@ -37,6 +54,7 @@ function _findRandomWord(req, res, gameData) {
 module.exports = {
 
   next: function (req, res) {
+
     _findRandomWord(req, res);
 ***REMOVED***,
 
@@ -58,19 +76,7 @@ module.exports = {
 ***REMOVED***
 
     else {
-
-      Game.update(req.session.game.id, {active: false, gamePoints: req.session.game.gamePoints})
-        .exec(function (err, gameData) {
-          if (err) res.badRequest(err);
-
-          req.session.game = {***REMOVED***
-
-          res.json({
-            isStarted: false,
-            points: gameData[0].gamePoints
-      ***REMOVED***);
-
-    ***REMOVED***);
+      _gameOver(req, res);
 ***REMOVED***
 ***REMOVED***,
 
@@ -114,6 +120,18 @@ module.exports = {
 ***REMOVED***,
 
   status: function (req, res) {
+
+    if (!req.session.settings) {
+
+      SettingsService.init(req.session.user.id, function (err) {
+        console.log(err);
+
+  ***REMOVED***, function (data) {
+
+        req.session.settings = data;
+  ***REMOVED***)
+
+***REMOVED***
 
     res.ok({isStarted: req.session.game && req.session.game.active});
 ***REMOVED***,
@@ -167,10 +185,18 @@ module.exports = {
 
         req.session.game.gamePoints ? req.session.game.gamePoints -= 0.5 : 0;
 
-        res.json({
-          points: req.session.game.gamePoints,
-          isAnswer: false
-    ***REMOVED***);
+
+        if (!req.session.settings.practiceMode) {
+          _gameOver(req, res);
+    ***REMOVED***
+        else {
+          res.json({
+            points: req.session.game.gamePoints,
+            isAnswer: false
+      ***REMOVED***);
+    ***REMOVED***
+
+
   ***REMOVED***
 
 ***REMOVED***
