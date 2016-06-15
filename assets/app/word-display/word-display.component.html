@@ -1,10 +1,17 @@
-<div *ngIf="word">
-  <h2>{{word.value}}</h2>
-  <ul>
-    <li *ngFor="#t of word.translations" [class.selected]="word === selectedWord"
-        (click)="onSelect(t)">{{t.value}}
-    </li>
-  </ul>
+
+
+<div class="row">
+  <div class="two columns">
+    <div *ngIf="word">
+      <h2>{{word.value}}</h2>
+      <ul>
+        <li [myHighlight] *ngFor="#t of word.translations" [class.selected]="word === selectedWord"
+            (click)="onSelect(t)">{{t.value}}
+        </li>
+      </ul>
+    </div>
+
+  </div>
 </div>
 
 <p>{{points}}</p>

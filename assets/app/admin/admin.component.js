@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', '../services/word.service', '../services/settings.service', '../word-detail/word-detail.component', '../word-add/word-add.component', 'rxjs/Rx'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/common', '../services/word.service', '../services/settings.service', '../word-detail/word-detail.component', '../word-add/word-add.component', '../directives/highlight.directive', 'rxjs/Rx'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/common', '../services/word.service',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 ***REMOVED***;
-    var core_1, common_1, word_service_1, settings_service_1, word_detail_component_1, word_add_component_1;
+    var core_1, common_1, word_service_1, settings_service_1, word_detail_component_1, word_add_component_1, highlight_directive_1;
     var AdminComponent;
     return {
         setters:[
@@ -31,6 +31,9 @@ System.register(['angular2/core', 'angular2/common', '../services/word.service',
         ***REMOVED***,
             function (word_add_component_1_1) {
                 word_add_component_1 = word_add_component_1_1;
+        ***REMOVED***,
+            function (highlight_directive_1_1) {
+                highlight_directive_1 = highlight_directive_1_1;
         ***REMOVED***,
             function (_1) {}],
         execute: function() {
@@ -75,7 +78,7 @@ System.register(['angular2/core', 'angular2/common', '../services/word.service',
                 core_1.Component({
                     selector: 'admin-form',
                     providers: [word_service_1.WordService, settings_service_1.SettingsService],
-                    directives: [word_detail_component_1.WordDetailComponent, word_add_component_1.WordAddComponent],
+                    directives: [word_detail_component_1.WordDetailComponent, word_add_component_1.WordAddComponent, highlight_directive_1.HighlightDirective],
                     templateUrl: 'app/admin/admin.component.html'
             ***REMOVED***), 
                 __metadata('design:paramtypes', [word_service_1.WordService, common_1.FormBuilder, settings_service_1.SettingsService])

@@ -2,6 +2,7 @@ import {Component, Input} from 'angular2/core';
 import {Word} from '../models/word';
 import {WordService} from '../services/word.service';
 
+
 @Component({
   selector: 'my-word-detail',
   templateUrl: 'app/word-detail/word-detail.component.html',

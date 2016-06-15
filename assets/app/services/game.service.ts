@@ -40,6 +40,13 @@ export class GameService {
       .catch(this.handleError);
 ***REMOVED***
 
+  highScores() {
+    return this.http
+      .get(`${this.baseUrl}highscores`)
+      .map(this.extractData)
+      .catch(this.handleError);
+***REMOVED***
+
   history() {
     return this.http
       .get(`${this.baseUrl}history`)
