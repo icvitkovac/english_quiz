@@ -121,19 +121,8 @@ module.exports = {
 
   status: function (req, res) {
 
-    if (!req.session.settings) {
-
-      SettingsService.init(req.session.user.id, function (err) {
-        console.log(err);
-
-      }, function (data) {
-
-        req.session.settings = data;
-      })
-
-    }
-
     res.ok({isStarted: req.session.game && req.session.game.active});
+
   },
 
   checkAnswer: function (req, res) {
@@ -185,15 +174,31 @@ module.exports = {
 
         req.session.game.gamePoints ? req.session.game.gamePoints -= 0.5 : 0;
 
+        if (!req.session.settings) {
+          SettingsService.init(req.session.user.id, err => {
+            console.log(err);
+          }, data => {
+            req.session.settings = data;
 
-        if (!req.session.settings.practiceMode) {
-          _gameOver(req, res);
-        }
-        else {
-          res.json({
-            points: req.session.game.gamePoints,
-            isAnswer: false
+            if (!req.session.settings.practiceMode) {
+              _gameOver(req, res);
+            }
+
           });
+        }
+
+
+        else {
+          if (!req.session.settings.practiceMode) {
+            _gameOver(req, res);
+          }
+          else {
+            res.json({
+              points: req.session.game.gamePoints,
+              isAnswer: false
+            });
+          }
+
         }
 
 

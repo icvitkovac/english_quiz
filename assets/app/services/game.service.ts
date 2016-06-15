@@ -6,11 +6,9 @@ import {Observable}     from 'rxjs/Observable';
 export class GameService {
   baseUrl:string;
 
-
   constructor(private http:Http) {
     this.baseUrl = 'game/'
   }
-
 
   startEnd() {
     return this.http

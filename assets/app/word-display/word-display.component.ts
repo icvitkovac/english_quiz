@@ -1,7 +1,7 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input, Output, EventEmitter} from 'angular2/core';
 import {Word} from '../models/word';
 import {GameService} from '../services/game.service';
-import { HighlightDirective } from '../directives/highlight.directive';
+import {HighlightDirective} from '../directives/highlight.directive';
 
 @Component({
   selector: 'random-word',
@@ -9,9 +9,14 @@ import { HighlightDirective } from '../directives/highlight.directive';
   directives: [HighlightDirective]
 })
 export class WordDisplayComponent {
-  @Input()
-  word:Word;
+  @Input() word:Word;
+  @Output() onGameOver = new EventEmitter<boolean>();
+
   points:number;
+
+  constructor(private _gameService:GameService) {
+
+  }
 
   onSelect(pickedWord:{}) {
     this._gameService.checkAnswer(pickedWord)
@@ -22,13 +27,15 @@ export class WordDisplayComponent {
         if (data.isAnswer) {
           this.word = data;
         }
+
+        if (data.isStarted === false) {
+
+          this.onGameOver.emit(false);
+        }
       });
 
   }
 
-  constructor(private _gameService:GameService) {
-
-  }
 }
 
 
