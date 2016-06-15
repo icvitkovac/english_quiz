@@ -16,12 +16,15 @@ function _findRandomWord(req, res, gameData) {
   gameData = gameData || {};
   let randomQuestionId = Math.floor(Math.random() * (parseInt(req.session.wordCount) - 1) + 1);
 
-  Word.findOne({id: randomQuestionId, author: req.session.user.id})
+  Word.find({author: req.session.user.id})
     .populate('translations')
     .exec(function (err, data) {
       if (err) res.badRequest(err);
 
+      if (data.length) data = data[randomQuestionId - 1];
+
       _.extend(data, gameData);
+
       return res.json(data);
     });
 }
@@ -71,6 +74,21 @@ module.exports = {
     }
   },
 
+  highscores: function (req, res) {
+
+    Game.find()
+      .sort('gamePoints DESC')
+      .populate('contenderId')
+      .limit(10)
+      .exec(function (err, highScores) {
+        if (err) res.badRequest(err);
+
+        res.json(highScores);
+
+      });
+
+  },
+
   history: function (req, res) {
 
     Game.find({contenderId: req.session.user.id})
@@ -78,9 +96,7 @@ module.exports = {
       .limit(10)
       .exec(function (err, history) {
         if (err) res.badRequest(err);
-
         res.json(history);
-
       });
 
   },
@@ -118,7 +134,7 @@ module.exports = {
       function _updateGameStats(correct) {
 
         Game.findOne(req.session.game.id).exec(function (err, game) {
-          if (err) res.badRequest(err)
+          if (err) res.badRequest(err);
 
           game.breakdown.add({
             questionId: data.term,

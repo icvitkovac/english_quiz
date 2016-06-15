@@ -53,6 +53,12 @@ System.register(['angular2/http', 'angular2/core', 'rxjs/Observable'], function(
                         .map(this.extractData)
                         .catch(this.handleError);
                 }
+                highScores() {
+                    return this.http
+                        .get(`${this.baseUrl}highscores`)
+                        .map(this.extractData)
+                        .catch(this.handleError);
+                }
                 history() {
                     return this.http
                         .get(`${this.baseUrl}history`)
