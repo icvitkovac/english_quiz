@@ -30,22 +30,19 @@ function _findRandomWord(req, res, gameData) {
 }
 
 function _gameOver(req, res) {
-
-  Game.update(req.session.game.id, {active: false, gamePoints: req.session.game.gamePoints})
-    .exec(function (err, gameData) {
-      if (err) res.badRequest(err);
-
+  GameService.over(req.session.game.id, req.session.game.gamePoints,
+    err => {
+      res.badRequest(err);
+***REMOVED***,
+    gameData => {
       req.session.game = {***REMOVED***
-
       res.json({
         isStarted: false,
         points: gameData[0].gamePoints
   ***REMOVED***);
-
 ***REMOVED***);
 
 }
-
 
 /*
  *@PUBLIC
@@ -63,10 +60,11 @@ module.exports = {
 
     if (!req.session.game || !req.session.game.id) {
 
-      Game.create({contenderId: req.session.user.id})
-        .exec(function (err, gameData) {
-          if (err) res.badRequest(err);
-
+      GameService.on(req.session.user.id,
+        err => {
+          res.badRequest(err);
+    ***REMOVED***,
+        gameData => {
           req.session.game = gameData;
           req.session.game.askedWordsCount = 0;
           res.json({
@@ -78,6 +76,7 @@ module.exports = {
 
     else {
       _gameOver(req, res);
+
 ***REMOVED***
 ***REMOVED***,
 
