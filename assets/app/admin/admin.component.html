@@ -23,9 +23,12 @@
 <div class="row" *ngIf="settings">
 
   <ul>
-    <li>Number of questions <input [(ngModel)]="settings.questionsNumber"/></li>
-    <li>Practice mode <input type="checkbox" [(ngModel)]="settings.practiceMode"/></li>
-    <li>Only previously incorrectly guessed words <input type="checkbox" [(ngModel)]="settings.onlyHard"/></li>
+    <label  for="questionsNumber">Number of questions in the game - valid when in practice mode</label>
+    <li [class.disabled]="!settings.practiceMode">Number of questions <input [disabled]="!settings.practiceMode"  id="questionsNumber" [(ngModel)]="settings.questionsNumber"/></li>
+
+    <label for="practiceMode">When selected, enables open ended game, with your own words only</label>
+    <li>Practice mode <input id="practiceMode" type="checkbox" [(ngModel)]="settings.practiceMode"/></li>
+    <!--<li>Only previously incorrectly guessed words <input type="checkbox" [(ngModel)]="settings.onlyHard"/></li>-->
 
     <button class="update-button" (click)="onSave(settings)">Save</button>
 
