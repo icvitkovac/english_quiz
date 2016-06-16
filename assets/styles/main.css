@@ -17,3 +17,7 @@
 .correct {
   color: darkgreen;
 }
+
+.disabled {
+  color: darkgray;
+}
