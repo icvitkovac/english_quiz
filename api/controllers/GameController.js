@@ -22,8 +22,8 @@ function _findRandomWord(req, res, gameData) {
       if (err) res.badRequest(err);
 
       if (data.length) data = data[randomQuestionId - 1];
-
       _.extend(data, gameData);
+      req.session.game.askedWordsCount += 1;
 
       return res.json(data);
     });
@@ -68,6 +68,7 @@ module.exports = {
           if (err) res.badRequest(err);
 
           req.session.game = gameData;
+          req.session.game.askedWordsCount = 0;
           res.json({
             isStarted: gameData.active,
             points: gameData.gamePoints

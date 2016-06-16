@@ -17,7 +17,7 @@ module.exports = {
     Settings.findOrCreate({userId: userId}, {
       userId: userId,
       questionsNumber: 5,
-      practiceMode: true,
+      practiceMode: false,
       onlyHard: false
     })
       .exec(function (err, data) {
