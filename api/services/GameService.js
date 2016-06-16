@@ -1,7 +1,34 @@
 module.exports = {
 
-  sendInviteEmail: function (options) {
+  on: function (options) {
 
+
+  },
+  over: function () {
+
+  },
+
+  findRandomWord: function () {
+
+  },
+
+  highScores: function () {
+
+  },
+
+  history: function () {
+
+  },
+
+  breakdown: function () {
+
+  },
+
+  status: function () {
+
+  },
+
+  checkAnswer: function () {
 
   }
 };
