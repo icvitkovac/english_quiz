@@ -13,28 +13,26 @@
 
 
 function _findRandomWord(req, res, gameData) {
-  gameData = gameData || {***REMOVED***
-  let randomQuestionId = Math.floor(Math.random() * (parseInt(req.session.wordCount) - 1) + 1);
 
-  Word.find({author: req.session.user.id})
-    .populate('translations')
-    .exec(function (err, data) {
-      if (err) res.badRequest(err);
 
-      if (data.length) data = data[randomQuestionId - 1];
-      _.extend(data, gameData);
+  GameService.findRandomWord(
+    req.session.wordCount,
+    req.session.user.id,
+    gameData,
+    err => res.badRequest(err),
+    data => {
       req.session.game.askedWordsCount += 1;
+      res.json(data);
+***REMOVED***
+  );
 
-      return res.json(data);
-***REMOVED***);
 }
 
 function _gameOver(req, res) {
   GameService.over(req.session.game.id, req.session.game.gamePoints,
-    err => {
-      res.badRequest(err);
-***REMOVED***,
+    err => res.badRequest(err),
     gameData => {
+      console.log(gameData);
       req.session.game = {***REMOVED***
       res.json({
         isStarted: false,
@@ -61,9 +59,7 @@ module.exports = {
     if (!req.session.game || !req.session.game.id) {
 
       GameService.on(req.session.user.id,
-        err => {
-          res.badRequest(err);
-    ***REMOVED***,
+        err => res.badRequest(err),
         gameData => {
           req.session.game = gameData;
           req.session.game.askedWordsCount = 0;
@@ -82,46 +78,25 @@ module.exports = {
 
   highscores: function (req, res) {
 
-    Game.find()
-      .sort('gamePoints DESC')
-      .populate('contenderId')
-      .limit(10)
-      .exec(function (err, highScores) {
-        if (err) res.badRequest(err);
-
-        res.json(highScores);
-
-  ***REMOVED***);
+    GameService.highScores(err => res.badRequest(err), highScores => res.json(highScores));
 
 ***REMOVED***,
 
   history: function (req, res) {
 
-    Game.find({contenderId: req.session.user.id})
-      .sort('gamePoints DESC')
-      .limit(10)
-      .exec(function (err, history) {
-        if (err) res.badRequest(err);
-        res.json(history);
-  ***REMOVED***);
+    GameService.history(req.session.user.id, err => res.badRequest(err), history => res.json(history));
 
 ***REMOVED***,
 
   breakdown: function (req, res) {
 
-    GameBreakdown.find({gameId: req.query.gameId})
-      .populate('questionId')
-      .exec(function (err, breakdown) {
-        if (err) res.badRequest(err);
-        res.json(breakdown);
-
-  ***REMOVED***);
+    GameService.breakdown(req.query.gameId, err => res.badRequest(err), breakdown => res.json(breakdown));
 
 ***REMOVED***,
 
   status: function (req, res) {
 
-    res.ok({isStarted: req.session.game && req.session.game.active});
+    res.json({isStarted: req.session.game && req.session.game.active});
 
 ***REMOVED***,
 
