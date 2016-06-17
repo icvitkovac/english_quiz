@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "engines": {
-    "node": "5.8.0"
+    "node": "6.2.1"
   },
   "description": "English quiz adjusted to your needs.",
   "keywords": [],
