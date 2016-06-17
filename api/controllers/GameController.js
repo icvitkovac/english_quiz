@@ -22,9 +22,9 @@ function _findRandomWord(req, res, gameData) {
     authorQuery,
     gameData,
     err => res.badRequest(err),
-    data => {
+    wordData => {
       req.session.game.askedWordsCount += 1;
-      res.json(data);
+      res.json(wordData);
     }
   );
 
