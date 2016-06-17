@@ -25,12 +25,15 @@ module.exports = {
 
     Word.find(authorQuery)
       .populate('translations')
-      .exec(function (err, data) {
+      .exec(function (err, wordData) {
         if (err) return errCb(err);
 
-        if (data.length) data = data[randomQuestionId - 1];
-        _.extend(data, gameData);
-        return successCb(data);
+        if (wordData.length) wordData = wordData[randomQuestionId - 1];
+        console.log(randomQuestionId);
+        _.extend(wordData, gameData);
+
+        wordData.translations = _.shuffle(wordData.translations);
+        return successCb(wordData);
       });
 
 
