@@ -18,12 +18,12 @@ module.exports = {
       .catch((err) => errCb(err));
   },
 
-  findRandomWord: function (wordCount, author, gameData, errCb, successCb) {
+  findRandomWord: function (wordCount, authorQuery, gameData, errCb, successCb) {
 
     gameData = gameData || {};
     let randomQuestionId = Math.floor(Math.random() * (parseInt(wordCount) - 1) + 1);
 
-    Word.find({author: author})
+    Word.find(authorQuery)
       .populate('translations')
       .exec(function (err, data) {
         if (err) return errCb(err);
