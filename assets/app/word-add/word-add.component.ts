@@ -10,6 +10,7 @@ export class WordAddComponent {
   @Input()
   submitted = false;
   active = true;
+  errorMessage:string;
   word = new Word(0, '', false, []);
 
   onSubmit() {
@@ -18,6 +19,8 @@ export class WordAddComponent {
       .add(this.word)
       .subscribe(() => {
         alert('word added');
+  ***REMOVED***, err => {
+        this.errorMessage = err
   ***REMOVED***);
 
 ***REMOVED***

@@ -14,10 +14,12 @@
 
 function _findRandomWord(req, res, gameData) {
 
+  let authorQuery = {***REMOVED***
+  if (req.session.settings.practiceMode) authorQuery = {author: req.session.user.id***REMOVED***
 
   GameService.findRandomWord(
     req.session.wordCount,
-    req.session.user.id,
+    authorQuery,
     gameData,
     err => res.badRequest(err),
     data => {
@@ -61,26 +63,22 @@ module.exports = {
         req.session.user.id,
         err => res.badRequest(err),
         settings => {
+          req.session.settings = settings;
           GameService.on(req.session.user.id,
             err => res.badRequest(err),
             gameData => {
               req.session.game = gameData;
-              req.session.game.practiceMode = settings.practiceMode;
               req.session.game.askedWordsCount = 0;
               res.json({
                 isStarted: gameData.active,
                 points: gameData.gamePoints
           ***REMOVED***);
         ***REMOVED***);
-
     ***REMOVED***);
-
-
 ***REMOVED***
 
     else {
       _gameOver(req, res);
-
 ***REMOVED***
 ***REMOVED***,
 
@@ -128,7 +126,7 @@ module.exports = {
         else {
           req.session.game.gamePoints ? req.session.game.gamePoints -= 0.5 : 0;
 
-          if (req.session.game.practiceMode === false) {
+          if (req.session.settings.practiceMode === false) {
             _gameOver(req, res);
       ***REMOVED***
           else {

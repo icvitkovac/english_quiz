@@ -77,7 +77,7 @@ System.register(['angular2/http', 'angular2/core', 'rxjs/Observable'], function(
                     return body || {***REMOVED***
             ***REMOVED***
                 handleError(error) {
-                    // In a real world app, we might send the error to remote logging infrastructure
+                    error = error.json();
                     let errMsg = error.message || 'Server error';
                     return Observable_1.Observable.throw(errMsg);
             ***REMOVED***
