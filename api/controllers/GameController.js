@@ -32,7 +32,6 @@ function _gameOver(req, res) {
   GameService.over(req.session.game.id, req.session.game.gamePoints,
     err => res.badRequest(err),
     gameData => {
-      console.log(gameData);
       req.session.game = {***REMOVED***
       res.json({
         isStarted: false,
@@ -58,16 +57,25 @@ module.exports = {
 
     if (!req.session.game || !req.session.game.id) {
 
-      GameService.on(req.session.user.id,
+      SettingsService.init(
+        req.session.user.id,
         err => res.badRequest(err),
-        gameData => {
-          req.session.game = gameData;
-          req.session.game.askedWordsCount = 0;
-          res.json({
-            isStarted: gameData.active,
-            points: gameData.gamePoints
-      ***REMOVED***);
+        settings => {
+          GameService.on(req.session.user.id,
+            err => res.badRequest(err),
+            gameData => {
+              req.session.game = gameData;
+              req.session.game.practiceMode = settings.practiceMode;
+              req.session.game.askedWordsCount = 0;
+              res.json({
+                isStarted: gameData.active,
+                points: gameData.gamePoints
+          ***REMOVED***);
+        ***REMOVED***);
+
     ***REMOVED***);
+
+
 ***REMOVED***
 
     else {
@@ -101,70 +109,26 @@ module.exports = {
 ***REMOVED***,
 
   checkAnswer: function (req, res) {
-    let id = req.param('translationId');
+    let translationId = req.param('translationId');
 
-
-    Translation.findOne(id).exec(function (err, data) {
-      if (err) res.badRequest(err);
-      _calculatePoints(data);
-***REMOVED***);
-
-
-    //success callback
-    function _calculatePoints(data) {
-
-      function _updateGameStats(correct) {
-
-        Game.findOne(req.session.game.id).exec(function (err, game) {
-          if (err) res.badRequest(err);
-
-          game.breakdown.add({
-            questionId: data.term,
-            correct: correct
-      ***REMOVED***);
-
-          game.save(function (err) {
-            if (err) console.log(err);
-      ***REMOVED***);
-
-    ***REMOVED***);
-
-  ***REMOVED***
-
-      if (data.isAnswer) {
-
-        _updateGameStats(true);
-
-        req.session.game.gamePoints += 1;
-        //sending new word
-        _findRandomWord(req, res, {
-          points: req.session.game.gamePoints,
-          isAnswer: true
-    ***REMOVED***);
-  ***REMOVED***
-
-      else {
-
-        _updateGameStats(false);
-
-        req.session.game.gamePoints ? req.session.game.gamePoints -= 0.5 : 0;
-
-        if (!req.session.settings) {
-          SettingsService.init(req.session.user.id, err => {
-            console.log(err);
-      ***REMOVED***, data => {
-            req.session.settings = data;
-
-            if (!req.session.settings.practiceMode) {
-              _gameOver(req, res);
-        ***REMOVED***
-
+    GameService.checkAnswer(
+      translationId,
+      req.session.game.id,
+      err => res.badRequest(err),
+      data => {
+        if (data.isAnswer) {
+          req.session.game.gamePoints += 1;
+          //sending new word
+          _findRandomWord(req, res, {
+            points: req.session.game.gamePoints,
+            isAnswer: true
       ***REMOVED***);
     ***REMOVED***
 
-
         else {
-          if (!req.session.settings.practiceMode) {
+          req.session.game.gamePoints ? req.session.game.gamePoints -= 0.5 : 0;
+
+          if (req.session.game.practiceMode === false) {
             _gameOver(req, res);
       ***REMOVED***
           else {
@@ -173,13 +137,10 @@ module.exports = {
               isAnswer: false
         ***REMOVED***);
       ***REMOVED***
-
     ***REMOVED***
 
-
   ***REMOVED***
-
-***REMOVED***
+    );
 
 ***REMOVED***
 

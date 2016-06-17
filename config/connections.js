@@ -74,7 +74,7 @@ module.exports.connections = {
    *                                                                          *
    *                                                                          *
    ***************************************************************************/
-  herokuPostgre: {
+  postgresdb: {
     adapter: 'sails-postgresql',
     host: 'ec2-54-228-219-2.eu-west-1.compute.amazonaws.com',
     user: 'jqgvmngpvacxir',
