@@ -72,7 +72,31 @@ module.exports = {
 
 ***REMOVED***,
 
-  checkAnswer: function () {
+  checkAnswer: function (translationId, gameId, errCb, successCb) {
+
+    Translation.findOne(translationId)
+      .exec(function (err, data) {
+        if (err) return errCb(err);
+
+
+        Game.findOne(gameId)
+          .exec(function (err, game) {
+            if (err) return errCb(err);
+
+            game.breakdown.add({
+              questionId: data.term,
+              correct: data.isAnswer
+        ***REMOVED***);
+
+            game.save(function (err) {
+              if (err) console.log(err);
+              return successCb(data);
+        ***REMOVED***);
+
+      ***REMOVED***);
+
+
+  ***REMOVED***);
 
 ***REMOVED***
 ***REMOVED***
