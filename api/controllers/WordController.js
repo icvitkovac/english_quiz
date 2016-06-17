@@ -14,46 +14,30 @@ module.exports = {
 
     var reqObj = req.body, translations = [];
 
-    Word.findOrCreate({value: reqObj.value}, {value: reqObj.value, author: req.session.user.id})
-      .exec(function (err, wordData) {
-        if (err) res.badRequest(err);
+    for (let value of reqObj.translations) {
+      translations.push({value: value})
+    }
+    translations[0].isAnswer = true;
 
-        for (let value of reqObj.translations) {
-          translations.push({value: value})
+    WordService.create(
+      reqObj.value,
+      req.session.user.id,
+      translations,
+      err => res.badRequest(err),
+      wordData => {
+        if (typeof wordData === 'number') {
+          res.status(wordData);
+          return res.send({message: 'Word already exists'});
         }
-
-        translations[0].isAnswer = true;
-
-        //populate child collection
-
-        wordData.translations.add(translations);
-
-        wordData.save(function (err) {
-          if (err) res.badRequest(err);
-          return res.json(wordData.value);
-
-        });
-
-      });
-
-  },
-
-  find: function (req, res) {
-
-
-    Word.find(req.query).populate('translations').exec(function (err, data) {
-      if (err) res.badRequest(err);
-      return res.json(data);
-    });
+        return res.json(wordData)
+      }
+    );
   },
 
   count: function (req, res) {
 
-    Word.count({author: req.session.user.id}).exec(function (err, data) {
-      if (err) res.badRequest(err);
-      req.session.wordCount = parseInt(data);
-      return res.json({count: data});
-    });
+    WordService.count(req.session, err => res.badRequest(err), count => res.json(count));
+
   },
 
   search: function (req, res) {

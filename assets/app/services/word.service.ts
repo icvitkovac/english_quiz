@@ -69,7 +69,7 @@ export class WordService {
   }
 
   private handleError(error:any) {
-    // In a real world app, we might send the error to remote logging infrastructure
+    error = error.json();
     let errMsg = error.message || 'Server error';
     return Observable.throw(errMsg);
   }
