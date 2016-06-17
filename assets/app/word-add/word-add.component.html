@@ -40,6 +40,8 @@
 
 </form>
 
+<div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
+
 <div [hidden]="!submitted">
   <h4>Newly added</h4>
   <div class="row">

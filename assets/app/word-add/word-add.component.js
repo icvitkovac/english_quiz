@@ -37,6 +37,8 @@ System.register(['angular2/core', '../services/word.service', '../models/word'],
                         .add(this.word)
                         .subscribe(() => {
                         alert('word added');
+                ***REMOVED***, err => {
+                        this.errorMessage = err;
                 ***REMOVED***);
             ***REMOVED***
       ***REMOVED***
