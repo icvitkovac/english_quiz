@@ -6,7 +6,7 @@ import {Word} from '../models/word';
 import {Settings} from '../models/settings';
 import {WordDetailComponent} from '../word-detail/word-detail.component';
 import {WordAddComponent} from '../word-add/word-add.component';
-import { HighlightDirective } from '../directives/highlight.directive';
+import {HighlightDirective} from '../directives/highlight.directive';
 import 'rxjs/Rx';
 
 @Component({
@@ -42,9 +42,12 @@ export class AdminComponent implements OnInit {
 
   onDelete(word:Word, event:any) {
     event.stopPropagation();
-    this.wordService.destroy(word).subscribe((result:any) => {
-      alert('Word deleted');
-***REMOVED***);
+
+    this.wordService
+      .destroy(word)
+      .subscribe(() => {
+        alert('Word deleted');
+  ***REMOVED***);
 ***REMOVED***
 
   ngOnInit() {
@@ -55,7 +58,8 @@ export class AdminComponent implements OnInit {
 ***REMOVED***
 
   onSave(settings:Settings) {
-    this._settingsService.update(settings)
+    this._settingsService
+      .update(settings)
       .subscribe((settings:Settings) => {
         this.settings = settings;
         alert('Settings updated');
