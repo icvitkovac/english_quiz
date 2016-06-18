@@ -18,9 +18,12 @@ export class WordDetailComponent {
 
 
   onSave(word:Word) {
-    this._wordService.update(word).subscribe((result:any) => {
-      this.word = result;
-***REMOVED***);
+    this._wordService
+      .update(word)
+      .subscribe((updatedWord:Word) => {
+        this.word = updatedWord;
+        alert('word updated');
+  ***REMOVED***);
 ***REMOVED***
 }
 
