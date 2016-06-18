@@ -29,8 +29,11 @@ System.register(['angular2/core', '../models/word', '../services/word.service'],
                     this._wordService = _wordService;
                 }
                 onSave(word) {
-                    this._wordService.update(word).subscribe((result) => {
-                        this.word = result;
+                    this._wordService
+                        .update(word)
+                        .subscribe((updatedWord) => {
+                        this.word = updatedWord;
+                        alert('word updated');
                     });
                 }
             };
