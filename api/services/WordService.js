@@ -85,7 +85,7 @@ module.exports = {
     Word.update(id, reqObj)
       .exec(function (err, data) {
         if (err) return errCb(err);
-        return successCb(data);
+        return successCb(data[0]);
   ***REMOVED***);
 
 ***REMOVED***
