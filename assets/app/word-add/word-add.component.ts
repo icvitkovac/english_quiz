@@ -1,17 +1,22 @@
 import {Component, Input} from 'angular2/core';
 import {WordService} from '../services/word.service';
 import {Word} from '../models/word';
+
 @Component({
   selector: 'word-add',
   templateUrl: 'app/word-add/word-add.component.html',
   providers: [WordService]
 })
+
 export class WordAddComponent {
   @Input()
   submitted = false;
   active = true;
   errorMessage:string;
   word = new Word(0, '', false, []);
+
+  constructor(private _wordService:WordService) {
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -24,11 +29,6 @@ export class WordAddComponent {
       });
 
   }
-
-  constructor(private _wordService:WordService) {
-
-  }
-
 
 }
 
