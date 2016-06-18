@@ -15,7 +15,13 @@
 function _findRandomWord(req, res, gameData) {
 
   let authorQuery = {***REMOVED***
-  if (req.session.settings.practiceMode) authorQuery = {author: req.session.user.id***REMOVED***
+  if (req.session.settings.practiceMode) {
+    authorQuery = {author: req.session.user.id***REMOVED***
+    if (req.session.game.askedWordsCount == req.session.settings.questionsNumber) {
+      _gameOver(req, res);
+      return;
+***REMOVED***
+***REMOVED***
 
   GameService.findRandomWord(
     req.session.wordCount,

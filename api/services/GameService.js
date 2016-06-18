@@ -29,7 +29,6 @@ module.exports = {
         if (err) return errCb(err);
 
         if (wordData.length) wordData = wordData[randomQuestionId - 1];
-        console.log(randomQuestionId);
         _.extend(wordData, gameData);
 
         wordData.translations = _.shuffle(wordData.translations);
