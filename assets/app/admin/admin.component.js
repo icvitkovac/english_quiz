@@ -56,7 +56,9 @@ System.register(['angular2/core', 'angular2/common', '../services/word.service',
                 }
                 onDelete(word, event) {
                     event.stopPropagation();
-                    this.wordService.destroy(word).subscribe((result) => {
+                    this.wordService
+                        .destroy(word)
+                        .subscribe(() => {
                         alert('Word deleted');
                     });
                 }
@@ -67,7 +69,8 @@ System.register(['angular2/core', 'angular2/common', '../services/word.service',
                     });
                 }
                 onSave(settings) {
-                    this._settingsService.update(settings)
+                    this._settingsService
+                        .update(settings)
                         .subscribe((settings) => {
                         this.settings = settings;
                         alert('Settings updated');
