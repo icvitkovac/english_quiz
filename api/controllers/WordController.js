@@ -42,28 +42,14 @@ module.exports = {
 
   search: function (req, res) {
 
+    WordService.search(req.query.value, req.session.user.id, err => res.badRequest(err), searchData => res.json(searchData));
 
-    Word.find({
-      value: {'startsWith': req.query.value},
-      author: req.session.user.id
-    })
-      .populate('translations')
-      .exec(function (err, data) {
-        if (err) res.badRequest(err);
-        return res.json(data);
-      });
   },
 
   update: function (req, res) {
-    var reqObj = req.body;
-    var id = parseInt(reqObj.id);
-    delete reqObj.id;
 
-    Word.update(id, reqObj)
-      .exec(function (err, data) {
-        if (err) res.badRequest(err);
-        return res.json(data);
-      });
+    WordService.update(req.body, err => res.badRequest(err), data => res.json(data));
+
   }
 
 };
