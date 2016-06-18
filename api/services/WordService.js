@@ -13,7 +13,7 @@ module.exports = {
 
         currentDate = new Date().getTime();
         wordCreatedAt = new Date(wordData.createdAt).getTime();
-        
+
         //todo: not very scalable
         if ((currentDate - wordCreatedAt) > 3000) {
           return successCb(409);
@@ -61,11 +61,32 @@ module.exports = {
 ***REMOVED***
 ***REMOVED***,
 
-  search: function () {
+  search: function (value, author, errCb, successCb) {
+
+    Word.find({
+      value: {'startsWith': value},
+      author: author
+***REMOVED***)
+      .limit(10)
+      .sort('value ASC')
+      .populate('translations')
+      .exec(function (err, data) {
+        if (err) return errCb(err);
+        return successCb(data);
+  ***REMOVED***);
 
 ***REMOVED***,
 
-  update: function () {
+  update: function (reqObj, errCb, successCb) {
+
+    var id = parseInt(reqObj.id);
+    delete reqObj.id;
+
+    Word.update(id, reqObj)
+      .exec(function (err, data) {
+        if (err) return errCb(err);
+        return successCb(data);
+  ***REMOVED***);
 
 ***REMOVED***
 ***REMOVED***
