@@ -70,7 +70,7 @@ module.exports = {
         err => res.badRequest(err),
         settings => {
           req.session.settings = settings;
-          GameService.on(req.session.user.id,
+          GameService.on({contenderId: req.session.user.id, practiceMode: req.session.settings.practiceMode},
             err => res.badRequest(err),
             gameData => {
               req.session.game = gameData;

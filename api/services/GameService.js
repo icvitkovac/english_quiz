@@ -1,15 +1,13 @@
 ***REMOVED***
 module.exports = {
 
-  on: function (contenderId, errCb, successCb) {
+  on: function (gameData, errCb, successCb) {
 
-    Game.create({contenderId: contenderId})
+    Game.create(gameData)
       .exec(function (err, gameData) {
         if (err) return errCb(err);
         return successCb(gameData);
   ***REMOVED***);
-
-
 ***REMOVED***,
   over: function (gameId, gamePoints, errCb, successCb) {
 
@@ -40,7 +38,7 @@ module.exports = {
 
   highScores: function (errCb, successCb) {
 
-    Game.find()
+    Game.find({practiceMode: false})
       .sort('gamePoints DESC')
       .populate('contenderId')
       .limit(10)

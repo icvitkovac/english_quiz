@@ -26,6 +26,9 @@ module.exports = {
       type: 'boolean',
       defaultsTo: true
 ***REMOVED***,
+    practiceMode: {
+      type: 'boolean'
+***REMOVED***,
     breakdown: {
       collection: 'GameBreakdown',
       via: 'gameId'
