@@ -10,6 +10,7 @@ module.exports = {
 
   handle: function (req, res) {
     var reqObj = req.body;
+    if (!reqObj.questionsNumber) reqObj.questionsNumber = 5;
     reqObj.questionsNumber = parseInt(reqObj.questionsNumber);
 
     SettingsService.update(req.session.user.id, reqObj, err => {
