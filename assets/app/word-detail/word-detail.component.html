@@ -6,7 +6,7 @@
   </div>
 
   <ul>
-    <li *ngFor="#t of word.translations">
+    <li *ngFor="let t of word.translations">
       <input [(ngModel)]="t.value"/>
     </li>
   </ul>

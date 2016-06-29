@@ -20,10 +20,10 @@ import 'rxjs/Rx';
 
 export class MainComponent implements OnInit {
 
-  count:number;
-  guessWord:Word;
-  isStarted:boolean;
-  points:number;
+  private count:number;
+  private guessWord:Word;
+  private isStarted:boolean;
+  private points:number;
 
   constructor(private _wordService:WordService, private _gameService:GameService) {
 
@@ -55,7 +55,7 @@ export class MainComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+  ngOnInit():void {
     this.count = 0;
     this._gameService.status()
       .subscribe(game => {
@@ -73,7 +73,7 @@ export class MainComponent implements OnInit {
     return this.count == 0;
   }
 
-  onGameOver(state: boolean) {
+  onGameOver(state:boolean):void {
     this.isStarted = state;
     this.guessWord = null;
   }

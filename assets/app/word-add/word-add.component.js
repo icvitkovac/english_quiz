@@ -28,7 +28,6 @@ System.register(['angular2/core', '../services/word.service', '../models/word'],
                 constructor(_wordService) {
                     this._wordService = _wordService;
                     this.submitted = false;
-                    this.active = true;
                     this.word = new word_1.Word(0, '', false, []);
                 }
                 onSubmit() {
