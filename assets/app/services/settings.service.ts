@@ -4,7 +4,7 @@ import {Observable}     from 'rxjs/Observable';
 
 @Injectable()
 export class SettingsService {
-  baseUrl:string;
+  private baseUrl:string;
 
   constructor(private http:Http) {
     this.baseUrl = '/settings';

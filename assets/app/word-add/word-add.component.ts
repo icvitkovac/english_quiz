@@ -10,15 +10,15 @@ import {Word} from '../models/word';
 
 export class WordAddComponent {
   @Input()
-  submitted = false;
-  active = true;
-  errorMessage:string;
-  word = new Word(0, '', false, []);
+  private submitted = false;
+  // private active = true;
+  private errorMessage:string;
+  private word = new Word(0, '', false, []);
 
   constructor(private _wordService:WordService) {
   }
 
-  onSubmit() {
+  onSubmit():void {
     this.submitted = true;
     this._wordService
       .add(this.word)

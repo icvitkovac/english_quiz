@@ -10,14 +10,14 @@ import {WordService} from '../services/word.service';
 })
 export class WordDetailComponent {
   @Input()
-  word:Word;
+  private word:Word;
 
   constructor(private _wordService:WordService) {
 
   }
 
 
-  onSave(word:Word) {
+  onSave(word:Word):void {
     this._wordService
       .update(word)
       .subscribe((updatedWord:Word) => {

@@ -38,15 +38,15 @@ System.register(['angular2/core', 'angular2/common', '../services/word.service',
             function (_1) {}],
         execute: function() {
             let AdminComponent = class AdminComponent {
-                constructor(wordService, fb, _settingsService) {
-                    this.wordService = wordService;
+                constructor(_wordService, fb, _settingsService) {
+                    this._wordService = _wordService;
                     this.fb = fb;
                     this._settingsService = _settingsService;
                     this.searchField = new common_1.Control();
                     this.coolForm = fb.group({ search: this.searchField });
                     this.searchField.valueChanges
                         .debounceTime(400)
-                        .flatMap((term) => this.wordService.search(term))
+                        .flatMap((term) => this._wordService.search(term))
                         .subscribe((result) => {
                         this.words = result;
                     });
@@ -56,7 +56,7 @@ System.register(['angular2/core', 'angular2/common', '../services/word.service',
                 }
                 onDelete(word, event) {
                     event.stopPropagation();
-                    this.wordService
+                    this._wordService
                         .destroy(word)
                         .subscribe(() => {
                         alert('Word deleted');

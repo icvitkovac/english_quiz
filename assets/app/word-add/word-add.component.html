@@ -47,7 +47,7 @@
   <div class="row">
     <div class="col-xs-9  pull-left">{{ word.value }}</div>
     <ul>
-      <li *ngFor="#t of word.translations">{{t}}
+      <li *ngFor="let t of word.translations">{{t}}
       </li>
     </ul>
   </div>
