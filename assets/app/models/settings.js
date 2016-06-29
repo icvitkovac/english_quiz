@@ -7,6 +7,7 @@ System.register([], function(exports_1, context_1) {
         execute: function() {
             class Settings {
                 constructor(questionsNumber, practiceMode, onlyHard, userId, id) {
+                    this.questionsNumber = questionsNumber;
                     this.practiceMode = practiceMode;
                     this.onlyHard = onlyHard;
                     this.userId = userId;
