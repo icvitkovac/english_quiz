@@ -1,6 +1,6 @@
 import {Component, OnInit} from 'angular2/core';
 import {GameService} from '../services/game.service';
-import { HighlightDirective } from '../directives/highlight.directive';
+import {HighlightDirective} from '../directives/highlight.directive';
 import 'rxjs/Rx';
 
 @Component({
@@ -13,16 +13,16 @@ import 'rxjs/Rx';
 
 export class StatsComponent implements OnInit {
 
-  history = [];
-  breakdown = [];
-  highScores = [];
-  gameSelected:boolean;
+  private history = [];
+  private breakdown = [];
+  private highScores = [];
+  private gameSelected:boolean;
 
   constructor(private _gameService:GameService) {
 
 ***REMOVED***
 
-  ngOnInit() {
+  ngOnInit():void {
     this._gameService
       .history()
       .subscribe((history:any) => {
@@ -36,7 +36,7 @@ export class StatsComponent implements OnInit {
   ***REMOVED***);
 ***REMOVED***
 
-  onSelect(game) {
+  onSelect(game):void {
     this._gameService
       .breakdown(game.id)
       .subscribe((breakdown:any) => {

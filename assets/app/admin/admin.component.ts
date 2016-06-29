@@ -18,46 +18,46 @@ import 'rxjs/Rx';
 
 
 export class AdminComponent implements OnInit {
-  searchField:Control;
-  coolForm:ControlGroup;
-  words:Word[];
-  settings:Settings;
-  selectedWord:Word;
+  private searchField:Control;
+  private coolForm:ControlGroup;
+  private words:Word[];
+  private settings:Settings;
+  private selectedWord:Word;
 
-  constructor(private wordService:WordService, private fb:FormBuilder, private _settingsService:SettingsService) {
+  constructor(private _wordService:WordService, private fb:FormBuilder, private _settingsService:SettingsService) {
     this.searchField = new Control();
     this.coolForm = fb.group({search: this.searchField});
 
     this.searchField.valueChanges
       .debounceTime(400)
-      .flatMap((term:string) => this.wordService.search(term))
+      .flatMap((term:string) => this._wordService.search(term))
       .subscribe((result:Word[]) => {
         this.words = result;
   ***REMOVED***);
 ***REMOVED***
 
-  onSelect(word:Word) {
+  onSelect(word:Word):void {
     this.selectedWord = word;
 ***REMOVED***
 
-  onDelete(word:Word, event:any) {
+  onDelete(word:Word, event:any):void {
     event.stopPropagation();
 
-    this.wordService
+    this._wordService
       .destroy(word)
       .subscribe(() => {
         alert('Word deleted');
   ***REMOVED***);
 ***REMOVED***
 
-  ngOnInit() {
+  ngOnInit():void {
     this._settingsService.get()
       .subscribe((settings:Settings) => {
         this.settings = settings;
   ***REMOVED***);
 ***REMOVED***
 
-  onSave(settings:Settings) {
+  onSave(settings:Settings):void {
     this._settingsService
       .update(settings)
       .subscribe((settings:Settings) => {

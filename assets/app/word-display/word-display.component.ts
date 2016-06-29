@@ -12,13 +12,13 @@ export class WordDisplayComponent {
   @Input() word:Word;
   @Output() onGameOver = new EventEmitter<boolean>();
 
-  points:number;
+  private points:number;
 
   constructor(private _gameService:GameService) {
 
 ***REMOVED***
 
-  onSelect(pickedWord:{}) {
+  onSelect(pickedWord:{}):void {
     this._gameService.checkAnswer(pickedWord)
       .subscribe(data => {
 

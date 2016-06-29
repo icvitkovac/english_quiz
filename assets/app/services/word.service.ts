@@ -4,7 +4,7 @@ import {Observable}     from 'rxjs/Observable';
 
 @Injectable()
 export class WordService {
-  baseUrl:string;
+  private baseUrl:string;
 
   constructor(private http:Http) {
     this.baseUrl = 'word/';
