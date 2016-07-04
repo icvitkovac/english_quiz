@@ -1,22 +1,19 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit} from '@angular/core';
 import {WordService} from '../services/word.service';
 import {GameService} from '../services/game.service';
 import {Word} from '../models/word';
 import {WordDisplayComponent} from '../word-display/word-display.component';
-import {RouteConfig, RouterOutlet} from 'angular2/router';
 import 'rxjs/Rx';
 
 @Component({
   selector: 'main-component',
   providers: [WordService, GameService],
-  directives: [WordDisplayComponent, RouterOutlet],
+  directives: [WordDisplayComponent],
   templateUrl: 'app/main/main.component.html'
 
 })
 
-@RouteConfig([
-  {path: '/', name: 'WordDisplay', component: WordDisplayComponent, useAsDefault: true}
-])
+
 
 export class MainComponent implements OnInit {
 

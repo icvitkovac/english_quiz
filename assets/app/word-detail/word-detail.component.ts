@@ -1,4 +1,4 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input} from '@angular/core';
 import {Word} from '../models/word';
 import {WordService} from '../services/word.service';
 

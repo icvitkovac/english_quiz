@@ -1,4 +1,4 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input} from '@angular/core';
 import {WordService} from '../services/word.service';
 import {Word} from '../models/word';
 
@@ -11,7 +11,6 @@ import {Word} from '../models/word';
 export class WordAddComponent {
   @Input()
   private submitted = false;
-  // private active = true;
   private errorMessage:string;
   private word = new Word(0, '', false, []);
 
