@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit} from '@angular/core';
 import {GameService} from '../services/game.service';
 import {HighlightDirective} from '../directives/highlight.directive';
 import 'rxjs/Rx';

@@ -10,33 +10,9 @@
   </div>
 </div>
 
-
-<script src="node_modules/es6-shim/es6-shim.min.js"></script>
-<script src="node_modules/systemjs/dist/system-polyfills.js"></script>
-
-<script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-<script src="node_modules/systemjs/dist/system.src.js"></script>
-<script src="node_modules/rxjs/bundles/Rx.js"></script>
-<script src="node_modules/angular2/bundles/angular2.dev.js"></script>
-<script src="node_modules/angular2/bundles/http.js"></script>
-<script src="node_modules/angular2/bundles/router.dev.js"></script>
-
-
+<!-- 2. Configure SystemJS -->
 <script>
-  System.config({
-    map: {
-      rxjs: 'node_modules/rxjs' // added this map section
-***REMOVED***,
-    packages: {
-      app: {
-        format: 'register',
-        defaultExtension: 'js'
-  ***REMOVED***,
-      'rxjs': {defaultExtension: 'js'} // and added this to packages
-***REMOVED***
-***REMOVED***);
-  System.import('/app/main')
-    .then(null, console.error.bind(console));
+  System.import('app/main.js').catch(function(err){ console.error(err); });
 </script>
 
 <english-quiz></english-quiz>

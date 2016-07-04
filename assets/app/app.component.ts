@@ -1,9 +1,8 @@
-import {Component} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Component} from '@angular/core';
 
 import {AdminComponent} from './admin/admin.component';
 import {MainComponent} from './main/main.component';
-import {StatsComponent} from './stats/stats.component';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 
 
 @Component({
@@ -12,25 +11,6 @@ import {StatsComponent} from './stats/stats.component';
   templateUrl: 'app/app.component.html'
 
 })
-
-@RouteConfig([
-  {
-    path: '/administration',
-    name: 'Admin',
-    component: AdminComponent
-***REMOVED***,
-  {
-    path: '/stats',
-    name: 'Stats',
-    component: StatsComponent
-***REMOVED***,
-  {
-    path: '/main/...',
-    name: 'Main',
-    component: MainComponent,
-    useAsDefault: true
-***REMOVED***,
-])
 
 
 export class AppComponent {

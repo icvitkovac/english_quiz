@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../services/word.service', '../services/game.service', '../word-display/word-display.component', 'angular2/router', 'rxjs/Rx'], function(exports_1, context_1) {
+System.register(['@angular/core', '../services/word.service', '../services/game.service', '../word-display/word-display.component', 'rxjs/Rx'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', '../services/word.service', '../services/game.
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 ***REMOVED***;
-    var core_1, word_service_1, game_service_1, word_display_component_1, router_1;
+    var core_1, word_service_1, game_service_1, word_display_component_1;
     var MainComponent;
     return {
         setters:[
@@ -25,9 +25,6 @@ System.register(['angular2/core', '../services/word.service', '../services/game.
         ***REMOVED***,
             function (word_display_component_1_1) {
                 word_display_component_1 = word_display_component_1_1;
-        ***REMOVED***,
-            function (router_1_1) {
-                router_1 = router_1_1;
         ***REMOVED***,
             function (_1) {}],
         execute: function() {
@@ -77,12 +74,9 @@ System.register(['angular2/core', '../services/word.service', '../services/game.
                 core_1.Component({
                     selector: 'main-component',
                     providers: [word_service_1.WordService, game_service_1.GameService],
-                    directives: [word_display_component_1.WordDisplayComponent, router_1.RouterOutlet],
+                    directives: [word_display_component_1.WordDisplayComponent],
                     templateUrl: 'app/main/main.component.html'
-            ***REMOVED***),
-                router_1.RouteConfig([
-                    { path: '/', name: 'WordDisplay', component: word_display_component_1.WordDisplayComponent, useAsDefault: true }
-                ]), 
+            ***REMOVED***), 
                 __metadata('design:paramtypes', [word_service_1.WordService, game_service_1.GameService])
             ], MainComponent);
             exports_1("MainComponent", MainComponent);
