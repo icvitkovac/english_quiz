@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../models/word', '../services/game.service', '../directives/highlight.directive'], function(exports_1, context_1) {
+System.register(['@angular/core', '../models/word', '../services/game.service', '../directives/highlight.directive'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -57,7 +57,8 @@ System.register(['angular2/core', '../models/word', '../services/game.service', 
                 core_1.Component({
                     selector: 'random-word',
                     templateUrl: 'app/word-display/word-display.component.html',
-                    directives: [highlight_directive_1.HighlightDirective]
+                    directives: [highlight_directive_1.HighlightDirective],
+                    providers: [game_service_1.GameService]
                 }), 
                 __metadata('design:paramtypes', [game_service_1.GameService])
             ], WordDisplayComponent);

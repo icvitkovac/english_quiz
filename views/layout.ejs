@@ -36,6 +36,13 @@
   <link rel="stylesheet" href="/styles/importer.css">
   <link rel="stylesheet" href="/styles/main.css">
   <!--STYLES END-->
+
+  <!-- 1. Load libraries -->
+  <!-- Polyfill(s) for older browsers -->
+  <script src="node_modules/core-js/client/shim.min.js"></script>
+  <script src="node_modules/zone.js/dist/zone.js"></script>
+  <script src="node_modules/reflect-metadata/Reflect.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
 </head>
 
 <body>
@@ -96,6 +103,7 @@
 <script src="/js/dependencies/sails.io.js"></script>
 <script src="/js/dependencies/jquery.js"></script>
 <script src="/js/dependencies/loodash.js"></script>
+<script src="/js/dependencies/systemjs.config.js"></script>
 <!--SCRIPTS END-->
 </body>
 </html>
