@@ -1,5 +1,5 @@
-import {Component, OnInit} from 'angular2/core';
-import {Control, ControlGroup, FormBuilder} from 'angular2/common';
+import {Component, OnInit} from '@angular/core';
+import {Control, ControlGroup, FormBuilder} from '@angular/common';
 import {WordService} from '../services/word.service';
 import {SettingsService} from '../services/settings.service';
 import {Word} from '../models/word';
