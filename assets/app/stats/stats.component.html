@@ -12,7 +12,7 @@
       <tbody>
       <tr [myHighlight] *ngFor="let h of history" (click)="onSelect(h)">
         <td>{{h.gamePoints}}</td>
-        <td>{{h.createdAt}}</td>
+        <td>{{h.createdAt | date:"dd/MM/yyyy"}}</td>
       </tr>
       </tbody>
     </table>
