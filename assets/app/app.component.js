@@ -1,4 +1,4 @@
-System.register(['@angular/core', './admin/admin.component', './main/main.component', '@angular/router'], function(exports_1, context_1) {
+System.register(['@angular/core', './admin/admin.component', './main/main.component', './stats/stats.component', '@angular/router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', './admin/admin.component', './main/main.compon
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 ***REMOVED***;
-    var core_1, admin_component_1, main_component_1, router_1;
+    var core_1, admin_component_1, main_component_1, stats_component_1, router_1;
     var AppComponent;
     return {
         setters:[
@@ -23,6 +23,9 @@ System.register(['@angular/core', './admin/admin.component', './main/main.compon
             function (main_component_1_1) {
                 main_component_1 = main_component_1_1;
         ***REMOVED***,
+            function (stats_component_1_1) {
+                stats_component_1 = stats_component_1_1;
+        ***REMOVED***,
             function (router_1_1) {
                 router_1 = router_1_1;
         ***REMOVED***],
@@ -33,6 +36,7 @@ System.register(['@angular/core', './admin/admin.component', './main/main.compon
                 core_1.Component({
                     selector: 'english-quiz',
                     directives: [main_component_1.MainComponent, admin_component_1.AdminComponent, router_1.ROUTER_DIRECTIVES],
+                    precompile: [main_component_1.MainComponent, admin_component_1.AdminComponent, stats_component_1.StatsComponent],
                     templateUrl: 'app/app.component.html'
             ***REMOVED***), 
                 __metadata('design:paramtypes', [])
