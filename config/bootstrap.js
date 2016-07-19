@@ -9,9 +9,18 @@
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.bootstrap.html
  */
 
-module.exports.bootstrap = function(cb) {
+var jsonfile = require('jsonfile');
 
+module.exports.bootstrap = function(cb) {
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
+
+  jsonfile.readFile('./dictionary.json', function(err, obj) {
+    if (err) return;
+    for (let element of obj) {
+      Word.dictionary.push(element.word);
+    }
+  });
+
   cb();
 };
