@@ -24,9 +24,11 @@ export class WordDisplayComponent {
       .subscribe(data => {
 
         this.points = data.points;
+        sessionStorage.setItem('points', data.points);
 
         if (data.isAnswer) {
           this.word = data;
+          sessionStorage.setItem('guessWord', JSON.stringify(data));
     ***REMOVED***
 
         if (data.isStarted === false) {

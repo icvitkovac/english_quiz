@@ -10,7 +10,7 @@ System.register(['@angular/core', '../services/word.service', '../services/game.
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 ***REMOVED***;
-    var core_1, word_service_1, game_service_1, word_display_component_1;
+    var core_1, word_service_1, game_service_1, word_display_component_1, Rx_1;
     var MainComponent;
     return {
         setters:[
@@ -26,48 +26,77 @@ System.register(['@angular/core', '../services/word.service', '../services/game.
             function (word_display_component_1_1) {
                 word_display_component_1 = word_display_component_1_1;
         ***REMOVED***,
-            function (_1) {}],
+            function (Rx_1_1) {
+                Rx_1 = Rx_1_1;
+        ***REMOVED***],
         execute: function() {
             let MainComponent = class MainComponent {
                 constructor(_wordService, _gameService) {
                     this._wordService = _wordService;
                     this._gameService = _gameService;
+                    this.wordCount = 0;
+                    this.isStarted = false;
+                    this.points = 0;
+                    this.countDown = 3;
             ***REMOVED***
-                onClick() {
+                startGame() {
                     this._gameService.startEnd()
                         .subscribe((game) => {
                         this.isStarted = game.isStarted;
                         this.points = game.points;
+                        sessionStorage.setItem('points', game.points);
+                        sessionStorage.setItem('isStarted', game.isStarted);
                         if (!this.isStarted) {
                             //clear word on game over
                             this.guessWord = null;
-                            return;
+                            sessionStorage.clear();
                     ***REMOVED***
-                        /*GAME STARTED*/
-                        //get random word when game starts
-                        this._gameService.nextWord()
-                            .subscribe((guessWord) => {
-                            this.guessWord = guessWord;
-                    ***REMOVED***);
+                        else {
+                            //get random word when game starts
+                            this._gameService.nextWord()
+                                .subscribe((guessWord) => {
+                                this.guessWord = guessWord;
+                                sessionStorage.setItem('guessWord', JSON.stringify(guessWord));
+                        ***REMOVED***);
+                    ***REMOVED***
                 ***REMOVED***);
             ***REMOVED***
+                onClick() {
+                    this.startGame();
+            ***REMOVED***
                 ngOnInit() {
-                    this.count = 0;
+                    let isStarted = sessionStorage.getItem('isStarted');
+                    if (isStarted === 'undefined' || isStarted === null) {
+                        let timer = Rx_1.Observable.timer(1000, 1000).take(3);
+                        timer.subscribe(t => this.tickerFunc(t));
+                ***REMOVED***
+                    else {
+                        this.countDown = null;
+                        this.guessWord = JSON.parse(sessionStorage.getItem('guessWord'));
+                        this.points = JSON.parse(sessionStorage.getItem('points'));
+                ***REMOVED***
                     this._gameService.status()
                         .subscribe(game => {
                         this.isStarted = game.isStarted;
+                        sessionStorage.setItem('isStarted', game.isStarted);
                 ***REMOVED***);
                     this._wordService.count()
                         .subscribe(result => {
-                        this.count = result.count;
+                        this.wordCount = result.count;
                 ***REMOVED***);
             ***REMOVED***
                 buttonState() {
-                    return this.count == 0;
+                    return this.wordCount === 0;
             ***REMOVED***
                 onGameOver(state) {
                     this.isStarted = state;
                     this.guessWord = null;
+                    sessionStorage.clear();
+            ***REMOVED***
+                tickerFunc(tick) {
+                    this.countDown--;
+                    if (this.countDown <= 0)
+                        this.startGame();
             ***REMOVED***
       ***REMOVED***
             MainComponent = __decorate([

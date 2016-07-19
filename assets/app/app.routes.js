@@ -1,7 +1,7 @@
-System.register(['@angular/router', './admin/admin.component', './main/main.component', './stats/stats.component'], function(exports_1, context_1) {
+System.register(['@angular/router', './admin/admin.component', './main/main.component', './stats/stats.component', './game-picker/game-picker.component', './word-longest/word-longest.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var router_1, admin_component_1, main_component_1, stats_component_1;
+    var router_1, admin_component_1, main_component_1, stats_component_1, game_picker_component_1, word_longest_component_1;
     var routes, APP_ROUTER_PROVIDERS;
     return {
         setters:[
@@ -16,13 +16,19 @@ System.register(['@angular/router', './admin/admin.component', './main/main.comp
         ***REMOVED***,
             function (stats_component_1_1) {
                 stats_component_1 = stats_component_1_1;
+        ***REMOVED***,
+            function (game_picker_component_1_1) {
+                game_picker_component_1 = game_picker_component_1_1;
+        ***REMOVED***,
+            function (word_longest_component_1_1) {
+                word_longest_component_1 = word_longest_component_1_1;
         ***REMOVED***],
         execute: function() {
             exports_1("routes", routes = [
                 {
                     path: '',
                     pathMatch: 'full',
-                    redirectTo: 'main'
+                    redirectTo: 'pick'
             ***REMOVED***,
                 {
                     path: 'administration',
@@ -35,6 +41,14 @@ System.register(['@angular/router', './admin/admin.component', './main/main.comp
                 {
                     path: 'main',
                     component: main_component_1.MainComponent
+            ***REMOVED***,
+                {
+                    path: 'pick',
+                    component: game_picker_component_1.GamePickerComponent
+            ***REMOVED***,
+                {
+                    path: 'longest-word',
+                    component: word_longest_component_1.LongestWordComponent
             ***REMOVED***,
             ]);
             exports_1("APP_ROUTER_PROVIDERS", APP_ROUTER_PROVIDERS = [
