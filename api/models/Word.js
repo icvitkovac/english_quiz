@@ -7,6 +7,8 @@
 
 module.exports = {
 
+  dictionary: [],
+
   attributes: {
 
     value: {

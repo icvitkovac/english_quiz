@@ -48,6 +48,14 @@ module.exports.routes = {
     controller: 'HomeController',
     action: 'homepage'
 ***REMOVED***,
+  '/pick': {
+    controller: 'HomeController',
+    action: 'homepage'
+***REMOVED***,
+  '/longest-word': {
+    controller: 'HomeController',
+    action: 'homepage'
+***REMOVED***,
   '/login': {
     controller: 'AuthController',
     action: 'login'

@@ -36,8 +36,10 @@ System.register(['@angular/core', '../models/word', '../services/game.service', 
                     this._gameService.checkAnswer(pickedWord)
                         .subscribe(data => {
                         this.points = data.points;
+                        sessionStorage.setItem('points', data.points);
                         if (data.isAnswer) {
                             this.word = data;
+                            sessionStorage.setItem('guessWord', JSON.stringify(data));
                     ***REMOVED***
                         if (data.isStarted === false) {
                             this.onGameOver.emit(false);
