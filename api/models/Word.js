@@ -29,11 +29,6 @@ module.exports = {
       required: false,
       defaultsTo: false
 ***REMOVED***,
-    hasBeenAsked: {
-      type: 'boolean',
-      required: false,
-      defaultsTo: false
-***REMOVED***,
     author: 'integer'
 
 ***REMOVED***

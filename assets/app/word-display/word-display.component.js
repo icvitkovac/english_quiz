@@ -41,9 +41,8 @@ System.register(['@angular/core', '../models/word', '../services/game.service', 
                             this.word = data;
                             sessionStorage.setItem('guessWord', JSON.stringify(data));
                     ***REMOVED***
-                        if (data.isStarted === false) {
-                            this.onGameOver.emit(false);
-                    ***REMOVED***
+                        if (data.isStarted === false)
+                            this.onGameOver.emit(data.correctAnswer);
                 ***REMOVED***);
             ***REMOVED***
       ***REMOVED***

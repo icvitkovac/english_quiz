@@ -11,7 +11,7 @@ module.exports = {
 
       req.session.authenticated = true;
       req.session.user = user;
-      res.redirect('/main');
+      res.redirect('/pick');
 
 
 ***REMOVED***)(req, res);
