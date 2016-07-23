@@ -1,17 +1,27 @@
-<p> There are total of {{count}} words in the database.</p>
-
-<button [disabled]="buttonState()" (click)="startGame()" *ngIf="!isStarted">START</button>
-<button (click)="endGame()" *ngIf="isStarted">END</button>
-<random-word (onGameOver)="onGameOver($event)" [word]="guessWord"></random-word>
-
-
-<div *ngIf="settings">
-  {{settings.questionsNumber}} questions in the game.
+<div class="row">
+  <p> There are total of {{count}} words in the database.</p>
 </div>
 
-<h3 *ngIf="countDown">Game starting in {{countDown}}</h3>
+<div class="row">
+  <button [disabled]="buttonState()" (click)="startGame()" *ngIf="!isStarted">START</button>
+  <button (click)="endGame()" *ngIf="isStarted">END</button>
+</div>
+
+<div class="row">
+  <random-word (onGameOver)="onGameOver($event)" [word]="guessWord"></random-word>
+</div>
+
+<div class="row">
+  <div *ngIf="settings">
+    {{settings.questionsNumber}} questions in the game.
+  </div>
+</div>
+
+<div class="row">
+  <h3 *ngIf="countDown">Game starting in {{countDown}}</h3>
+</div>
 
 <div *ngIf="correctAnswer">
-  <span>Correct answer: {{correctAnswer}}</span>
-  <button (click)=reportTranslation()>Report translation</button>
+  <span class="row">Correct answer: {{correctAnswer}}</span>
+  <button class="row button button-primary" (click)=reportTranslation()>Report translation</button>
 </div>
