@@ -19,42 +19,44 @@ export class MainComponent implements OnInit {
   private isStarted: boolean = false;
   private points: number = 0;
   private countDown: number = 3;
+  private correctAnswer:string = null;
+  private timerSubscription: any = null;
 
   constructor(private _wordService: WordService, private _gameService: GameService) {
 
   }
 
-  startGame(): void {
-    this._gameService.startEnd()
-      .subscribe((game) => {
-        this.isStarted = game.isStarted;
-        this.points = game.points;
-        sessionStorage.setItem('points', game.points);
-
-        sessionStorage.setItem('isStarted', game.isStarted)
-
-
-        if (!this.isStarted) {
-          //clear word on game over
-          this.guessWord = null;
-          sessionStorage.clear();
-        }
+  startGame(type: string = 'quiz'): void {
+    this._gameService.on(type)
+      .subscribe(game => {
 
         /*GAME STARTED*/
-        else {
-          //get random word when game starts
-          this._gameService.nextWord()
-            .subscribe((guessWord: Word) => {
-              this.guessWord = guessWord;
-              sessionStorage.setItem('guessWord', JSON.stringify(guessWord));
+        this.isStarted = true;
+        this.points = 0;
+        sessionStorage.setItem('points', '0');
+        sessionStorage.setItem('isStarted', 'true');
 
-            });
+        if(this.timerSubscription) {
+          //stop countdown if exists
+          this.timerSubscription.unsubscribe();
+          this.countDown = null;
         }
-      });
+
+        //get random word when game starts
+        this._gameService.nextWord()
+          .subscribe((guessWord: Word) => {
+            this.guessWord = guessWord;
+            sessionStorage.setItem('guessWord', JSON.stringify(guessWord));
+          });
+      }, err =>console.log(err));
   }
 
-  onClick(): void {
-    this.startGame();
+  endGame(): void {
+    this._gameService.over()
+      .subscribe(gameData => {
+        //clear word on game over
+        this.onGameOver(gameData.isStarted)
+      }, err =>console.log(err));
   }
 
   ngOnInit(): void {
@@ -63,7 +65,7 @@ export class MainComponent implements OnInit {
 
     if (isStarted === 'undefined' || isStarted === null) {
       let timer = Observable.timer(1000, 1000).take(3);
-      timer.subscribe(t => this.tickerFunc(t));
+      this.timerSubscription = timer.subscribe(t => this.tickerFunc(t));
     }
     else {
       this.countDown = null;
@@ -82,16 +84,16 @@ export class MainComponent implements OnInit {
         this.wordCount = result.count;
       });
 
-
   }
 
   buttonState(): boolean {
     return this.wordCount === 0;
   }
 
-  onGameOver(state: boolean): void {
-    this.isStarted = state;
+  onGameOver(correctAnswer:string): void {
+    this.isStarted = false;
     this.guessWord = null;
+    this.correctAnswer = correctAnswer;
     sessionStorage.clear();
   }
 

@@ -35,7 +35,6 @@ System.register(['@angular/http', '@angular/core', 'rxjs/Observable'], function(
                         .map(this.extractData)
                         .catch(this.handleError);
                 }
-                //todo impure api update call, think about refactoring
                 update(data) {
                     let reqObj = JSON.stringify(data);
                     return this.http
@@ -51,7 +50,6 @@ System.register(['@angular/http', '@angular/core', 'rxjs/Observable'], function(
                     return body || {};
                 }
                 handleError(error) {
-                    // In a real world app, we might send the error to remote logging infrastructure
                     let errMsg = error.message || 'Server error';
                     return Observable_1.Observable.throw(errMsg);
                 }

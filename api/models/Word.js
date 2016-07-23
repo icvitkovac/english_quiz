@@ -29,11 +29,6 @@ module.exports = {
       required: false,
       defaultsTo: false
     },
-    hasBeenAsked: {
-      type: 'boolean',
-      required: false,
-      defaultsTo: false
-    },
     author: 'integer'
 
   }

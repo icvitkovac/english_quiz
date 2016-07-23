@@ -25,7 +25,7 @@ System.register(['@angular/core'], function(exports_1, context_1) {
             };
             LongestWordComponent = __decorate([
                 core_1.Component({
-                    selector: 'selector',
+                    selector: 'longest-word',
                     templateUrl: 'app/word-longest/word-longest.component.html'
                 }), 
                 __metadata('design:paramtypes', [])
