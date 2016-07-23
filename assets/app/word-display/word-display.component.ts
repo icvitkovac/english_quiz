@@ -10,16 +10,16 @@ import {HighlightDirective} from '../directives/highlight.directive';
   providers: [GameService]
 })
 export class WordDisplayComponent {
-  @Input() word:Word;
-  @Output() onGameOver = new EventEmitter<boolean>();
+  @Input() word: Word;
+  @Output() onGameOver = new EventEmitter<string>();
 
-  private points:number;
+  private points: number;Ï
 
-  constructor(private _gameService:GameService) {
+  constructor(private _gameService: GameService) {
 
 ***REMOVED***
 
-  onSelect(pickedWord:{}):void {
+  onSelect(pickedWord: {}): void {
     this._gameService.checkAnswer(pickedWord)
       .subscribe(data => {
 
@@ -31,10 +31,8 @@ export class WordDisplayComponent {
           sessionStorage.setItem('guessWord', JSON.stringify(data));
     ***REMOVED***
 
-        if (data.isStarted === false) {
-
-          this.onGameOver.emit(false);
-    ***REMOVED***
+        if (data.isStarted === false)  this.onGameOver.emit(data.correctAnswer);
+      
   ***REMOVED***);
 
 ***REMOVED***

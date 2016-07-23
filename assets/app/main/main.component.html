@@ -1,7 +1,7 @@
 <p> There are total of {{count}} words in the database.</p>
 
-<button [disabled]="buttonState()" (click)="onClick()" *ngIf="!isStarted">START</button>
-<button [disabled]="buttonState()" (click)="onClick()" *ngIf="isStarted">END</button>
+<button [disabled]="buttonState()" (click)="startGame()" *ngIf="!isStarted">START</button>
+<button (click)="endGame()" *ngIf="isStarted">END</button>
 <random-word (onGameOver)="onGameOver($event)" [word]="guessWord"></random-word>
 
 
@@ -10,3 +10,5 @@
 </div>
 
 <h3 *ngIf="countDown">Game starting in {{countDown}}</h3>
+
+<p *ngIf="correctAnswer">Correct answer: {{correctAnswer}}</p>

@@ -29,9 +29,15 @@ System.register(['@angular/http', '@angular/core', 'rxjs/Observable'], function(
                     this.http = http;
                     this.baseUrl = 'game/';
             ***REMOVED***
-                startEnd() {
+                on(type) {
                     return this.http
-                        .get(`${this.baseUrl}on`)
+                        .post(`${this.baseUrl}on`, { type: type })
+                        .map(this.extractData)
+                        .catch(this.handleError);
+            ***REMOVED***
+                over() {
+                    return this.http
+                        .get(`${this.baseUrl}over`)
                         .map(this.extractData)
                         .catch(this.handleError);
             ***REMOVED***
@@ -44,6 +50,12 @@ System.register(['@angular/http', '@angular/core', 'rxjs/Observable'], function(
                 checkAnswer(pickedWord) {
                     return this.http
                         .get(`${this.baseUrl}check/${pickedWord.id}`)
+                        .map(this.extractData)
+                        .catch(this.handleError);
+            ***REMOVED***
+                checkExisting(enteredWord) {
+                    return this.http
+                        .get(`${this.baseUrl}check/${enteredWord}`)
                         .map(this.extractData)
                         .catch(this.handleError);
             ***REMOVED***
@@ -79,7 +91,6 @@ System.register(['@angular/http', '@angular/core', 'rxjs/Observable'], function(
                     return body || {***REMOVED***
             ***REMOVED***
                 handleError(error) {
-                    // In a real world app, we might send the error to remote logging infrastructure
                     let errMsg = error.message || 'Server error';
                     return Observable_1.Observable.throw(errMsg);
             ***REMOVED***

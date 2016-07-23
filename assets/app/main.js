@@ -21,12 +21,8 @@ System.register(['@angular/platform-browser-dynamic', '@angular/http', './app.ro
         ***REMOVED***],
         execute: function() {
             core_1.enableProdMode();
-            // import {LocalStorageService, LocalStorageSubscriber} from 'angular2-localstorage/LocalStorageEmitter';
-            // var appPromise = bootstrap(AppComponent, [HTTP_PROVIDERS, ROUTER_PROVIDERS, LocalStorageService]);
             platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [http_1.HTTP_PROVIDERS, app_routes_1.APP_ROUTER_PROVIDERS]);
     ***REMOVED***
 ***REMOVED***
 });
-// register LocalStorage, this registers our change-detection.
-// LocalStorageSubscriber(appPromise);
 //# sourceMappingURL=main.js.map

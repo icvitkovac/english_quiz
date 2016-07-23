@@ -38,37 +38,38 @@ System.register(['@angular/core', '../services/word.service', '../services/game.
                     this.isStarted = false;
                     this.points = 0;
                     this.countDown = 3;
+                    this.correctAnswer = null;
+                    this.timerSubscription = null;
             ***REMOVED***
-                startGame() {
-                    this._gameService.startEnd()
-                        .subscribe((game) => {
-                        this.isStarted = game.isStarted;
-                        this.points = game.points;
-                        sessionStorage.setItem('points', game.points);
-                        sessionStorage.setItem('isStarted', game.isStarted);
-                        if (!this.isStarted) {
-                            //clear word on game over
-                            this.guessWord = null;
-                            sessionStorage.clear();
+                startGame(type = 'quiz') {
+                    this._gameService.on(type)
+                        .subscribe(game => {
+                        this.isStarted = true;
+                        this.points = 0;
+                        sessionStorage.setItem('points', '0');
+                        sessionStorage.setItem('isStarted', 'true');
+                        if (this.timerSubscription) {
+                            this.timerSubscription.unsubscribe();
+                            this.countDown = null;
                     ***REMOVED***
-                        else {
-                            //get random word when game starts
-                            this._gameService.nextWord()
-                                .subscribe((guessWord) => {
-                                this.guessWord = guessWord;
-                                sessionStorage.setItem('guessWord', JSON.stringify(guessWord));
-                        ***REMOVED***);
-                    ***REMOVED***
-                ***REMOVED***);
+                        this._gameService.nextWord()
+                            .subscribe((guessWord) => {
+                            this.guessWord = guessWord;
+                            sessionStorage.setItem('guessWord', JSON.stringify(guessWord));
+                    ***REMOVED***);
+                ***REMOVED***, err => console.log(err));
             ***REMOVED***
-                onClick() {
-                    this.startGame();
+                endGame() {
+                    this._gameService.over()
+                        .subscribe(gameData => {
+                        this.onGameOver(gameData.isStarted);
+                ***REMOVED***, err => console.log(err));
             ***REMOVED***
                 ngOnInit() {
                     let isStarted = sessionStorage.getItem('isStarted');
                     if (isStarted === 'undefined' || isStarted === null) {
                         let timer = Rx_1.Observable.timer(1000, 1000).take(3);
-                        timer.subscribe(t => this.tickerFunc(t));
+                        this.timerSubscription = timer.subscribe(t => this.tickerFunc(t));
                 ***REMOVED***
                     else {
                         this.countDown = null;
@@ -88,9 +89,10 @@ System.register(['@angular/core', '../services/word.service', '../services/game.
                 buttonState() {
                     return this.wordCount === 0;
             ***REMOVED***
-                onGameOver(state) {
-                    this.isStarted = state;
+                onGameOver(correctAnswer) {
+                    this.isStarted = false;
                     this.guessWord = null;
+                    this.correctAnswer = correctAnswer;
                     sessionStorage.clear();
             ***REMOVED***
                 tickerFunc(tick) {
