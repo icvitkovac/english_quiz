@@ -1,5 +1,5 @@
 ***REMOVED***
-/* global Game, Word, GameBreakdown, Translation,_ */
+/* global Game, Word, GameBreakdown, Translation, _, ReportedTranslations */
 module.exports = {
 
   on: function(gameData, errCb, successCb) {
@@ -86,13 +86,14 @@ module.exports = {
 
   report: function(translation, reporter, errCb, successCb) {
     Translation.findOneByValue(translation)
-    .exec(function(err, translationData) {
-      if (err) return errCb(err);
-      Translation.update(translationData.id, {reporter})
+     .exec(function(err, translationData) {
+       if (err) return errCb(err);
+
+       ReportedTranslations.create({reportedTranslation: translationData.id, reporter})
         .exec(function(err, updatedData) {
           if (err) return errCb(err);
           return successCb(updatedData);
     ***REMOVED***);
-***REMOVED***);
+ ***REMOVED***);
 ***REMOVED***
 ***REMOVED***
