@@ -6,17 +6,14 @@
  */
 
 module.exports = {
-
+  autoPK: false,
+  autoCreatedAt: false,
+  autoUpdatedAt: false,
   attributes: {
 
     questionsNumber: {
       type: 'int',
       defaultsTo: 3
-    },
-    id: {
-      type: 'integer',
-      primaryKey: true,
-      autoIncrement: true
     },
     practiceMode: {
       type: 'boolean',
@@ -31,8 +28,6 @@ module.exports = {
       model: 'user'
     }
 
-  },
-  autoCreatedAt: false,
-  autoUpdatedAt: false
+  }
 };
 

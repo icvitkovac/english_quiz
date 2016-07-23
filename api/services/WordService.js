@@ -67,9 +67,7 @@ module.exports = {
           if (session.settings.practiceMode) query = {author: userId};
           _countRequest();
         });
-    }
-
-    else {
+    } else {
       _countRequest();
     }
   },
