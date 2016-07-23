@@ -25,15 +25,7 @@ module.exports = {
     isAnswer: {
       type: 'boolean',
       defaultsTo: 'false'
-    },
-    reported: {
-      type: 'boolean',
-      defaultsTo: 'false'
-    },
-    reporter: {
-      model: 'user'
     }
-
   }
 };
 
