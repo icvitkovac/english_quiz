@@ -95,8 +95,6 @@ module.exports = {
         ***REMOVED***);
     ***REMOVED***);
 ***REMOVED***
-
-    else {
       res.status(409);
       res.send('game already started');
 ***REMOVED***
@@ -138,14 +136,11 @@ module.exports = {
             isAnswer: true
       ***REMOVED***);
     ***REMOVED***
-
-        else {
           req.session.game.gamePoints ? req.session.game.gamePoints -= 0.5 : 0;
 
           if (req.session.settings.practiceMode === false) {
             _over(req, res, data.term);
       ***REMOVED***
-          else {
             res.json({
               points: req.session.game.gamePoints,
               isAnswer: false
@@ -154,6 +149,14 @@ module.exports = {
     ***REMOVED***
   ***REMOVED***
     );
+***REMOVED***,
+
+  report: function(req, res) {
+    GameService.report(
+      req.param('translation'),
+      req.session.user.id,
+      err => res.badRequest(err),
+      reportedData => res.json(reportedData));
 ***REMOVED***
 
 ***REMOVED***
