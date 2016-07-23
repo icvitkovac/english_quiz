@@ -52,7 +52,7 @@ module.exports = {
         .exec(function(err, count) {
           if (err) return errCb(err);
           session.wordCount = parseInt(count, 10);
-          return successCb({count: count});
+          return successCb({count});
     ***REMOVED***);
 ***REMOVED***
 
