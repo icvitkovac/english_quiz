@@ -7,10 +7,9 @@
 
 module.exports = {
 
-  callback: function (req, res, profile) {
-
+  callback: function(req, res, profile) {
+    console.log(profile);
     res.ok();
-
 ***REMOVED***
 
 ***REMOVED***
