@@ -13,7 +13,8 @@ module.exports = {
     Settings.findOrCreate({userId}, {userId})
       .exec(function(err, data) {
         if (err) return errorCb(err);
-        if (data.length) return successCb(data[0]);
+        if (data.length) data = data[0];
+        return successCb(data);
   ***REMOVED***);
 ***REMOVED***
 ***REMOVED***
