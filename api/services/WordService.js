@@ -68,8 +68,6 @@ module.exports = {
           _countRequest();
     ***REMOVED***);
 ***REMOVED***
-
-    else {
       _countRequest();
 ***REMOVED***
 ***REMOVED***,
