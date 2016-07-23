@@ -22,6 +22,9 @@ module.exports = {
     contenderId: {
       model: 'user'
     },
+    gameType: {
+      model: 'GameTypes'
+    },
     active: {
       type: 'boolean',
       defaultsTo: true

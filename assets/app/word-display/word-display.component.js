@@ -41,9 +41,8 @@ System.register(['@angular/core', '../models/word', '../services/game.service', 
                             this.word = data;
                             sessionStorage.setItem('guessWord', JSON.stringify(data));
                         }
-                        if (data.isStarted === false) {
-                            this.onGameOver.emit(false);
-                        }
+                        if (data.isStarted === false)
+                            this.onGameOver.emit(data.correctAnswer);
                     });
                 }
             };

@@ -11,9 +11,16 @@ export class GameService {
     this.baseUrl = 'game/';
   }
 
-  public startEnd() {
+  public on(type: string) {
     return this.http
-      .get(`${this.baseUrl}on`)
+      .post(`${this.baseUrl}on`, { type })
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  public over() {
+    return this.http
+      .get(`${this.baseUrl}over`)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -28,6 +35,13 @@ export class GameService {
   public checkAnswer(pickedWord) {
     return this.http
       .get(`${this.baseUrl}check/${pickedWord.id}`)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  public checkExisting(enteredWord: string) {
+    return this.http
+      .get(`${this.baseUrl}check/${enteredWord}`)
       .map(this.extractData)
       .catch(this.handleError);
   }
