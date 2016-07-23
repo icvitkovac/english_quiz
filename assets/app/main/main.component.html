@@ -11,4 +11,7 @@
 
 <h3 *ngIf="countDown">Game starting in {{countDown}}</h3>
 
-<p *ngIf="correctAnswer">Correct answer: {{correctAnswer}}</p>
+<div *ngIf="correctAnswer">
+  <span>Correct answer: {{correctAnswer}}</span>
+  <button (click)=reportTranslation()>Report translation</button>
+</div>

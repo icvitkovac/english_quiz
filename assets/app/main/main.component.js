@@ -95,6 +95,10 @@ System.register(['@angular/core', '../services/word.service', '../services/game.
                     this.correctAnswer = correctAnswer;
                     sessionStorage.clear();
                 }
+                reportTranslation() {
+                    this._gameService.report(this.correctAnswer)
+                        .subscribe(result => alert('Reported! Thank you.'), err => console.log(err));
+                }
                 tickerFunc(tick) {
                     this.countDown--;
                     if (this.countDown <= 0)

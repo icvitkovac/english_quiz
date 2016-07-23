@@ -53,6 +53,13 @@ export class GameService {
       .catch(this.handleError);
   }
 
+  public report(translation:string){
+     return this.http
+      .post(`${this.baseUrl}report`, {translation})
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   public highScores() {
     return this.http
       .get(`${this.baseUrl}highscores`)
