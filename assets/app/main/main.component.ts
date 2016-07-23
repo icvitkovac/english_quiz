@@ -19,7 +19,7 @@ export class MainComponent implements OnInit {
   private isStarted: boolean = false;
   private points: number = 0;
   private countDown: number = 3;
-  private correctAnswer:string = null;
+  private correctAnswer: string = null;
   private timerSubscription: any = null;
 
   constructor(private _wordService: WordService, private _gameService: GameService) {
@@ -36,7 +36,7 @@ export class MainComponent implements OnInit {
         sessionStorage.setItem('points', '0');
         sessionStorage.setItem('isStarted', 'true');
 
-        if(this.timerSubscription) {
+        if (this.timerSubscription) {
           //stop countdown if exists
           this.timerSubscription.unsubscribe();
           this.countDown = null;
@@ -48,7 +48,7 @@ export class MainComponent implements OnInit {
             this.guessWord = guessWord;
             sessionStorage.setItem('guessWord', JSON.stringify(guessWord));
           });
-      }, err =>console.log(err));
+      }, err => console.log(err));
   }
 
   endGame(): void {
@@ -56,7 +56,7 @@ export class MainComponent implements OnInit {
       .subscribe(gameData => {
         //clear word on game over
         this.onGameOver(gameData.isStarted)
-      }, err =>console.log(err));
+      }, err => console.log(err));
   }
 
   ngOnInit(): void {
@@ -90,11 +90,17 @@ export class MainComponent implements OnInit {
     return this.wordCount === 0;
   }
 
-  onGameOver(correctAnswer:string): void {
+  onGameOver(correctAnswer: string): void {
     this.isStarted = false;
     this.guessWord = null;
     this.correctAnswer = correctAnswer;
     sessionStorage.clear();
+  }
+
+  reportTranslation() {
+    this._gameService.report(this.correctAnswer)
+      .subscribe(result => alert('Reported! Thank you.'),
+      err => console.log(err));
   }
 
   tickerFunc(tick): void {

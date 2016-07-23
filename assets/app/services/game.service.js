@@ -65,6 +65,12 @@ System.register(['@angular/http', '@angular/core', 'rxjs/Observable'], function(
                         .map(this.extractData)
                         .catch(this.handleError);
                 }
+                report(translation) {
+                    return this.http
+                        .post(`${this.baseUrl}report`, { translation: translation })
+                        .map(this.extractData)
+                        .catch(this.handleError);
+                }
                 highScores() {
                     return this.http
                         .get(`${this.baseUrl}highscores`)

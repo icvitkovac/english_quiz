@@ -82,5 +82,17 @@ module.exports = {
             });
           });
       });
+  },
+
+  report: function(translation, reporter, errCb, successCb) {
+    Translation.findOneByValue(translation)
+    .exec(function(err, translationData) {
+      if (err) return errCb(err);
+      Translation.update(translationData.id, {reporter})
+        .exec(function(err, updatedData) {
+          if (err) return errCb(err);
+          return successCb(updatedData);
+        });
+    });
   }
 };
