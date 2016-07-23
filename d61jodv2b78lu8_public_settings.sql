@@ -1,4 +1,0 @@
-INSERT INTO public.settings ("questionsNumber", id, "practiceMode", "onlyHard", "createdAt", "updatedAt", "userId") VALUES ('5', 3, true, false, '2016-06-13 16:18:31.000000', '2016-06-13 16:18:31.000000', 21);
-INSERT INTO public.settings ("questionsNumber", id, "practiceMode", "onlyHard", "createdAt", "updatedAt", "userId") VALUES ('5', 5, true, false, null, null, 19);
-INSERT INTO public.settings ("questionsNumber", id, "practiceMode", "onlyHard", "createdAt", "updatedAt", "userId") VALUES ('5', 4, false, false, null, null, 20);
-INSERT INTO public.settings ("questionsNumber", id, "practiceMode", "onlyHard", "createdAt", "updatedAt", "userId") VALUES ('50', 1, false, true, null, '2016-06-13 22:27:39.000000', 18);
