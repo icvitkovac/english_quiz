@@ -66,8 +66,8 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/c/engleski.git"
+    "url": "https://github.com/icvitkovac/english_quiz"
   },
-  "author": "c",
+  "author": "icvitkovac",
   "license": ""
 }
