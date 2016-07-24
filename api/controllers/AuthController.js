@@ -6,6 +6,11 @@ module.exports = {
       if ((err) || (!user)) {
         return res.send({message: 'login failed'});
       }
+      
+      // if (user.locale === null || user.locale.startsWith('en')) {
+
+      // }
+
       req.session.authenticated = true;
       req.session.user = user;
       res.redirect('/pick');
