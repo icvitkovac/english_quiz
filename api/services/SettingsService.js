@@ -10,7 +10,7 @@ module.exports = {
       });
   },
   init: function(userId, errorCb, successCb) {
-    Settings.findOrCreate({userId}, {userId})
+    Settings.findOrCreate({userId}, {userId, practiceMode: false})
       .exec(function(err, data) {
         if (err) return errorCb(err);
         if (data.length) data = data[0];
