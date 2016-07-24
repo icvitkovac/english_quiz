@@ -30,6 +30,14 @@ module.exports.policies = {
 
   'AuthController': {
     '*': true
+***REMOVED***,
+  'UserController': {
+    'find': false,
+    '*': ['sessionAuth', 'permissionAuth']
+***REMOVED***,
+
+  'GameController': {
+    'find': false
 ***REMOVED***
 
   /***************************************************************************
