@@ -33,13 +33,8 @@ var jsFilesToInject = [
   // Dependencies like jQuery, or Angular are brought in here
 
 
-  'js/dependencies/**/underscore.js',
+  'js/dependencies/**/loodash.js',
   'js/dependencies/**/jquery.js',
-  'js/dependencies/**/json2.js',
-  'js/dependencies/**/backbone.js',
-  'js/dependencies/**/backbone.babysitter.js',
-  'js/dependencies/**/backbone.wreqr.js',
-  'js/dependencies/**/backbone.marionette.js',
   'js/dependencies/**/*.js',
 
   // All of the rest of your client-side js files

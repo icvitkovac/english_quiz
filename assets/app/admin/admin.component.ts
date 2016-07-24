@@ -7,7 +7,7 @@ import {Settings} from '../models/settings';
 import {WordDetailComponent} from '../word-detail/word-detail.component';
 import {WordAddComponent} from '../word-add/word-add.component';
 import {HighlightDirective} from '../directives/highlight.directive';
-import 'rxjs/Rx';
+// import 'rxjs/Rx';
 
 @Component({
   selector: 'admin-form',
