@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', '../services/word.service', '../services/settings.service', '../word-detail/word-detail.component', '../word-add/word-add.component', '../directives/highlight.directive', 'rxjs/Rx'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', '../services/word.service', '../services/settings.service', '../word-detail/word-detail.component', '../word-add/word-add.component', '../directives/highlight.directive'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -34,8 +34,7 @@ System.register(['@angular/core', '@angular/common', '../services/word.service',
             },
             function (highlight_directive_1_1) {
                 highlight_directive_1 = highlight_directive_1_1;
-            },
-            function (_1) {}],
+            }],
         execute: function() {
             let AdminComponent = class AdminComponent {
                 constructor(_wordService, fb, _settingsService) {

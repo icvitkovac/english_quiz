@@ -8,9 +8,8 @@
  * For more information on bootstrapping your app, check out:
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.bootstrap.html
  */
-/**
- * @global Word
- */
+
+/*  globals Word */
 var jsonfile = require('jsonfile');
 
 module.exports.bootstrap = function(cb) {
