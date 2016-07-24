@@ -6,12 +6,11 @@ System.register([], function(exports_1, context_1) {
         setters:[],
         execute: function() {
             class Settings {
-                constructor(questionsNumber, practiceMode, onlyHard, userId, id) {
+                constructor(questionsNumber, practiceMode, onlyHard, userId) {
                     this.questionsNumber = questionsNumber;
                     this.practiceMode = practiceMode;
                     this.onlyHard = onlyHard;
                     this.userId = userId;
-                    this.id = id;
             ***REMOVED***
         ***REMOVED***
             exports_1("Settings", Settings);

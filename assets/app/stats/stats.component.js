@@ -1,4 +1,4 @@
-System.register(['@angular/core', '../services/game.service', '../directives/highlight.directive', 'rxjs/Rx'], function(exports_1, context_1) {
+System.register(['@angular/core', '../services/game.service', '../directives/highlight.directive'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -22,8 +22,7 @@ System.register(['@angular/core', '../services/game.service', '../directives/hig
         ***REMOVED***,
             function (highlight_directive_1_1) {
                 highlight_directive_1 = highlight_directive_1_1;
-        ***REMOVED***,
-            function (_1) {}],
+        ***REMOVED***],
         execute: function() {
             let StatsComponent = class StatsComponent {
                 constructor(_gameService) {
