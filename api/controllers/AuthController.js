@@ -6,7 +6,6 @@ module.exports = {
       if ((err) || (!user)) {
         return res.send({message: 'login failed'});
       }
-
       req.session.authenticated = true;
       req.session.user = user;
       res.redirect('/pick');

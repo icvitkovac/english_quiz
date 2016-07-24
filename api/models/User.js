@@ -18,8 +18,13 @@ module.exports = {
     },
     facebookId: {
       type: 'string'
+    },
+    pictureUrl: {
+      type: 'string'
+    },
+    locale: {
+      type: 'string'
     }
-
   }
 };
 

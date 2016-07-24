@@ -1,9 +1,9 @@
 'use strict';
 /* global sails, User */
-var passport = require('passport'),
-  FacebookStrategy = require('passport-facebook'),
-  express = require('express'),
-  env = process.env.NODE_ENV || 'dev';
+var passport = require('passport');
+var FacebookStrategy = require('passport-facebook');
+var express = require('express');
+var env = process.env.NODE_ENV || 'dev';
 
 module.exports.http = {
   customMiddleware: function(app) {
@@ -17,13 +17,16 @@ module.exports.http = {
       fbStrategyConfig = {
         clientID: '579029875603851',
         clientSecret: '3b95ba53fa22a8ae7f304c9572f6d9a9',
-        callbackURL: `http://localhost:${sails.config.port}/auth/facebook/callback`
+        callbackURL: `http://localhost:${sails.config.port}/auth/facebook/callback`,
+        profileFields: ['id', 'first_name', 'last_name', 'gender', 'picture', 'locale']
+
       };
     } else {
       fbStrategyConfig = {
         clientID: '566624130177759',
         clientSecret: '4400b12009fc53fed297653a30e0a99b',
-        callbackURL: "/auth/facebook/callback"
+        callbackURL: '/auth/facebook/callback',
+        profileFields: ['id', 'first_name', 'last_name', 'gender', 'picture', 'locale']
       };
     }
 
@@ -32,7 +35,9 @@ module.exports.http = {
       function(accessToken, refreshToken, profile, cb) {
         User.findOrCreate({facebookId: profile.id}, {
           facebookId: profile.id,
-          name: profile.displayName
+          name: `${profile._json.first_name}  ${profile._json.last_name}`,
+          locale: profile._json.locale,
+          pictureUrl: profile._json.picture.data.url
         }).exec(function(err, user) {
           return cb(err, user);
         });
