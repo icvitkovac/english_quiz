@@ -6,10 +6,11 @@
  */
 
 module.exports = {
+  autoPK: false,
 
   attributes: {
-    reportedTranslation: {
-      model: 'translation'
+    reportedWord: {
+      model: 'word'
     },
     reporter: {
       model: 'user'
