@@ -89,7 +89,7 @@ module.exports = {
      .exec(function(err, translationData) {
        if (err) return errCb(err);
 
-       ReportedTranslations.create({reportedTranslation: translationData.id, reporter})
+       ReportedTranslations.create({reportedWord: translationData.term, reporter})
         .exec(function(err, updatedData) {
           if (err) return errCb(err);
           return successCb(updatedData);
