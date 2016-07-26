@@ -10,7 +10,7 @@ import {ROUTER_DIRECTIVES} from '@angular/router';
 
 @Component({
   selector: 'english-quiz',
-  directives: [MainComponent, AdminComponent, ROUTER_DIRECTIVES],
+  directives: [MainComponent, AdminComponent,  ROUTER_DIRECTIVES],
   precompile: [MainComponent, AdminComponent, StatsComponent, GamePickerComponent, LongestWordComponent],
   templateUrl: 'app/app.component.html'
 
