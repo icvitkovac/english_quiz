@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/router', '../notification/notification.service', '../notification/notification.component'], function(exports_1, context_1) {
+System.register(['@angular/core', './notification.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,41 +10,42 @@ System.register(['@angular/core', '@angular/router', '../notification/notificati
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 ***REMOVED***;
-    var core_1, router_1, notification_service_1, notification_component_1;
-    var GamePickerComponent;
+    var core_1, notification_service_1;
+    var NotificationComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
         ***REMOVED***,
-            function (router_1_1) {
-                router_1 = router_1_1;
-        ***REMOVED***,
             function (notification_service_1_1) {
                 notification_service_1 = notification_service_1_1;
-        ***REMOVED***,
-            function (notification_component_1_1) {
-                notification_component_1 = notification_component_1_1;
         ***REMOVED***],
         execute: function() {
-            let GamePickerComponent = class GamePickerComponent {
-                constructor(_notificationService) {
-                    this._notificationService = _notificationService;
+            let NotificationComponent = class NotificationComponent {
+                constructor(_notifications) {
+                    this._notifications = _notifications;
+                    this._notes = new Array();
+                    _notifications.noteAdded.subscribe(note => {
+                        this._notes.push(note);
+                        setTimeout(() => { this.hide.bind(this)(note); }, 3000000);
+                ***REMOVED***);
             ***REMOVED***
-                ngOnInit() {
+                hide(note) {
+                    let index = this._notes.indexOf(note);
+                    if (index >= 0) {
+                        this._notes.splice(index, 1);
+                ***REMOVED***
             ***REMOVED***
       ***REMOVED***
-            GamePickerComponent = __decorate([
+            NotificationComponent = __decorate([
                 core_1.Component({
-                    selector: 'selector',
-                    directives: [router_1.ROUTER_DIRECTIVES, notification_component_1.NotificationComponent],
-                    providers: [notification_service_1.NotificationService],
-                    templateUrl: 'app/game-picker/game-picker.component.html'
+                    selector: 'notification',
+                    templateUrl: 'app/notification/notification.component.html'
             ***REMOVED***), 
                 __metadata('design:paramtypes', [notification_service_1.NotificationService])
-            ], GamePickerComponent);
-            exports_1("GamePickerComponent", GamePickerComponent);
+            ], NotificationComponent);
+            exports_1("NotificationComponent", NotificationComponent);
     ***REMOVED***
 ***REMOVED***
 });
-//# sourceMappingURL=game-picker.component.js.map
+//# sourceMappingURL=notification.component.js.map
