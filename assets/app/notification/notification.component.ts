@@ -8,23 +8,20 @@ import { Notification } from './notification.model';
      templateUrl: 'app/notification/notification.component.html'
 })
 export class NotificationComponent {
-    private _notes: Notification[];
+    private _notifications;
 
-    constructor(private _notifications: NotificationService) {
-        this._notes = new Array<Notification>();
+    constructor(private _notificationService: NotificationService) {
+        this._notifications = new Set<Notification>();
 
-        _notifications.noteAdded.subscribe(note => {
-            this._notes.push(note);
+        _notificationService.noteAdded.subscribe(note => {
+            this._notifications.add(note);
 
-            setTimeout(() => { this.hide.bind(this)(note) }, 3000000);
+            if(note.autoClose) setTimeout(() => { this.hide.bind(this)(note) }, 5000);
+
     ***REMOVED***);
 ***REMOVED***
 
     private hide(note) {
-        let index = this._notes.indexOf(note);
-
-        if (index >= 0) {
-            this._notes.splice(index, 1);
-    ***REMOVED***
+        if(this._notifications.has(note)) this._notifications.delete(note);
 ***REMOVED***
 }
