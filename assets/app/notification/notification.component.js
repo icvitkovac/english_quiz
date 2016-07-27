@@ -22,19 +22,18 @@ System.register(['@angular/core', './notification.service'], function(exports_1,
             }],
         execute: function() {
             let NotificationComponent = class NotificationComponent {
-                constructor(_notifications) {
-                    this._notifications = _notifications;
-                    this._notes = new Array();
-                    _notifications.noteAdded.subscribe(note => {
-                        this._notes.push(note);
-                        setTimeout(() => { this.hide.bind(this)(note); }, 3000000);
+                constructor(_notificationService) {
+                    this._notificationService = _notificationService;
+                    this._notifications = new Set();
+                    _notificationService.noteAdded.subscribe(note => {
+                        this._notifications.add(note);
+                        if (note.autoClose)
+                            setTimeout(() => { this.hide.bind(this)(note); }, 5000);
                     });
                 }
                 hide(note) {
-                    let index = this._notes.indexOf(note);
-                    if (index >= 0) {
-                        this._notes.splice(index, 1);
-                    }
+                    if (this._notifications.has(note))
+                        this._notifications.delete(note);
                 }
             };
             NotificationComponent = __decorate([

@@ -26,7 +26,7 @@ System.register(['@angular/core', 'rxjs/Subject'], function(exports_1, context_1
                     this._notifications = new Subject_1.Subject();
                     this.noteAdded = this._notifications.asObservable();
                 }
-                add(notification) {
+                show(notification) {
                     this._notifications.next(notification);
                 }
             };

@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import { NotificationService } from '../notification/notification.service';
-import { Notification } from '../notification/notification.model';
 import {NotificationComponent} from '../notification/notification.component'
-
-
 
 
 @Component({
@@ -16,13 +13,10 @@ import {NotificationComponent} from '../notification/notification.component'
 })
 export class GamePickerComponent implements OnInit {
     constructor(private _notificationService: NotificationService) {
-
-
     }
 
     ngOnInit() {
-        // this._notificationService.add(new Notification('success', 'This shows up green!'));
-
+        this._notificationService.show({ type: 'warn', message: 'Hey there', hasCloseButton: true });
     }
 
 }

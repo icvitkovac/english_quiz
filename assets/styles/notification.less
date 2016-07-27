@@ -4,22 +4,34 @@
 @info: #bde5f8;
 
 .notification {
-    // left: calc(20% - 150px);
+    left: ~"calc(50% - 150px)";
     position: absolute;
     top: 10%;
     z-index: 999;
+
+    button{
+        top: 0.1em;
+        right: 1em;
+        position: absolute;
+        border: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        cursor: pointer;
+    }
 
     div {
         border: 1px solid;
         border-radius: 4px;
         box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .22),
                     0 17px 20px 0 rgba(0, 0, 0, .12);
-        cursor: pointer;
         margin-bottom: .5em;
         min-height: 3em;
         padding: 1em;
         text-align: center;
         width: 300px;
+
+    
 
         &.success {
             background-color: @success;
