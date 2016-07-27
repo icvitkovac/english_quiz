@@ -32,6 +32,7 @@ System.register(['@angular/core', '@angular/router', '../notification/notificati
                     this._notificationService = _notificationService;
                 }
                 ngOnInit() {
+                    this._notificationService.show({ type: 'warn', message: 'Hey there', hasCloseButton: true });
                 }
             };
             GamePickerComponent = __decorate([

@@ -1,5 +1,5 @@
-export class Notification {
-    constructor(public type: string = '',
-        public message: string = '') {
-    }
+export interface Notification {
+
+    type: string, message: string, autoClose?: boolean, hasCloseButton?: boolean
+
 }

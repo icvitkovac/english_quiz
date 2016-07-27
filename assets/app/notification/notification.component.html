@@ -1,5 +1,6 @@
 <div class="notification">
-    <div (click)="hide(note)" class="{{ note.type }}" *ngFor="let note of _notes">
+    <div class="{{ note.type }}" *ngFor="let note of _notifications">
+            <button class="close" *ngIf="note.hasCloseButton" (click)="hide(note)">x</button>
         {{ note.message }}
     </div>
 </div>
