@@ -1,4 +1,4 @@
-System.register(['@angular/core', '../services/word.service', '../models/word'], function(exports_1, context_1) {
+System.register(['@angular/core', '../services/word.service', '../models/word', '../notification/notification.service', '../notification/notification.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '../services/word.service', '../models/word'],
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 ***REMOVED***;
-    var core_1, word_service_1, word_1;
+    var core_1, word_service_1, word_1, notification_service_1, notification_component_1;
     var WordAddComponent;
     return {
         setters:[
@@ -22,11 +22,18 @@ System.register(['@angular/core', '../services/word.service', '../models/word'],
         ***REMOVED***,
             function (word_1_1) {
                 word_1 = word_1_1;
+        ***REMOVED***,
+            function (notification_service_1_1) {
+                notification_service_1 = notification_service_1_1;
+        ***REMOVED***,
+            function (notification_component_1_1) {
+                notification_component_1 = notification_component_1_1;
         ***REMOVED***],
         execute: function() {
             let WordAddComponent = class WordAddComponent {
-                constructor(_wordService) {
+                constructor(_wordService, _notificationService) {
                     this._wordService = _wordService;
+                    this._notificationService = _notificationService;
                     this.submitted = false;
                     this.word = new word_1.Word(0, '', false, []);
             ***REMOVED***
@@ -35,9 +42,9 @@ System.register(['@angular/core', '../services/word.service', '../models/word'],
                     this._wordService
                         .add(this.word)
                         .subscribe(() => {
-                        alert('word added');
+                        this._notificationService.show({ type: 'success', message: 'Word successfully added.', autoClose: true });
                 ***REMOVED***, err => {
-                        this.errorMessage = err;
+                        this._notificationService.show({ type: 'error', message: `There has been an error: ${err}.`, hasCloseButton: true });
                 ***REMOVED***);
             ***REMOVED***
       ***REMOVED***
@@ -49,9 +56,10 @@ System.register(['@angular/core', '../services/word.service', '../models/word'],
                 core_1.Component({
                     selector: 'word-add',
                     templateUrl: 'app/word-add/word-add.component.html',
-                    providers: [word_service_1.WordService]
+                    directives: [notification_component_1.NotificationComponent],
+                    providers: [word_service_1.WordService, notification_service_1.NotificationService]
             ***REMOVED***), 
-                __metadata('design:paramtypes', [word_service_1.WordService])
+                __metadata('design:paramtypes', [word_service_1.WordService, notification_service_1.NotificationService])
             ], WordAddComponent);
             exports_1("WordAddComponent", WordAddComponent);
     ***REMOVED***
