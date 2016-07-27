@@ -9,7 +9,7 @@ export class NotificationService {
 
     public noteAdded = this._notifications.asObservable();
 
-    public add(notification: Notification) {
+    public show(notification: Notification) {
         this._notifications.next(notification);
 ***REMOVED***
 }

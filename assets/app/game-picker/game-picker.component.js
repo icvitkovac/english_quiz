@@ -32,6 +32,7 @@ System.register(['@angular/core', '@angular/router', '../notification/notificati
                     this._notificationService = _notificationService;
             ***REMOVED***
                 ngOnInit() {
+                    this._notificationService.show({ type: 'warn', message: 'Hey there', hasCloseButton: true });
             ***REMOVED***
       ***REMOVED***
             GamePickerComponent = __decorate([
