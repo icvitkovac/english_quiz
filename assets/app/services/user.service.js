@@ -11,7 +11,7 @@ System.register(['@angular/http', '@angular/core', 'rxjs/Observable'], function(
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var http_1, core_1, Observable_1;
-    var SettingsService;
+    var UserService;
     return {
         setters:[
             function (http_1_1) {
@@ -24,27 +24,20 @@ System.register(['@angular/http', '@angular/core', 'rxjs/Observable'], function(
                 Observable_1 = Observable_1_1;
             }],
         execute: function() {
-            let SettingsService = class SettingsService {
+            let UserService = class UserService {
                 constructor(http) {
                     this.http = http;
-                    this.baseUrl = '/settings';
+                    this.baseUrl = 'user/';
                 }
-                get() {
+                update(updateObj) {
                     return this.http
-                        .get(this.baseUrl)
+                        .put(`${this.baseUrl}update`, updateObj)
                         .map(this.extractData)
                         .catch(this.handleError);
                 }
-                update(data) {
-                    let reqObj = JSON.stringify(data);
+                setLocale(locale) {
                     return this.http
-                        .post(this.baseUrl + '/handle', reqObj)
-                        .map(this.extractData)
-                        .catch(this.handleError);
-                }
-                languages() {
-                    return this.http
-                        .get('../json/languageMapping.json')
+                        .put(`${this.baseUrl}setLocale`, { locale: locale })
                         .map(this.extractData)
                         .catch(this.handleError);
                 }
@@ -60,12 +53,12 @@ System.register(['@angular/http', '@angular/core', 'rxjs/Observable'], function(
                     return Observable_1.Observable.throw(errMsg);
                 }
             };
-            SettingsService = __decorate([
+            UserService = __decorate([
                 core_1.Injectable(), 
                 __metadata('design:paramtypes', [http_1.Http])
-            ], SettingsService);
-            exports_1("SettingsService", SettingsService);
+            ], UserService);
+            exports_1("UserService", UserService);
         }
     }
 });
-//# sourceMappingURL=settings.service.js.map
+//# sourceMappingURL=user.service.js.map

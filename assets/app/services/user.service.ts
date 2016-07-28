@@ -3,39 +3,29 @@ import {Injectable} from '@angular/core';
 import {Observable}     from 'rxjs/Observable';
 
 @Injectable()
-export class SettingsService {
-  private baseUrl:string;
+export class UserService {
+  private baseUrl: string;
 
-  constructor(private http:Http) {
-    this.baseUrl = '/settings';
+
+  constructor(private http: Http) {
+    this.baseUrl = 'user/';
   }
 
-
-  get() {
+  public update(updateObj) {
     return this.http
-      .get(this.baseUrl)
+      .put(`${this.baseUrl}update`, updateObj)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
-  //todo impure api update call, think about refactoring
-  update(data) {
-    let reqObj = JSON.stringify(data);
+    public setLocale(locale) {
     return this.http
-      .post(this.baseUrl + '/handle', reqObj)
+      .put(`${this.baseUrl}setLocale`, {locale})
       .map(this.extractData)
       .catch(this.handleError);
   }
 
-  languages(){
-    return this.http
-      .get('../json/languageMapping.json')
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
-
-  private extractData(res:Response) {
+  private extractData(res: Response) {
     if (res.status < 200 || res.status >= 300) {
       throw new Error('Bad response status: ' + res.status);
     }
@@ -43,7 +33,7 @@ export class SettingsService {
     return body || {};
   }
 
-  private handleError(error:any) {
+  private handleError(error: any) {
     // In a real world app, we might send the error to remote logging infrastructure
     let errMsg = error.message || 'Server error';
     return Observable.throw(errMsg);
