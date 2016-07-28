@@ -1,8 +1,9 @@
 module.exports = function(req, res, next) {
   // User is allowed, proceed to the next policy,
   // or if this is the last policy, the controller
+  let id = parseInt(req.param('id'), 10);
 
-  if (req.session.user.id === parseInt(req.param('id'), 10)) {
+  if (!id || req.session.user.id === id) {
     return next();
   }
 
