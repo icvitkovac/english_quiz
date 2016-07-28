@@ -1,212 +1,54 @@
 {
-    "language-names": {
-        "af-ZA": [
-            "Afrikaans",
-            "Afrikaans"
-        ],
-        "ar": [
-            "العربية",
-            "Arabic"
-        ],
-        "bg-BG": [
-            "Български",
-            "Bulgarian"
-        ],
-        "ca-AD": [
-            "Català",
-            "Catalan"
-        ],
-        "cs-CZ": [
-            "Čeština",
-            "Czech"
-        ],
-        "cy-GB": [
-            "Cymraeg",
-            "Welsh"
-        ],
-        "da-DK": [
-            "Dansk",
-            "Danish"
-        ],
-        "de-AT": [
-            "Deutsch (Österreich)",
-            "German (Austria)"
-        ],
-        "de-CH": [
-            "Deutsch (Schweiz)",
-            "German (Switzerland)"
-        ],
-        "de-DE": [
-            "Deutsch (Deutschland)",
-            "German (Germany)"
-        ],
-        "el-GR": [
-            "Ελληνικά",
-            "Greek"
-        ],
-        "en-GB": [
-            "English (UK)",
-            "English (UK)"
-        ],
-        "en-US": [
-            "English (US)",
-            "English (US)"
-        ],
-        "es-CL": [
-            "Español (Chile)",
-            "Spanish (Chile)"
-        ],
-        "es-ES": [
-            "Español (España)",
-            "Spanish (Spain)"
-        ],
-        "es-MX": [
-            "Español (México)",
-            "Spanish (Mexico)"
-        ],
-        "et-EE": [
-            "Eesti",
-            "Estonian"
-        ],
-        "eu": [
-            "Euskara",
-            "Basque"
-        ],
-        "fa-IR": [
-            "فارسی",
-            "Persian"
-        ],
-        "fi-FI": [
-            "Suomi",
-            "Finnish"
-        ],
-        "fr-CA": [
-            "Français (Canada)",
-            "French (Canada)"
-        ],
-        "fr-FR": [
-            "Français (France)",
-            "French (France)"
-        ],
-        "he-IL": [
-            "עברית",
-            "Hebrew"
-        ],
-        "hr-HR": [
-            "Hrvatski",
-            "Croatian"
-        ],
-        "hu-HU": [
-            "Magyar",
-            "Hungarian"
-        ],
-        "id-ID": [
-            "Bahasa Indonesia",
-            "Indonesian"    
-        ],
-        "is-IS": [
-            "Íslenska",
-            "Icelandic"
-        ],
-        "it-IT": [
-            "Italiano",
-            "Italian"
-        ],
-        "ja-JP": [
-            "日本語",
-            "Japanese"
-        ],
-        "km-KH": [
-            "ភាសាខ្មែរ",
-            "Khmer"
-        ],
-        "ko-KR": [
-            "한국어",
-            "Korean"
-        ],
-        "lt-LT": [
-            "Lietuvių",
-            "Lithuanian"
-        ],
-        "lv-LV": [
-            "Latviešu",
-            "Latvian"
-        ],
-        "mn-MN": [
-            "Монгол",
-            "Mongolian"
-        ],
-        "nb-NO": [
-            "Norsk bokmål",
-            "Norwegian (Bokmål)"
-        ],
-        "nl-NL": [
-            "Nederlands",
-            "Dutch"
-        ],
-        "nn-NO": [
-            "Norsk nynorsk",
-            "Norwegian (Nynorsk)"
-        ],
-        "pl-PL": [
-            "Polski",
-            "Polish"
-        ],
-        "pt-BR": [
-            "Português (Brasil)",
-            "Portuguese (Brazil)"
-        ],
-        "pt-PT": [
-            "Português (Portugal)",
-            "Portuguese (Portugal)"
-        ],
-        "ro-RO": [
-            "Română",
-            "Romanian"
-        ],
-        "ru-RU": [
-            "Русский",
-            "Russian"
-        ],
-        "sk-SK": [
-            "Slovenčina",
-            "Slovak"
-        ],
-        "sl-SI": [
-            "Slovenščina",
-            "Slovenian"
-        ],
-        "sr-RS": [
-            "Српски / Srpski",
-            "Serbian"
-        ],
-        "sv-SE": [
-            "Svenska",
-            "Swedish"
-        ],
-        "th-TH": [
-            "ไทย",
-            "Thai"
-        ],
-        "tr-TR": [
-            "Türkçe",
-            "Turkish"
-        ],
-        "uk-UA": [
-            "Українська",
-            "Ukrainian"
-        ],
-        "vi-VN": [
-            "Tiếng Việt",
-            "Vietnamese"
-        ],
-        "zh-CN": [
-            "中文 (中国大陆)",
-            "Chinese (PRC)"
-        ],
-        "zh-TW": [
-            "中文 (台灣)",
-            "Chinese (Taiwan)"
-        ]
-***REMOVED***
+        "af-ZA":   "Afrikaans",
+        "ar":  "العربية",
+        "bg-BG":  "Български",
+        "ca-AD":  "Català",
+        "cs-CZ":  "Čeština",
+        "cy-GB": "Cymraeg",
+        "da-DK":  "Dansk",
+        "de-AT": "Deutsch (Österreich)",
+        "de-CH": "Deutsch (Schweiz)",
+        "de-DE":  "Deutsch (Deutschland)",
+        "el-GR":  "Ελληνικά",
+        "en-GB":  "English (UK)",
+        "en-US":  "English (US)",
+        "es-CL": "Español (Chile)",
+        "es-ES":  "Español (España)",
+        "es-MX":  "Español (México)",
+        "et-EE": "Eesti",
+        "eu":  "Euskara",
+        "fa-IR":  "فارسی",
+        "fi-FI":  "Suomi",
+        "fr-CA":  "Français (Canada)",
+        "fr-FR":  "Français (France)",
+        "he-IL": "עברית",
+        "hr-HR":  "Hrvatski",
+        "hu-HU":  "Magyar",
+        "id-ID":  "Bahasa Indonesia",
+        "is-IS": "Íslenska",
+        "it-IT":  "Italiano",
+        "ja-JP":  "日本語",
+        "km-KH": "ភាសាខ្មែរ",
+        "ko-KR": "한국어",
+        "lt-LT": "Lietuvių",
+        "lv-LV": "Latviešu",
+        "mn-MN":  "Монгол",
+        "nb-NO":  "Norsk bokmål",
+        "nl-NL": "Nederlands",
+        "nn-NO": "Norsk nynorsk",
+        "pl-PL":"Polski",
+        "pt-BR": "Português (Brasil)",
+        "pt-PT":  "Português (Portugal)",
+        "ro-RO":  "Română",
+        "ru-RU": "Русский",
+        "sk-SK":  "Slovenčina",
+        "sl-SI": "Slovenščina",
+        "sr-RS":  "Српски / Srpski",
+        "sv-SE":  "Svenska",
+        "th-TH":  "ไทย",
+        "tr-TR": "Türkçe",
+        "uk-UA": "Українська",
+        "vi-VN": "Tiếng Việt",
+        "zh-CN": "中文 (中国大陆)",
+        "zh-TW":  "中文 (台灣)"
 }
