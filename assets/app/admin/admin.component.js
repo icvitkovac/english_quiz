@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', '../services/word.service', '../services/settings.service', '../word-detail/word-detail.component', '../word-add/word-add.component', '../directives/highlight.directive'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', '../services/word.service', '../services/settings.service', '../services/user.service', '../word-detail/word-detail.component', '../word-add/word-add.component', '../directives/highlight.directive', '../notification/notification.service', '../notification/notification.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', '../services/word.service',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 ***REMOVED***;
-    var core_1, common_1, word_service_1, settings_service_1, word_detail_component_1, word_add_component_1, highlight_directive_1;
+    var core_1, common_1, word_service_1, settings_service_1, user_service_1, word_detail_component_1, word_add_component_1, highlight_directive_1, notification_service_1, notification_component_1;
     var AdminComponent;
     return {
         setters:[
@@ -26,6 +26,9 @@ System.register(['@angular/core', '@angular/common', '../services/word.service',
             function (settings_service_1_1) {
                 settings_service_1 = settings_service_1_1;
         ***REMOVED***,
+            function (user_service_1_1) {
+                user_service_1 = user_service_1_1;
+        ***REMOVED***,
             function (word_detail_component_1_1) {
                 word_detail_component_1 = word_detail_component_1_1;
         ***REMOVED***,
@@ -34,13 +37,22 @@ System.register(['@angular/core', '@angular/common', '../services/word.service',
         ***REMOVED***,
             function (highlight_directive_1_1) {
                 highlight_directive_1 = highlight_directive_1_1;
+        ***REMOVED***,
+            function (notification_service_1_1) {
+                notification_service_1 = notification_service_1_1;
+        ***REMOVED***,
+            function (notification_component_1_1) {
+                notification_component_1 = notification_component_1_1;
         ***REMOVED***],
         execute: function() {
             let AdminComponent = class AdminComponent {
-                constructor(_wordService, fb, _settingsService) {
+                constructor(_wordService, fb, _settingsService, _userService, _notificationService) {
                     this._wordService = _wordService;
                     this.fb = fb;
                     this._settingsService = _settingsService;
+                    this._userService = _userService;
+                    this._notificationService = _notificationService;
+                    this.languages = [];
                     this.searchField = new common_1.Control();
                     this.coolForm = fb.group({ search: this.searchField });
                     this.searchField.valueChanges
@@ -58,7 +70,7 @@ System.register(['@angular/core', '@angular/common', '../services/word.service',
                     this._wordService
                         .destroy(word)
                         .subscribe(() => {
-                        alert('Word deleted');
+                        this._notificationService.show({ type: 'success', message: 'Word deleted.', hasCloseButton: true, autoClose: true });
                 ***REMOVED***);
             ***REMOVED***
                 ngOnInit() {
@@ -66,24 +78,40 @@ System.register(['@angular/core', '@angular/common', '../services/word.service',
                         .subscribe((settings) => {
                         this.settings = settings;
                 ***REMOVED***);
+                    if (JSON.parse(sessionStorage.getItem('changeLanguage')) === true) {
+                        this._settingsService.languages()
+                            .subscribe((languages) => {
+                            for (var key in languages) {
+                                this.languages.push({ name: languages[key], value: key });
+                        ***REMOVED***
+                    ***REMOVED***);
+                ***REMOVED***
             ***REMOVED***
                 onSave(settings) {
                     this._settingsService
                         .update(settings)
                         .subscribe((settings) => {
                         this.settings = settings;
-                        alert('Settings updated');
+                        this._notificationService.show({ type: 'success', message: 'Settings saved.', hasCloseButton: true, autoClose: true });
+                ***REMOVED***);
+            ***REMOVED***
+                updateUser(languageSelection) {
+                    this._userService
+                        .setLocale(languageSelection)
+                        .subscribe((settings) => {
+                        sessionStorage.removeItem('changeLanguage');
+                        this._notificationService.show({ type: 'success', message: 'Language set, thank you very much!', hasCloseButton: true, autoClose: true });
                 ***REMOVED***);
             ***REMOVED***
       ***REMOVED***
             AdminComponent = __decorate([
                 core_1.Component({
                     selector: 'admin-form',
-                    providers: [word_service_1.WordService, settings_service_1.SettingsService],
-                    directives: [word_detail_component_1.WordDetailComponent, word_add_component_1.WordAddComponent, highlight_directive_1.HighlightDirective],
+                    providers: [word_service_1.WordService, settings_service_1.SettingsService, user_service_1.UserService, notification_service_1.NotificationService],
+                    directives: [word_detail_component_1.WordDetailComponent, word_add_component_1.WordAddComponent, highlight_directive_1.HighlightDirective, notification_component_1.NotificationComponent],
                     templateUrl: 'app/admin/admin.component.html'
             ***REMOVED***), 
-                __metadata('design:paramtypes', [word_service_1.WordService, common_1.FormBuilder, settings_service_1.SettingsService])
+                __metadata('design:paramtypes', [word_service_1.WordService, common_1.FormBuilder, settings_service_1.SettingsService, user_service_1.UserService, notification_service_1.NotificationService])
             ], AdminComponent);
             exports_1("AdminComponent", AdminComponent);
     ***REMOVED***
