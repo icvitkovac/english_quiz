@@ -15,7 +15,7 @@
  * @param {object} gameData - passed Game data
  */
 function _findRandomWord(req, res, gameData) {
-  let authorQuery = {***REMOVED***
+  let authorQuery = {languageCode: req.session.user.locale***REMOVED***
   if (req.session.settings.practiceMode) {
     authorQuery = {author: req.session.user.id***REMOVED***
     if (req.session.game.askedWordsCount === req.session.settings.questionsNumber) {
