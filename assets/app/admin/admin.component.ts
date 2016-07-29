@@ -60,22 +60,21 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.languageSet = JSON.parse(sessionStorage.getItem('changeLanguage')) === false;
+    this.languageSet = window['Globals'].locale !== 'null' && !window['Globals'].locale.startsWith('en');
 
     if (!this.languageSet) {
       this._settingsService.languages()
         .subscribe((languages) => {
           for (var key in languages) {
             this.languages.push({ name: languages[key], value: key });
-            this.languageSet = true;
           }
-        });
 
-      this._settingsService.get()
-        .subscribe((settings: Settings) => {
-          this.settings = settings;
         });
     }
+    this._settingsService.get()
+      .subscribe((settings: Settings) => {
+        this.settings = settings;
+      });
   }
 
   onSave(settings: Settings): void {
@@ -91,8 +90,9 @@ export class AdminComponent implements OnInit {
   updateUser(languageSelection: string): void {
     this._userService
       .setLocale(languageSelection)
-      .subscribe((settings: Settings) => {
-        sessionStorage.removeItem('changeLanguage');
+      .subscribe((userData) => {
+        this.languageSet = true;
+        window['Globals'].locale = userData.locale;
         this._notificationService.show({ type: 'success', message: 'Language set, thank you very much!', hasCloseButton: true, autoClose: true });
       });
   }

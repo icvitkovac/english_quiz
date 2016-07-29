@@ -6,7 +6,7 @@ import {StatsComponent} from './stats/stats.component';
 import {GamePickerComponent} from './game-picker/game-picker.component';
 import {LongestWordComponent} from './word-longest/word-longest.component';
 import {ROUTER_DIRECTIVES} from '@angular/router';
-
+ 
 @Component({
   selector: 'english-quiz',
   directives: [MainComponent, AdminComponent, ROUTER_DIRECTIVES],
@@ -16,7 +16,6 @@ import {ROUTER_DIRECTIVES} from '@angular/router';
 })
 
 export class AppComponent {
-  private name = Globals.name;
-
+  private name = window['Globals'].name;
 
 }

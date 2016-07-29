@@ -34,20 +34,20 @@ System.register(['@angular/core', '@angular/router', '../notification/notificati
                 constructor(_notificationService, _initService) {
                     this._notificationService = _notificationService;
                     this._initService = _initService;
+                    this.locale = window['Globals'].locale;
                 }
                 ngOnInit() {
+                    if (this.locale === 'null' || this.locale.startsWith('en')) {
+                        this._notificationService.show({ type: 'warn', message: 'Please set desired language in order to play!' });
+                    }
                     this._initService.get()
                         .subscribe((data) => {
-                        let skip = false;
                         data.forEach(element => {
-                            if (element.code === 'changeLanguage' && !skip) {
-                                skip = true;
-                                sessionStorage.setItem('changeLanguage', 'true');
-                                this._notificationService.show({ type: 'warn', message: 'Please set desired language in order to play!', autoClose: true });
-                            }
                             if (element.code === 'reportedWord') {
-                                this._notificationService.show({ type: 'warn', message: `Word ${element.word} has
-                         been reported as inaccurate by other users, please review its translations`, autoClose: true });
+                                this._notificationService.show({
+                                    type: 'warn', message: `Word ${element.word} has
+                         been reported as inaccurate by other users, please review its translations`, autoClose: true
+                                });
                             }
                         });
                     }, err => {
