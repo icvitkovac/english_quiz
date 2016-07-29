@@ -1,5 +1,6 @@
 module.exports = {
   homepage: function(req, res) {
-    return res.ok(req.session.user, 'homepage');
+    console.log(req.session.user);
+    res.view('homepage', {me: req.session.user});
   }
 };
