@@ -27,9 +27,9 @@ export class GamePickerComponent implements OnInit {
         this._initService.get()
             .subscribe((data) => {
                 data.forEach(element => {
-                    if (element.code === 'reportedWord') {
+                    if (element.reportedWord) {
                         this._notificationService.show({
-                            type: 'warn', message: `Word ${element.word} has
+                            type: 'warn', message: `Word ${element.reportedWord.value} has
                          been reported as inaccurate by other users, please review its translations`, autoClose: true
                         });
                     }
