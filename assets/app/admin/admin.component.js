@@ -53,6 +53,7 @@ System.register(['@angular/core', '@angular/common', '../services/word.service',
                     this._userService = _userService;
                     this._notificationService = _notificationService;
                     this.languages = [];
+                    this.languageSet = false;
                     this.searchField = new common_1.Control();
                     this.coolForm = fb.group({ search: this.searchField });
                     this.searchField.valueChanges
@@ -74,16 +75,18 @@ System.register(['@angular/core', '@angular/common', '../services/word.service',
                 ***REMOVED***);
             ***REMOVED***
                 ngOnInit() {
-                    this._settingsService.get()
-                        .subscribe((settings) => {
-                        this.settings = settings;
-                ***REMOVED***);
-                    if (JSON.parse(sessionStorage.getItem('changeLanguage')) === true) {
+                    this.languageSet = JSON.parse(sessionStorage.getItem('changeLanguage')) === false;
+                    if (!this.languageSet) {
                         this._settingsService.languages()
                             .subscribe((languages) => {
                             for (var key in languages) {
                                 this.languages.push({ name: languages[key], value: key });
+                                this.languageSet = true;
                         ***REMOVED***
+                    ***REMOVED***);
+                        this._settingsService.get()
+                            .subscribe((settings) => {
+                            this.settings = settings;
                     ***REMOVED***);
                 ***REMOVED***
             ***REMOVED***

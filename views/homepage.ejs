@@ -1,13 +1,10 @@
+<script>
+  var Globals = {***REMOVED***
+  Globals.name = '<%= me.name %>';
+</script>
+
 <div class="container">
-  <div class="row">
-    <div class="offset-by-eight columns">
-      <% if (typeof data === 'undefined') { %>
-      <p>Welcome! Please <a href="/login">log in</a>.</p>
-      <% } else { %>
-      <p>Hello, <%= data.name %>.</p>
-      <% } %>
-    </div>
-  </div>
+  <english-quiz></english-quiz>
 </div>
 
 <!-- 2. Configure SystemJS -->
@@ -15,4 +12,3 @@
   System.import('app/main.js').catch(function(err){ console.error(err); });
 </script>
 
-<english-quiz></english-quiz>

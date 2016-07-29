@@ -1,4 +1,14 @@
 <!-- columns should be the immediate child of a .row -->
+<div class="row" *ngIf="!languageSet && languages.length">
+
+<h3>Pick a language</h3>
+<select class="form-control" [(ngModel)]="selectedWorkout" (ngModelChange)="updateUser($event)">
+    <option *ngFor="let language of languages" value="{{language.value}}">{{language.name}}</option>
+</select>
+</div>
+
+<div *ngIf="languageSet">
+
 <div class="row">
   <div class="one-third column">
     <h5>Find/edit/delete existing words</h5>
@@ -35,13 +45,6 @@
   </ul>
 
 </div>
-
-<div class="row" *ngIf="languages.length">
-
-<h3>Pick a language</h3>
-<select class="form-control" [(ngModel)]="selectedWorkout" (ngModelChange)="updateUser($event)">
-    <option *ngFor="let language of languages" value="{{language.value}}">{{language.name}}</option>
-</select>
 
 </div>
 

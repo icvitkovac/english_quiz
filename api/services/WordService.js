@@ -6,7 +6,7 @@ module.exports = {
     let currentDate;
     let wordCreatedAt;
 
-    Word.findOrCreate({value: value}, {value: value, author: author})
+    Word.findOrCreate({value}, {value, author: author})
       .exec(function(err, wordData) {
         if (err) return errCb(err);
 
