@@ -37,6 +37,9 @@ System.register(['@angular/core', './admin/admin.component', './main/main.compon
         ***REMOVED***],
         execute: function() {
             let AppComponent = class AppComponent {
+                constructor() {
+                    this.name = Globals.name;
+            ***REMOVED***
       ***REMOVED***
             AppComponent = __decorate([
                 core_1.Component({

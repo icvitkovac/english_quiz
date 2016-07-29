@@ -21,3 +21,15 @@
 .disabled {
   color: darkgray;
 }
+
+/* HEADER */
+
+.header{
+    margin-bottom: 1.2em;
+    background-color: #3a3838;
+    padding: 1em;
+    color: whitesmoke;
+}
+.header a:hover {
+  color: #fff;
+}

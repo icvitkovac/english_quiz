@@ -29,8 +29,8 @@ module.exports = {
       required: false,
       defaultsTo: false
 ***REMOVED***,
-    author: 'integer'
-
+    author: 'integer',
+    languageCode: 'string'
 ***REMOVED***
 ***REMOVED***
 
