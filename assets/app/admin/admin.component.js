@@ -75,20 +75,19 @@ System.register(['@angular/core', '@angular/common', '../services/word.service',
                 ***REMOVED***);
             ***REMOVED***
                 ngOnInit() {
-                    this.languageSet = JSON.parse(sessionStorage.getItem('changeLanguage')) === false;
+                    this.languageSet = window['Globals'].locale !== 'null' && !window['Globals'].locale.startsWith('en');
                     if (!this.languageSet) {
                         this._settingsService.languages()
                             .subscribe((languages) => {
                             for (var key in languages) {
                                 this.languages.push({ name: languages[key], value: key });
-                                this.languageSet = true;
                         ***REMOVED***
                     ***REMOVED***);
-                        this._settingsService.get()
-                            .subscribe((settings) => {
-                            this.settings = settings;
-                    ***REMOVED***);
                 ***REMOVED***
+                    this._settingsService.get()
+                        .subscribe((settings) => {
+                        this.settings = settings;
+                ***REMOVED***);
             ***REMOVED***
                 onSave(settings) {
                     this._settingsService
@@ -101,8 +100,9 @@ System.register(['@angular/core', '@angular/common', '../services/word.service',
                 updateUser(languageSelection) {
                     this._userService
                         .setLocale(languageSelection)
-                        .subscribe((settings) => {
-                        sessionStorage.removeItem('changeLanguage');
+                        .subscribe((userData) => {
+                        this.languageSet = true;
+                        window['Globals'].locale = userData.locale;
                         this._notificationService.show({ type: 'success', message: 'Language set, thank you very much!', hasCloseButton: true, autoClose: true });
                 ***REMOVED***);
             ***REMOVED***
