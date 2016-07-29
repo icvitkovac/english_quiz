@@ -19,8 +19,7 @@ module.exports = {
 ***REMOVED***,
     code: {
       type: 'string',
-      // enum: Object.keys(notificationCodes)
-      enum: ['changeLanguage', 'reportedWord']
+      enum: ['reportedWord', 'generalNotification', 'comment']
 ***REMOVED***
 
 ***REMOVED***
