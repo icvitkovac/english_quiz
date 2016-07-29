@@ -86,14 +86,23 @@ module.exports = {
 
   report: function(translation, reporter, errCb, successCb) {
     Translation.findOneByValue(translation)
-     .exec(function(err, translationData) {
-       if (err) return errCb(err);
+      .populate('term')
+      .exec(function(err, translationData) {
+        if (err) return errCb(err);
 
-       ReportedTranslations.create({reportedWord: translationData.term, reporter})
-        .exec(function(err, updatedData) {
-          if (err) return errCb(err);
-          return successCb(updatedData);
-    ***REMOVED***);
- ***REMOVED***);
+        if (translationData.term.author === reporter) {
+          return errCb('You are the author!');
+    ***REMOVED***
+
+        ReportedTranslations.create({reportedWord: translationData.term, reporter})
+          .exec(function(err, updatedData) {
+            if (err) return errCb(err);
+            Notification.create({userId: translationData.term.author, code: 'reportedWord'})
+              .exec(function(err, nData) {
+                if (err) return errCb(err);
+                return successCb(updatedData);
+          ***REMOVED***);
+      ***REMOVED***);
+  ***REMOVED***);
 ***REMOVED***
 ***REMOVED***
