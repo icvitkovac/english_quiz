@@ -26,12 +26,13 @@ export class AdminComponent implements OnInit {
   private settings: Settings;
   private selectedWord: Word;
   private languages = [];
+  private languageSet: boolean = false;
 
-  constructor(private _wordService: WordService, 
-  private fb: FormBuilder, 
-  private _settingsService: SettingsService, 
-  private _userService: UserService,
-  private _notificationService: NotificationService
+  constructor(private _wordService: WordService,
+    private fb: FormBuilder,
+    private _settingsService: SettingsService,
+    private _userService: UserService,
+    private _notificationService: NotificationService
   ) {
     this.searchField = new Control();
     this.coolForm = fb.group({ search: this.searchField });
@@ -59,17 +60,20 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._settingsService.get()
-      .subscribe((settings: Settings) => {
-        this.settings = settings;
-      });
+    this.languageSet = JSON.parse(sessionStorage.getItem('changeLanguage')) === false;
 
-    if (JSON.parse(sessionStorage.getItem('changeLanguage')) === true) {
+    if (!this.languageSet) {
       this._settingsService.languages()
         .subscribe((languages) => {
           for (var key in languages) {
-            this.languages.push({ name: languages[key], value: key })
+            this.languages.push({ name: languages[key], value: key });
+            this.languageSet = true;
           }
+        });
+
+      this._settingsService.get()
+        .subscribe((settings: Settings) => {
+          this.settings = settings;
         });
     }
   }
@@ -79,17 +83,17 @@ export class AdminComponent implements OnInit {
       .update(settings)
       .subscribe((settings: Settings) => {
         this.settings = settings;
-          this._notificationService.show({ type: 'success', message: 'Settings saved.', hasCloseButton: true, autoClose: true });
+        this._notificationService.show({ type: 'success', message: 'Settings saved.', hasCloseButton: true, autoClose: true });
 
       });
   }
 
-  updateUser(languageSelection:string): void {
+  updateUser(languageSelection: string): void {
     this._userService
       .setLocale(languageSelection)
       .subscribe((settings: Settings) => {
         sessionStorage.removeItem('changeLanguage');
-          this._notificationService.show({ type: 'success', message: 'Language set, thank you very much!', hasCloseButton: true, autoClose: true });
+        this._notificationService.show({ type: 'success', message: 'Language set, thank you very much!', hasCloseButton: true, autoClose: true });
       });
   }
 }

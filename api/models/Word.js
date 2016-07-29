@@ -29,8 +29,8 @@ module.exports = {
       required: false,
       defaultsTo: false
     },
-    author: 'integer'
-
+    author: 'integer',
+    languageCode: 'string'
   }
 };
 
