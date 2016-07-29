@@ -20,7 +20,7 @@ module.exports = {
 
     WordService.create(
       reqObj.value,
-      req.session.user.id,
+      req.session.user,
       translations,
       err => res.badRequest(err),
       wordData => {
