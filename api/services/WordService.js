@@ -2,15 +2,17 @@
 /* global Word, SettingsService */
 module.exports = {
 
-  create: function(value, author, translations, errCb, successCb) {
+  create: function(value, user, translations, errCb, successCb) {
     let currentDate;
     let wordCreatedAt;
 
-    Word.findOrCreate({value}, {value, author: author})
+    if (user.locale === null || user.locale.startsWith('en')) return errCb('Translation language not set');
+
+    Word.findOrCreate({value}, {value, author: user.id, languageCode: user.locale})
       .exec(function(err, wordData) {
         if (err) return errCb(err);
 
-        if (wordData.author !== author || Date.parse(wordData.updatedAt) !== Date.parse(wordData.createdAt)) {
+        if (wordData.author !== user.id || Date.parse(wordData.updatedAt) !== Date.parse(wordData.createdAt)) {
           return successCb(409);
         }
 
@@ -42,12 +44,12 @@ module.exports = {
   },
 
   count: function(session, errCb, successCb) {
-    var query;
-    var userId = session.user.id;
+    let query;
+    let userId = session.user.id;
 
     /** @function */
     function _countRequest() {
-      session.settings.practiceMode ? query = {author: userId} : {};
+      query = session.settings.practiceMode ? {author: userId} : {languageCode: session.user.locale};
       Word.count(query)
         .exec(function(err, count) {
           if (err) return errCb(err);
