@@ -1,4 +1,4 @@
-System.register(['@angular/core', '../models/word', '../services/word.service'], function(exports_1, context_1) {
+System.register(['@angular/core', '../../models/word', '../../services/word.service', '../../notification/notification.service', '../../notification/notification.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '../models/word', '../services/word.service'],
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, word_1, word_service_1;
+    var core_1, word_1, word_service_1, notification_service_1, notification_component_1;
     var WordDetailComponent;
     return {
         setters:[
@@ -22,18 +22,25 @@ System.register(['@angular/core', '../models/word', '../services/word.service'],
             },
             function (word_service_1_1) {
                 word_service_1 = word_service_1_1;
+            },
+            function (notification_service_1_1) {
+                notification_service_1 = notification_service_1_1;
+            },
+            function (notification_component_1_1) {
+                notification_component_1 = notification_component_1_1;
             }],
         execute: function() {
             let WordDetailComponent = class WordDetailComponent {
-                constructor(_wordService) {
+                constructor(_wordService, _notificationService) {
                     this._wordService = _wordService;
+                    this._notificationService = _notificationService;
                 }
                 onSave(word) {
                     this._wordService
                         .update(word)
                         .subscribe((updatedWord) => {
                         this.word = updatedWord;
-                        alert('word updated');
+                        this._notificationService.show({ type: 'success', message: 'Word successfully added.', autoClose: true });
                     });
                 }
             };
@@ -44,10 +51,11 @@ System.register(['@angular/core', '../models/word', '../services/word.service'],
             WordDetailComponent = __decorate([
                 core_1.Component({
                     selector: 'my-word-detail',
-                    templateUrl: 'app/word-detail/word-detail.component.html',
-                    providers: [word_service_1.WordService]
+                    templateUrl: 'app/admin/word-detail/word-detail.component.html',
+                    providers: [word_service_1.WordService, notification_service_1.NotificationService],
+                    directives: [notification_component_1.NotificationComponent]
                 }), 
-                __metadata('design:paramtypes', [word_service_1.WordService])
+                __metadata('design:paramtypes', [word_service_1.WordService, notification_service_1.NotificationService])
             ], WordDetailComponent);
             exports_1("WordDetailComponent", WordDetailComponent);
         }

@@ -1,12 +1,12 @@
 import {Component, Input} from '@angular/core';
 import {WordService} from '../../services/word.service';
 import {Word} from '../../models/word';
-import { NotificationService } from '../../notification/notification.service';
-import {NotificationComponent} from '../../notification/notification.component'
+import {NotificationService} from '../../notification/notification.service';
+import {NotificationComponent} from '../../notification/notification.component';
 
 @Component({
   selector: 'word-add',
-  templateUrl: 'app/word-add/word-add.component.html',
+  templateUrl: 'app/admin/word-add/word-add.component.html',
   directives: [NotificationComponent],
   providers: [WordService, NotificationService]
 })
