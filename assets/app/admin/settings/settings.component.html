@@ -1,0 +1,20 @@
+<div class="row" *ngIf="!isLanguageSet && languages.length">
+
+  <h3>Pick a language</h3>
+  <select class="form-control" [(ngModel)]="selectedWorkout" (ngModelChange)="updateUser($event)">
+    <option *ngFor="let language of languages" value="{{language.value}}">{{language.name}}</option>
+</select>
+</div>
+
+<div *ngIf="settings">
+    <ul>
+        <label for="questionsNumber">Number of questions in the game - valid when in practice mode</label>
+        <li [class.disabled]="!settings.practiceMode">Number of questions <input [disabled]="!settings.practiceMode" id="questionsNumber" [(ngModel)]="settings.questionsNumber"
+            /></li>
+
+        <label for="practiceMode">When selected, enables open ended game, with your own words only</label>
+        <li>Practice mode <input id="practiceMode" type="checkbox" [(ngModel)]="settings.practiceMode" /></li>
+        <button class="update-button" (click)="onSave(settings)">Save</button>
+
+    </ul>
+</div>
