@@ -17,7 +17,9 @@ module.exports = {
       autoIncrement: true
 ***REMOVED***,
     facebookId: {
-      type: 'string'
+      type: 'string',
+      required: true
+
 ***REMOVED***,
     pictureUrl: {
       type: 'string'

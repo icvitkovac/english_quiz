@@ -22,14 +22,16 @@ module.exports = {
       model: 'user'
 ***REMOVED***,
     gameType: {
-      model: 'GameTypes'
+      model: 'GameTypes',
+      defaultsTo: 1
 ***REMOVED***,
     active: {
       type: 'boolean',
       defaultsTo: true
 ***REMOVED***,
     practiceMode: {
-      type: 'boolean'
+      type: 'boolean',
+      defaultsTo: false
 ***REMOVED***,
     breakdown: {
       collection: 'GameBreakdown',
