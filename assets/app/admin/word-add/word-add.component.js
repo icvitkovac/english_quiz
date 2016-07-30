@@ -55,7 +55,7 @@ System.register(['@angular/core', '../../services/word.service', '../../models/w
             WordAddComponent = __decorate([
                 core_1.Component({
                     selector: 'word-add',
-                    templateUrl: 'app/word-add/word-add.component.html',
+                    templateUrl: 'app/admin/word-add/word-add.component.html',
                     directives: [notification_component_1.NotificationComponent],
                     providers: [word_service_1.WordService, notification_service_1.NotificationService]
             ***REMOVED***), 
