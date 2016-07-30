@@ -19,11 +19,6 @@ module.exports = {
       type: 'boolean',
       defaultsTo: true
 ***REMOVED***,
-    onlyHard: {
-      type: 'boolean',
-      defaultsTo: false,
-      required: false
-***REMOVED***,
     userId: {
       model: 'user'
 ***REMOVED***
