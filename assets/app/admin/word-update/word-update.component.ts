@@ -4,14 +4,13 @@ import {WordService} from '../../services/word.service';
 import {NotificationService} from '../../notification/notification.service';
 import {NotificationComponent} from '../../notification/notification.component';
 
-
 @Component({
-  selector: 'my-word-detail',
-  templateUrl: 'app/admin/word-detail/word-detail.component.html',
+  selector: 'word-update',
+  templateUrl: 'app/admin/word-update/word-update.component.html',
   providers: [WordService, NotificationService],
   directives: [NotificationComponent]
 })
-export class WordDetailComponent {
+export class WordUpdateComponent {
   @Input()
   private word: Word;
 
@@ -19,15 +18,12 @@ export class WordDetailComponent {
 
   }
 
-
   onSave(word: Word): void {
     this._wordService
       .update(word)
       .subscribe((updatedWord: Word) => {
         this.word = updatedWord;
-        this._notificationService.show({ type: 'success', message: 'Word successfully added.', autoClose: true });
+        this._notificationService.show({ type: 'success', message: 'Word successfully updated.', autoClose: true });
       });
   }
 }
-
-
