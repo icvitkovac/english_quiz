@@ -14,33 +14,21 @@ import {NotificationComponent} from '../notification/notification.component'
 export class WordAddComponent {
   @Input()
   private submitted = false;
-  private errorMessage: string;
   private word = new Word(0, '', false, []);
 
   constructor(private _wordService: WordService, private _notificationService: NotificationService) {
 ***REMOVED***
 
   onSubmit(): void {
-    this.submitted = true;
     this._wordService
       .add(this.word)
       .subscribe(() => {
+        this.submitted = true;
         this._notificationService.show({ type: 'success', message: 'Word successfully added.', autoClose: true });
   ***REMOVED***, err => {
         this._notificationService.show({ type: 'error', message: `There has been an error: ${err}.`, hasCloseButton: true });
-
   ***REMOVED***);
 
 ***REMOVED***
 
 }
-
-
-
-
-
-
-
-
-
-

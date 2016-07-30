@@ -38,10 +38,10 @@ System.register(['@angular/core', '../services/word.service', '../models/word', 
                     this.word = new word_1.Word(0, '', false, []);
             ***REMOVED***
                 onSubmit() {
-                    this.submitted = true;
                     this._wordService
                         .add(this.word)
                         .subscribe(() => {
+                        this.submitted = true;
                         this._notificationService.show({ type: 'success', message: 'Word successfully added.', autoClose: true });
                 ***REMOVED***, err => {
                         this._notificationService.show({ type: 'error', message: `There has been an error: ${err}.`, hasCloseButton: true });
