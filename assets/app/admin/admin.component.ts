@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {Control, ControlGroup, FormBuilder} from '@angular/common';
 import {WordService} from '../services/word.service';
 import {Word} from '../models/word';
-import {WordDetailComponent} from '../word-detail/word-detail.component';
+import {WordDetailComponent} from './word-detail/word-detail.component';
 import {WordAddComponent} from './word-add/word-add.component';
 import {SettingsComponent} from './settings/settings.component';
 import {HighlightDirective} from '../directives/highlight.directive';

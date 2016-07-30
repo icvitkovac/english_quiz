@@ -2,15 +2,16 @@
   <h5>{{word.value}} details!</h5>
   <div>
     <label>name: </label>
-    <input [(ngModel)]="word.value" placeholder="name"/>
+    <input [(ngModel)]="word.value" placeholder="name" />
   </div>
 
   <ul>
     <li *ngFor="let t of word.translations">
-      <input [(ngModel)]="t.value"/>
+      <input [(ngModel)]="t.value" />
     </li>
   </ul>
 
   <button class="update-button" (click)="onSave(word)">Save</button>
-
 </div>
+
+<notification></notification>
