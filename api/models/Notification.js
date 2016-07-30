@@ -19,6 +19,7 @@ module.exports = {
     },
     code: {
       type: 'string',
+      required: true,
       enum: ['reportedWord', 'generalNotification', 'comment']
     }
 

@@ -19,11 +19,6 @@ module.exports = {
       type: 'boolean',
       defaultsTo: true
     },
-    onlyHard: {
-      type: 'boolean',
-      defaultsTo: false,
-      required: false
-    },
     userId: {
       model: 'user'
     }

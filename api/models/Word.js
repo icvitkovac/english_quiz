@@ -10,27 +10,25 @@ module.exports = {
   dictionary: [],
 
   attributes: {
-
-    value: {
-      type: 'string',
-      required: true
-    },
     id: {
       type: 'integer',
       primaryKey: true,
       autoIncrement: true
     },
+    value: {
+      type: 'string',
+      required: true
+    },
     translations: {
       collection: 'translation',
       via: 'term'
     },
-    isHard: {
-      type: 'boolean',
-      required: false,
-      defaultsTo: false
+    author: {
+      type: 'integer',
+      required: true
     },
-    author: 'integer',
-    languageCode: 'string'
+    languageCode: {
+      type: 'string'
+    }
   }
 };
-
