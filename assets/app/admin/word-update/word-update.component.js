@@ -11,7 +11,7 @@ System.register(['@angular/core', '../../models/word', '../../services/word.serv
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 ***REMOVED***;
     var core_1, word_1, word_service_1, notification_service_1, notification_component_1;
-    var WordDetailComponent;
+    var WordUpdateComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -30,7 +30,7 @@ System.register(['@angular/core', '../../models/word', '../../services/word.serv
                 notification_component_1 = notification_component_1_1;
         ***REMOVED***],
         execute: function() {
-            let WordDetailComponent = class WordDetailComponent {
+            let WordUpdateComponent = class WordUpdateComponent {
                 constructor(_wordService, _notificationService) {
                     this._wordService = _wordService;
                     this._notificationService = _notificationService;
@@ -40,25 +40,25 @@ System.register(['@angular/core', '../../models/word', '../../services/word.serv
                         .update(word)
                         .subscribe((updatedWord) => {
                         this.word = updatedWord;
-                        this._notificationService.show({ type: 'success', message: 'Word successfully added.', autoClose: true });
+                        this._notificationService.show({ type: 'success', message: 'Word successfully updated.', autoClose: true });
                 ***REMOVED***);
             ***REMOVED***
       ***REMOVED***
             __decorate([
                 core_1.Input(), 
                 __metadata('design:type', word_1.Word)
-            ], WordDetailComponent.prototype, "word", void 0);
-            WordDetailComponent = __decorate([
+            ], WordUpdateComponent.prototype, "word", void 0);
+            WordUpdateComponent = __decorate([
                 core_1.Component({
-                    selector: 'my-word-detail',
-                    templateUrl: 'app/admin/word-detail/word-detail.component.html',
+                    selector: 'word-update',
+                    templateUrl: 'app/admin/word-update/word-update.component.html',
                     providers: [word_service_1.WordService, notification_service_1.NotificationService],
                     directives: [notification_component_1.NotificationComponent]
             ***REMOVED***), 
                 __metadata('design:paramtypes', [word_service_1.WordService, notification_service_1.NotificationService])
-            ], WordDetailComponent);
-            exports_1("WordDetailComponent", WordDetailComponent);
+            ], WordUpdateComponent);
+            exports_1("WordUpdateComponent", WordUpdateComponent);
     ***REMOVED***
 ***REMOVED***
 });
-//# sourceMappingURL=word-detail.component.js.map
+//# sourceMappingURL=word-update.component.js.map
