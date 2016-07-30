@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', '../services/word.service', './word-detail/word-detail.component', './word-add/word-add.component', './settings/settings.component', '../directives/highlight.directive', '../notification/notification.service', '../notification/notification.component'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', '../services/word.service', './word-update/word-update.component', './word-add/word-add.component', './settings/settings.component', '../directives/highlight.directive', '../notification/notification.service', '../notification/notification.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', '../services/word.service',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, word_service_1, word_detail_component_1, word_add_component_1, settings_component_1, highlight_directive_1, notification_service_1, notification_component_1;
+    var core_1, common_1, word_service_1, word_update_component_1, word_add_component_1, settings_component_1, highlight_directive_1, notification_service_1, notification_component_1;
     var AdminComponent;
     return {
         setters:[
@@ -23,8 +23,8 @@ System.register(['@angular/core', '@angular/common', '../services/word.service',
             function (word_service_1_1) {
                 word_service_1 = word_service_1_1;
             },
-            function (word_detail_component_1_1) {
-                word_detail_component_1 = word_detail_component_1_1;
+            function (word_update_component_1_1) {
+                word_update_component_1 = word_update_component_1_1;
             },
             function (word_add_component_1_1) {
                 word_add_component_1 = word_add_component_1_1;
@@ -72,7 +72,7 @@ System.register(['@angular/core', '@angular/common', '../services/word.service',
                 core_1.Component({
                     selector: 'admin-component',
                     providers: [word_service_1.WordService, notification_service_1.NotificationService],
-                    directives: [word_detail_component_1.WordDetailComponent, word_add_component_1.WordAddComponent, settings_component_1.SettingsComponent, highlight_directive_1.HighlightDirective, notification_component_1.NotificationComponent],
+                    directives: [word_update_component_1.WordUpdateComponent, word_add_component_1.WordAddComponent, settings_component_1.SettingsComponent, highlight_directive_1.HighlightDirective, notification_component_1.NotificationComponent],
                     templateUrl: 'app/admin/admin.component.html'
                 }), 
                 __metadata('design:paramtypes', [word_service_1.WordService, common_1.FormBuilder, notification_service_1.NotificationService])
