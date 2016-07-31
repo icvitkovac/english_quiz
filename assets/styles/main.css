@@ -8,6 +8,38 @@
   margin-top: 22rem;
 }
 
+/*GAME PICKER*/
+
+.game-link{
+  min-height: 10em;
+  background-color:  rgb(225, 225, 225);
+  padding: 2em;
+  text-align: center;
+  margin: 1em;
+  color: #3a3838; 
+  vertical-align: middle;
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  backface-visibility: hidden;
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transition-timing-function: ease-out;
+}
+
+.game-link span{
+  font-family: 'Raleway',sans-serif; 
+  font-size: 2em; 
+  font-weight: 800; 
+  line-height: 4.5em; 
+  margin: 0 0 24px; 
+  text-align: center; 
+  text-transform: uppercase;
+}
+
+.game-link:hover{
+background-color: #2098d1;
+  color: white;
+}
 /*GENERAL STYLES*/
 
 .incorrect {
