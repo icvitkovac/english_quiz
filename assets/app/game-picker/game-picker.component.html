@@ -1,14 +1,25 @@
+<div class="row">
+    <div class="two columns">&nbsp;</div>
+    <div class="four columns">
+        <div class="game-link" [routerLink]="['/main']">
+            <span>Play quiz</span>
+        </div>
+    </div>
+    <div class="four columns">
+         <div class="game-link" [routerLink]="['/longest-word']">
+            <span>Longest word</span>
+        </div>
+    </div>
+    <div class="two columns">&nbsp;</div>
+</div>
 
 <div class="row">
-        <button [routerLink]="['/main']">Quiz</button>
+    <div class="two columns">&nbsp;</div>
+    <div class="four columns">
+        <div class="game-link">
+            <span>CHILD WORDS</span>
+        </div>
     </div>
+</div>
 
-    <div class="row">
-        <button class="disabled" [routerLink]="['/longest-word']">Longest word</button>
-    </div>
-
-    <div class="row">
-        <button class="disabled">Child words</button>
-    </div>
-    
 <notification></notification>
