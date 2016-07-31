@@ -1,7 +1,4 @@
 ***REMOVED***
-/* globals NotificationService */
-// import * as notificationCodes from 'assets/constants/constants.js';
-
 module.exports = {
   facebook: function(req, res) {
     passport.authenticate('facebook', function(err, user) {
@@ -12,16 +9,7 @@ module.exports = {
       req.session.authenticated = true;
       req.session.user = user;
 
-      if (user.locale === null || user.locale.startsWith('en')) {
-        NotificationService.addLazy(user.id,
-          // notificationCodes.changeLanguage,
-          'changeLanguage',
-          err => console.error(err),
-          data => res.redirect('/pick')
-        );
-  ***REMOVED***
-        return res.redirect('/pick');
-  ***REMOVED***
+      return res.redirect('/pick');
 ***REMOVED***)(req, res);
 ***REMOVED***,
   login: function(req, res) {
