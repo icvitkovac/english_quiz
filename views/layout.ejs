@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <base href="/">
+    <base href="/">
 
-  <title>English quiz</title>
+    <title>English quiz</title>
 
-  <!-- Viewport mobile tag for sensible mobile support -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
-  <!--
+    <!--
       Stylesheets and Preprocessors
       ==============================
 
@@ -30,27 +31,26 @@
           + Use a different or additional preprocessor, like SASS, SCSS or Stylus
   -->
 
-  <!--STYLES-->
-  <link rel="stylesheet" href="/styles/normalize.css">
-  <link rel="stylesheet" href="/styles/skeleton.css">
-  <link rel="stylesheet" href="/styles/importer.css">
-  <link rel="stylesheet" href="/styles/main.css">
-  <!--STYLES END-->
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/normalize.css">
+    <link rel="stylesheet" href="/styles/skeleton.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <!--STYLES END-->
 
-  <!-- 1. Load libraries -->
-  <!-- Polyfill(s) for older browsers -->
-  <script src="node_modules/core-js/client/shim.min.js"></script>
-  <script src="node_modules/zone.js/dist/zone.js"></script>
-  <script src="node_modules/reflect-metadata/Reflect.js"></script>
-  <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <!-- 1. Load libraries -->
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
 </head>
 
 <body>
 
-<%- body %>
+
+    <%- body %>
 
 
-<!--
+        <!--
     Client-side Templates
     ========================
 
@@ -71,12 +71,12 @@
           stringfile before they're served.
 -->
 
-<!--TEMPLATES-->
+        <!--TEMPLATES-->
+        
+        <!--TEMPLATES END-->
 
-<!--TEMPLATES END-->
 
-
-<!--
+        <!--
 
   Client-side Javascript
   ========================
@@ -99,11 +99,16 @@
 
 -->
 
-<!--SCRIPTS-->
-<script src="/js/dependencies/sails.io.js"></script>
-<script src="/js/dependencies/loodash.js"></script>
-<script src="/js/dependencies/jquery.js"></script>
-<script src="/js/dependencies/systemjs.config.js"></script>
-<!--SCRIPTS END-->
+        <!--SCRIPTS-->
+        <script src="/js/dependencies/sails.io.js"></script>
+        <script src="/js/dependencies/loodash.js"></script>
+        <script src="/js/dependencies/jquery.js"></script>
+        <script src="/dist/inline.bundle.js"></script>
+        <script src="/dist/polyfills.bundle.js"></script>
+        <script src="/dist/styles.bundle.js"></script>
+        <script src="/dist/vendor.bundle.js"></script>
+        <script src="/dist/main.bundle.js"></script>
+        <!--SCRIPTS END-->
 </body>
+
 </html>
