@@ -1,12 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {GameService} from '../services/game.service';
-import {HighlightDirective} from '../directives/highlight.directive';
+import { Component, OnInit } from '@angular/core';
+import { GameService } from '../services/game.service';
 
 @Component({
   selector: 'stats-component',
   providers: [GameService],
-  directives: [HighlightDirective],
-  templateUrl: 'app/stats/stats.component.html'
+  templateUrl: './stats.component.html'
 })
 
 
@@ -15,30 +13,30 @@ export class StatsComponent implements OnInit {
   private history = [];
   private breakdown = [];
   private highScores = [];
-  private gameSelected:boolean;
+  private gameSelected: boolean;
 
-  constructor(private _gameService:GameService) {
+  constructor(private _gameService: GameService) {
 
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this._gameService
       .history()
-      .subscribe((history:any) => {
+      .subscribe((history: any) => {
         this.history = history;
       });
 
     this._gameService
       .highScores()
-      .subscribe((highScores:any) => {
+      .subscribe((highScores: any) => {
         this.highScores = highScores;
       });
   }
 
-  onSelect(game):void {
+  onSelect(game): void {
     this._gameService
       .breakdown(game.id)
-      .subscribe((breakdown:any) => {
+      .subscribe((breakdown: any) => {
         this.breakdown = breakdown;
         this.gameSelected = true;
       });

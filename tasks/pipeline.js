@@ -35,11 +35,15 @@ var jsFilesToInject = [
 
   'js/dependencies/**/loodash.js',
   'js/dependencies/**/jquery.js',
-  'js/dependencies/**/*.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
-  'js/**/*.js'
+  'dist/**/inline.bundle.js',
+  'dist/**/polyfills.bundle.js',
+  'dist/**/styles.bundle.js',
+  'dist/**/vendor.bundle.js',
+  'dist/**/main.bundle.js'
+  
 
   // Use the "exclude" operator to ignore files
   // '!js/ignore/these/files/*.js'

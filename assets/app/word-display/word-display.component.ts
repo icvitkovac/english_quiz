@@ -1,19 +1,17 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {Word} from '../models/word';
-import {GameService} from '../services/game.service';
-import {HighlightDirective} from '../directives/highlight.directive';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Word } from '../models/word';
+import { GameService } from '../services/game.service';
 
 @Component({
   selector: 'random-word',
-  templateUrl: 'app/word-display/word-display.component.html',
-  directives: [HighlightDirective],
+  templateUrl: './word-display.component.html',
   providers: [GameService]
 })
 export class WordDisplayComponent {
   @Input() word: Word;
   @Output() onGameOver = new EventEmitter<string>();
 
-  private points: number;Ï
+  private points: number;
 
   constructor(private _gameService: GameService) {
 
@@ -31,8 +29,10 @@ export class WordDisplayComponent {
           sessionStorage.setItem('guessWord', JSON.stringify(data));
         }
 
-        if (data.isStarted === false)  this.onGameOver.emit(data.correctAnswer);
-      
+        if (data.isStarted === false) {
+          this.onGameOver.emit(data.correctAnswer);
+        }
+
       });
 
   }
