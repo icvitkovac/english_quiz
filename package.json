@@ -20,6 +20,7 @@
     "core-js": "^2.4.1",
     "ejs": "^0.8.4",
     "es6-shim": "^0.35.3",
+    "@sailshq/express": "^3.21.3",
     "grunt": "1.0.1",
     "grunt-contrib-clean": "1.0.0",
     "grunt-contrib-coffee": "1.0.0",
