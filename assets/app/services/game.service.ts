@@ -1,6 +1,6 @@
 import {Http, Response} from '@angular/http';
 import {Injectable} from '@angular/core';
-import {Observable}     from 'rxjs/Observable';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class GameService {
@@ -53,7 +53,7 @@ export class GameService {
       .catch(this.handleError);
   }
 
-  public report(translation:string){
+  public report(translation: string) {
      return this.http
       .post(`${this.baseUrl}report`, {translation})
       .map(this.extractData)
@@ -85,13 +85,13 @@ export class GameService {
     if (res.status < 200 || res.status >= 300) {
       throw new Error('Bad response status: ' + res.status);
     }
-    let body = res.json();
+    const body = res.json();
     return body || {};
   }
 
   private handleError(error: any) {
     // In a real world app, we might send the error to remote logging infrastructure
-    let errMsg = error.message || 'Server error';
+    const errMsg = error.message || 'Server error';
     return Observable.throw(errMsg);
   }
 

@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-
-    selector: 'longest-word',
-    templateUrl: 'app/word-longest/word-longest.component.html'
+  selector: 'app-word-longest',
+  templateUrl: './word-longest.component.html',
+  styleUrls: ['./word-longest.component.css']
 })
-export class LongestWordComponent implements OnInit {
-    constructor() { }
+export class WordLongestComponent implements OnInit {
 
-    ngOnInit() { }
+  constructor() { }
+
+  ngOnInit() {
+  }
 
 }
