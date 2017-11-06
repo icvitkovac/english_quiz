@@ -1,16 +1,16 @@
-import {Http, Response, Headers} from '@angular/http';
-import {Injectable} from '@angular/core';
-import {Observable}     from 'rxjs/Observable';
+import { Http, Response, Headers } from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class WordService {
-  private baseUrl:string;
+  private baseUrl: string;
 
-  constructor(private http:Http) {
+  constructor(private http: Http) {
     this.baseUrl = 'word/';
 ***REMOVED***
 
-  search(value:string) {
+  search(value: string) {
     return this.http
       .get(`${this.baseUrl}search?value=` + value)
       .map(this.extractData)
@@ -25,7 +25,7 @@ export class WordService {
 ***REMOVED***
 
   add(data) {
-    let reqObj = JSON.stringify(data);
+    const reqObj = JSON.stringify(data);
     return this.http
       .post(`${this.baseUrl}create`, reqObj)
       .map(this.extractData)
@@ -42,13 +42,13 @@ export class WordService {
 
   update(data) {
 
-    let headers = new Headers();
-    let url = `${this.baseUrl}${data.id}`;
+    const headers = new Headers();
+    const url = `${this.baseUrl}${data.id}`;
     headers.append('Content-Type', 'application/json');
 
 
     return this.http
-      .put(url, JSON.stringify(data), {headers: headers})
+      .put(url, JSON.stringify(data), { headers: headers })
       .map(this.extractData)
       .catch(this.handleError);
 ***REMOVED***
@@ -60,17 +60,17 @@ export class WordService {
       .catch(this.handleError);
 ***REMOVED***
 
-  private extractData(res:Response) {
+  private extractData(res: Response) {
     if (res.status < 200 || res.status >= 300) {
       throw new Error('Bad response status: ' + res.status);
 ***REMOVED***
-    let body = res.json();
+    const body = res.json();
     return body || {***REMOVED***
 ***REMOVED***
 
-  private handleError(error:any) {
+  private handleError(error: any) {
     error = error.json();
-    let errMsg = error.message || 'Server error';
+    const errMsg = error.message || 'Server error';
     return Observable.throw(errMsg);
 ***REMOVED***
 

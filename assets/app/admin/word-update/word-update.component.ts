@@ -6,9 +6,8 @@ import {NotificationComponent} from '../../notification/notification.component';
 
 @Component({
   selector: 'word-update',
-  templateUrl: 'app/admin/word-update/word-update.component.html',
-  providers: [WordService, NotificationService],
-  directives: [NotificationComponent]
+  templateUrl: './word-update.component.html',
+  providers: [WordService, NotificationService, NotificationComponent],
 })
 export class WordUpdateComponent {
   @Input()

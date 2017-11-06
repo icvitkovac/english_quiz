@@ -1,41 +1,42 @@
-import {Component} from '@angular/core';
-import {Control, ControlGroup, FormBuilder} from '@angular/common';
-import {WordService} from '../services/word.service';
-import {Word} from '../models/word';
-import {WordUpdateComponent} from './word-update/word-update.component';
-import {WordAddComponent} from './word-add/word-add.component';
-import {SettingsComponent} from './settings/settings.component';
-import {HighlightDirective} from '../directives/highlight.directive';
-import {NotificationService} from '../notification/notification.service';
-import {NotificationComponent} from '../notification/notification.component';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { WordService } from '../services/word.service';
+import { Word } from '../models/word';
+import { WordUpdateComponent } from './word-update/word-update.component';
+import { WordAddComponent } from './word-add/word-add.component';
+import { SettingsComponent } from './settings/settings.component';
+import { HighlightDirective } from '../directives/highlight.directive';
+import { NotificationService } from '../notification/notification.service';
+import { NotificationComponent } from '../notification/notification.component';
 
 @Component({
   selector: 'admin-component',
-  providers: [WordService, NotificationService],
-  directives: [WordUpdateComponent, WordAddComponent, SettingsComponent, HighlightDirective, NotificationComponent],
-  templateUrl: 'app/admin/admin.component.html'
+  providers: [WordService, NotificationService, WordUpdateComponent, WordAddComponent, SettingsComponent, NotificationComponent],
+  templateUrl: './admin.component.html'
 })
 
 
 export class AdminComponent {
-  private searchField: Control;
-  private coolForm: ControlGroup;
+
+  adminForm = new FormGroup ({
+    searchField: new FormControl()
+***REMOVED***);
+
   private words: Word[];
   private selectedWord: Word;
 
   constructor(private _wordService: WordService,
-    private fb: FormBuilder,
     private _notificationService: NotificationService
   ) {
-    this.searchField = new Control();
-    this.coolForm = fb.group({ search: this.searchField });
 
-    this.searchField.valueChanges
-      .debounceTime(400)
-      .flatMap((term: string) => this._wordService.search(term))
-      .subscribe((result: Word[]) => {
-        this.words = result;
-  ***REMOVED***);
+
+
+    // this.adminForm.searchField.valueChanges
+    //   .debounceTime(400)
+    //   .flatMap((term: string) => this._wordService.search(term))
+    //   .subscribe((result: Word[]) => {
+    //     this.words = result;
+    // ***REMOVED***);
 ***REMOVED***
 
   onSelect(word: Word): void {

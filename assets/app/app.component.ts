@@ -1,21 +1,19 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
-import {AdminComponent} from './admin/admin.component';
-import {MainComponent} from './main/main.component';
-import {StatsComponent} from './stats/stats.component';
-import {GamePickerComponent} from './game-picker/game-picker.component';
-import {LongestWordComponent} from './word-longest/word-longest.component';
-import {ROUTER_DIRECTIVES} from '@angular/router';
- 
 @Component({
-  selector: 'english-quiz',
-  directives: [MainComponent, AdminComponent, ROUTER_DIRECTIVES],
-  precompile: [MainComponent, AdminComponent, StatsComponent, GamePickerComponent, LongestWordComponent],
-  templateUrl: 'app/app.component.html'
-
+  selector: 'app-english-quiz',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
-
 export class AppComponent {
-  private name = window['Globals'].name;
+  private name: string;
+
+  constructor() {
+    try {
+      this.name = window['Globals'].name;
+***REMOVED*** catch (e) {
+      this.name = 'Unknown';
+***REMOVED***
+***REMOVED***
 
 }

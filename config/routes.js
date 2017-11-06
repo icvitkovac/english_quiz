@@ -58,7 +58,10 @@ module.exports.routes = {
 ***REMOVED***,
   '/login': {
     controller: 'AuthController',
-    action: 'login'
+    action: 'login',
+    locals: {
+      layout: 'layout-public'
+***REMOVED***
 ***REMOVED***,
   '/logout': {
     controller: 'AuthController',

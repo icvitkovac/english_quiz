@@ -3,12 +3,12 @@
   <div class="row">
     <div class="one-third column">
       <label for="englishTem">English term</label>
-      <input type="text" id="englishTem" required [(ngModel)]="word.value">
+      <input type="text" id="englishTem" required [(ngModel)]="word.value" name="wordValue">
     </div>
 
     <div class="one-third column">
       <label for="correctAnswer">Correct answer</label>
-      <input type="text" id="correctAnswer" required [(ngModel)]="word.translations[0]">
+      <input type="text" id="correctAnswer" required [(ngModel)]="word.translations[0]" name="word.trasnlation">
     </div>
   </div>
 
@@ -20,15 +20,15 @@
 
   <div class="row">
     <div class="three columns">
-      <input type="text" id="falseAnswers" required [(ngModel)]="word.translations[1]">
+      <input type="text" id="falseAnswers" required [(ngModel)]="word.translations[1]" name="falseAnswer1">
     </div>
 
     <div class="three columns">
-      <input type="text" required [(ngModel)]="word.translations[2]">
+      <input type="text" required [(ngModel)]="word.translations[2]" name="falseAnswer2">
     </div>
 
     <div class="three columns">
-      <input type="text" class="form-control" [(ngModel)]="word.translations[3]">
+      <input type="text" class="form-control" [(ngModel)]="word.translations[3]" name="falseAnswer3">
     </div>
   </div>
 
