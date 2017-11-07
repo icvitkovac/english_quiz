@@ -2,15 +2,11 @@
 /* global sails, User */
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook');
-var express = require('express');
 var env = process.env.NODE_ENV || 'dev';
 
 module.exports.http = {
   customMiddleware: function(app) {
     var fbStrategyConfig = {};
-
-    // serve frontend js files from node_modules dir (angular 2)
-    app.use('/node_modules', express.static(process.cwd() + '/node_modules'));
 
     // pick dev or prod fb app
     if (env === 'dev') {
