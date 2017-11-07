@@ -15,8 +15,7 @@ export class WordAddComponent {
   private submitted = false;
   private word = new Word(0, '', false, []);
 
-  constructor(private _wordService: WordService, private _notificationService: NotificationService) {
-  }
+  constructor(private _wordService: WordService, private _notificationService: NotificationService) { }
 
   onSubmit(): void {
     this._wordService
