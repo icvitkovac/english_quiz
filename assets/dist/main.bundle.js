@@ -54,8 +54,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-let AdminComponent = class AdminComponent {
-    constructor(_wordService, _notificationService) {
+var AdminComponent = (function () {
+    function AdminComponent(_wordService, _notificationService) {
         this._wordService = _wordService;
         this._notificationService = _notificationService;
         this.adminForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormGroup */]({
@@ -68,18 +68,20 @@ let AdminComponent = class AdminComponent {
         //     this.words = result;
         //   });
     }
-    onSelect(word) {
+    AdminComponent.prototype.onSelect = function (word) {
         this.selectedWord = word;
-    }
-    onDelete(word, event) {
+    };
+    AdminComponent.prototype.onDelete = function (word, event) {
+        var _this = this;
         event.stopPropagation();
         this._wordService
             .destroy(word)
-            .subscribe(() => {
-            this._notificationService.show({ type: 'success', message: 'Word deleted.', hasCloseButton: true, autoClose: true });
+            .subscribe(function () {
+            _this._notificationService.show({ type: 'success', message: 'Word deleted.', hasCloseButton: true, autoClose: true });
         });
-    }
-};
+    };
+    return AdminComponent;
+}());
 AdminComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'admin-component',
@@ -141,54 +143,58 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-let SettingsComponent = class SettingsComponent {
-    constructor(_settingsService, _notificationService, _userService) {
+var SettingsComponent = (function () {
+    function SettingsComponent(_settingsService, _notificationService, _userService) {
         this._settingsService = _settingsService;
         this._notificationService = _notificationService;
         this._userService = _userService;
         this.languages = [];
         this.isLanguageSet = false;
     }
-    ngOnInit() {
+    SettingsComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.isLanguageSet = window['Globals'].locale !== 'null' && !window['Globals'].locale.startsWith('en');
         if (!this.isLanguageSet) {
             this._settingsService.languages()
-                .subscribe((languages) => {
-                for (const key in languages) {
+                .subscribe(function (languages) {
+                for (var key in languages) {
                     if (languages.hasOwnProperty(key)) {
-                        this.languages.push({ name: languages[key], value: key });
+                        _this.languages.push({ name: languages[key], value: key });
                     }
                 }
             });
         }
         this._settingsService.get()
-            .subscribe((settings) => {
-            this.settings = settings;
+            .subscribe(function (settings) {
+            _this.settings = settings;
         });
-    }
-    onSave(settings) {
+    };
+    SettingsComponent.prototype.onSave = function (settings) {
+        var _this = this;
         this._settingsService
             .update(settings)
-            .subscribe((serviceSettings) => {
-            this.settings = serviceSettings;
-            this._notificationService.show({ type: 'success', message: 'Settings saved.', hasCloseButton: true, autoClose: true });
+            .subscribe(function (serviceSettings) {
+            _this.settings = serviceSettings;
+            _this._notificationService.show({ type: 'success', message: 'Settings saved.', hasCloseButton: true, autoClose: true });
         });
-    }
-    updateUser(languageSelection) {
+    };
+    SettingsComponent.prototype.updateUser = function (languageSelection) {
+        var _this = this;
         this._userService
             .setLocale(languageSelection)
-            .subscribe((userData) => {
-            this.isLanguageSet = true;
+            .subscribe(function (userData) {
+            _this.isLanguageSet = true;
             window['Globals'].locale = userData.locale;
-            this._notificationService.show({
+            _this._notificationService.show({
                 type: 'success',
                 message: 'Language set, thank you very much!',
                 hasCloseButton: true,
                 autoClose: true
             });
         });
-    }
-};
+    };
+    return SettingsComponent;
+}());
 SettingsComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'settings',
@@ -235,24 +241,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-let WordAddComponent = class WordAddComponent {
-    constructor(_wordService, _notificationService) {
+var WordAddComponent = (function () {
+    function WordAddComponent(_wordService, _notificationService) {
         this._wordService = _wordService;
         this._notificationService = _notificationService;
         this.submitted = false;
         this.word = new __WEBPACK_IMPORTED_MODULE_2__models_word__["a" /* Word */](0, '', false, []);
     }
-    onSubmit() {
+    WordAddComponent.prototype.onSubmit = function () {
+        var _this = this;
         this._wordService
             .add(this.word)
-            .subscribe(() => {
-            this.submitted = true;
-            this._notificationService.show({ type: 'success', message: 'Word successfully added.', autoClose: true });
-        }, err => {
-            this._notificationService.show({ type: 'error', message: `There has been an error: ${err}.`, hasCloseButton: true });
+            .subscribe(function () {
+            _this.submitted = true;
+            _this._notificationService.show({ type: 'success', message: 'Word successfully added.', autoClose: true });
+        }, function (err) {
+            _this._notificationService.show({ type: 'error', message: "There has been an error: " + err + ".", hasCloseButton: true });
         });
-    }
-};
+    };
+    return WordAddComponent;
+}());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
     __metadata("design:type", Object)
@@ -302,20 +310,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-let WordUpdateComponent = class WordUpdateComponent {
-    constructor(_wordService, _notificationService) {
+var WordUpdateComponent = (function () {
+    function WordUpdateComponent(_wordService, _notificationService) {
         this._wordService = _wordService;
         this._notificationService = _notificationService;
     }
-    onSave(word) {
+    WordUpdateComponent.prototype.onSave = function (word) {
+        var _this = this;
         this._wordService
             .update(word)
-            .subscribe((updatedWord) => {
-            this.word = updatedWord;
-            this._notificationService.show({ type: 'success', message: 'Word successfully updated.', autoClose: true });
+            .subscribe(function (updatedWord) {
+            _this.word = updatedWord;
+            _this._notificationService.show({ type: 'success', message: 'Word successfully updated.', autoClose: true });
         });
-    }
-};
+    };
+    return WordUpdateComponent;
+}());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_word__["a" /* Word */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_word__["a" /* Word */]) === "function" && _a || Object)
@@ -359,7 +369,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-const routes = [
+var routes = [
     {
         path: '',
         pathMatch: 'full',
@@ -386,8 +396,11 @@ const routes = [
         component: __WEBPACK_IMPORTED_MODULE_6__word_longest_word_longest_component__["a" /* WordLongestComponent */]
     },
 ];
-let AppRoutingModule = class AppRoutingModule {
-};
+var AppRoutingModule = (function () {
+    function AppRoutingModule() {
+    }
+    return AppRoutingModule;
+}());
 AppRoutingModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
         imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forRoot(routes)],
@@ -441,8 +454,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-let AppComponent = class AppComponent {
-    constructor() {
+var AppComponent = (function () {
+    function AppComponent() {
         try {
             this.name = window['Globals'].name;
         }
@@ -450,7 +463,8 @@ let AppComponent = class AppComponent {
             this.name = 'Unknown';
         }
     }
-};
+    return AppComponent;
+}());
 AppComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-english-quiz',
@@ -514,8 +528,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-let AppModule = class AppModule {
-};
+var AppModule = (function () {
+    function AppModule() {
+    }
+    return AppModule;
+}());
 AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["M" /* NgModule */])({
         declarations: [
@@ -565,21 +582,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-let HighlightDirective = class HighlightDirective {
-    constructor(el) {
+var HighlightDirective = (function () {
+    function HighlightDirective(el) {
         this._defaultColor = '#0FA0CE';
         this.el = el.nativeElement;
     }
-    onMouseEnter() {
+    HighlightDirective.prototype.onMouseEnter = function () {
         this.highlight(this.highlightColor || this._defaultColor);
-    }
-    onMouseLeave() {
+    };
+    HighlightDirective.prototype.onMouseLeave = function () {
         this.highlight(null);
-    }
-    highlight(color) {
+    };
+    HighlightDirective.prototype.highlight = function (color) {
         this.el.style.backgroundColor = color;
-    }
-};
+    };
+    return HighlightDirective;
+}());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])('myHighlight'),
     __metadata("design:type", String)
@@ -628,31 +646,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 // import * as notificationCodes from '../constants/constants';
-let GamePickerComponent = class GamePickerComponent {
-    constructor(_notificationService, _initService) {
+var GamePickerComponent = (function () {
+    function GamePickerComponent(_notificationService, _initService) {
         this._notificationService = _notificationService;
         this._initService = _initService;
         this.locale = window['Globals'].locale;
     }
-    ngOnInit() {
+    GamePickerComponent.prototype.ngOnInit = function () {
+        var _this = this;
         if (this.locale === 'null' || this.locale.startsWith('en')) {
             this._notificationService.show({ type: 'warn', message: 'Please set desired language in order to play!' });
         }
         this._initService.get()
-            .subscribe((data) => {
-            data.forEach(element => {
+            .subscribe(function (data) {
+            data.forEach(function (element) {
                 if (element.reportedWord) {
-                    this._notificationService.show({
-                        type: 'warn', message: `Word ${element.reportedWord.value} has
-                         been reported as inaccurate by other users, please review its translations`, autoClose: true
+                    _this._notificationService.show({
+                        type: 'warn', message: "Word " + element.reportedWord.value + " has\n                         been reported as inaccurate by other users, please review its translations", autoClose: true
                     });
                 }
             });
-        }, err => {
-            this._notificationService.show({ type: 'error', message: `There has been an error: ${err}.`, hasCloseButton: true });
+        }, function (err) {
+            _this._notificationService.show({ type: 'error', message: "There has been an error: " + err + ".", hasCloseButton: true });
         });
-    }
-};
+    };
+    return GamePickerComponent;
+}());
 GamePickerComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'selector',
@@ -697,8 +716,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-let MainComponent = class MainComponent {
-    constructor(_wordService, _gameService) {
+var MainComponent = (function () {
+    function MainComponent(_wordService, _gameService) {
         this._wordService = _wordService;
         this._gameService = _gameService;
         this.wordCount = 0;
@@ -708,39 +727,43 @@ let MainComponent = class MainComponent {
         this.correctAnswer = null;
         this.timerSubscription = null;
     }
-    startGame(type = 'quiz') {
+    MainComponent.prototype.startGame = function (type) {
+        var _this = this;
+        if (type === void 0) { type = 'quiz'; }
         this._gameService.on(type)
-            .subscribe(game => {
+            .subscribe(function (game) {
             /*GAME STARTED*/
-            this.isStarted = true;
-            this.points = 0;
+            _this.isStarted = true;
+            _this.points = 0;
             sessionStorage.setItem('points', '0');
             sessionStorage.setItem('isStarted', 'true');
-            if (this.timerSubscription) {
+            if (_this.timerSubscription) {
                 // stop countdown if exists
-                this.timerSubscription.unsubscribe();
-                this.countDown = null;
+                _this.timerSubscription.unsubscribe();
+                _this.countDown = null;
             }
             // get random word when game starts
-            this._gameService.nextWord()
-                .subscribe((guessWord) => {
-                this.guessWord = guessWord;
+            _this._gameService.nextWord()
+                .subscribe(function (guessWord) {
+                _this.guessWord = guessWord;
                 sessionStorage.setItem('guessWord', JSON.stringify(guessWord));
             });
-        }, err => console.log(err));
-    }
-    endGame() {
+        }, function (err) { return console.log(err); });
+    };
+    MainComponent.prototype.endGame = function () {
+        var _this = this;
         this._gameService.over()
-            .subscribe(gameData => {
+            .subscribe(function (gameData) {
             // clear word on game over
-            this.onGameOver(gameData.isStarted);
-        }, err => console.log(err));
-    }
-    ngOnInit() {
-        const isStarted = sessionStorage.getItem('isStarted');
+            _this.onGameOver(gameData.isStarted);
+        }, function (err) { return console.log(err); });
+    };
+    MainComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var isStarted = sessionStorage.getItem('isStarted');
         if (isStarted === 'undefined' || isStarted === null) {
-            const timer = __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["Observable"].timer(1000, 1000).take(3);
-            this.timerSubscription = timer.subscribe(t => this.tickerFunc(t));
+            var timer = __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["Observable"].timer(1000, 1000).take(3);
+            this.timerSubscription = timer.subscribe(function (t) { return _this.tickerFunc(t); });
         }
         else {
             this.countDown = null;
@@ -748,35 +771,36 @@ let MainComponent = class MainComponent {
             this.points = JSON.parse(sessionStorage.getItem('points'));
         }
         this._gameService.status()
-            .subscribe(game => {
-            this.isStarted = game.isStarted;
+            .subscribe(function (game) {
+            _this.isStarted = game.isStarted;
             sessionStorage.setItem('isStarted', game.isStarted);
         });
         this._wordService.count()
-            .subscribe(result => {
-            this.wordCount = result.count;
+            .subscribe(function (result) {
+            _this.wordCount = result.count;
         });
-    }
-    buttonState() {
+    };
+    MainComponent.prototype.buttonState = function () {
         return this.wordCount === 0;
-    }
-    onGameOver(correctAnswer) {
+    };
+    MainComponent.prototype.onGameOver = function (correctAnswer) {
         this.isStarted = false;
         this.guessWord = null;
         this.correctAnswer = correctAnswer;
         sessionStorage.clear();
-    }
-    reportTranslation() {
+    };
+    MainComponent.prototype.reportTranslation = function () {
         this._gameService.report(this.correctAnswer)
-            .subscribe(result => alert('Reported! Thank you.'), err => console.log(err));
-    }
-    tickerFunc(tick) {
+            .subscribe(function (result) { return alert('Reported! Thank you.'); }, function (err) { return console.log(err); });
+    };
+    MainComponent.prototype.tickerFunc = function (tick) {
         this.countDown--;
         if (this.countDown <= 0) {
             this.startGame();
         }
-    }
-};
+    };
+    return MainComponent;
+}());
 MainComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'main-component',
@@ -795,15 +819,16 @@ var _a, _b;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-class Word {
-    constructor(id, value, isHard, translations) {
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Word; });
+var Word = (function () {
+    function Word(id, value, isHard, translations) {
         this.id = id;
         this.value = value;
         this.isHard = isHard;
         this.translations = translations;
     }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = Word;
+    return Word;
+}());
 
 //# sourceMappingURL=word.js.map
 
@@ -834,23 +859,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-let NotificationComponent = class NotificationComponent {
-    constructor(_notificationService) {
+var NotificationComponent = (function () {
+    function NotificationComponent(_notificationService) {
+        var _this = this;
         this._notificationService = _notificationService;
         this._notifications = new Set();
-        _notificationService.noteAdded.subscribe(note => {
-            this._notifications.add(note);
+        _notificationService.noteAdded.subscribe(function (note) {
+            _this._notifications.add(note);
             if (note.autoClose) {
-                setTimeout(() => { this.hide.bind(this)(note); }, 5000);
+                setTimeout(function () { _this.hide.bind(_this)(note); }, 5000);
             }
         });
     }
-    hide(note) {
+    NotificationComponent.prototype.hide = function (note) {
         if (this._notifications.has(note)) {
             this._notifications.delete(note);
         }
-    }
-};
+    };
+    return NotificationComponent;
+}());
 NotificationComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'notification',
@@ -880,15 +907,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 
 
-let NotificationService = class NotificationService {
-    constructor() {
+var NotificationService = (function () {
+    function NotificationService() {
         this._notifications = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__["Subject"]();
         this.noteAdded = this._notifications.asObservable();
     }
-    show(notification) {
+    NotificationService.prototype.show = function (notification) {
         this._notifications.next(notification);
-    }
-};
+    };
+    return NotificationService;
+}());
 NotificationService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])()
 ], NotificationService);
@@ -918,84 +946,85 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-let GameService = class GameService {
-    constructor(http) {
+var GameService = (function () {
+    function GameService(http) {
         this.http = http;
         this.baseUrl = 'game/';
     }
-    on(type) {
+    GameService.prototype.on = function (type) {
         return this.http
-            .post(`${this.baseUrl}on`, { type })
+            .post(this.baseUrl + "on", { type: type })
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    over() {
+    };
+    GameService.prototype.over = function () {
         return this.http
-            .get(`${this.baseUrl}over`)
+            .get(this.baseUrl + "over")
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    nextWord() {
+    };
+    GameService.prototype.nextWord = function () {
         return this.http
-            .get(`${this.baseUrl}next`)
+            .get(this.baseUrl + "next")
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    checkAnswer(pickedWord) {
+    };
+    GameService.prototype.checkAnswer = function (pickedWord) {
         return this.http
-            .get(`${this.baseUrl}check/${pickedWord.id}`)
+            .get(this.baseUrl + "check/" + pickedWord.id)
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    checkExisting(enteredWord) {
+    };
+    GameService.prototype.checkExisting = function (enteredWord) {
         return this.http
-            .get(`${this.baseUrl}check/${enteredWord}`)
+            .get(this.baseUrl + "check/" + enteredWord)
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    status() {
+    };
+    GameService.prototype.status = function () {
         return this.http
-            .get(`${this.baseUrl}status`)
+            .get(this.baseUrl + "status")
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    report(translation) {
+    };
+    GameService.prototype.report = function (translation) {
         return this.http
-            .post(`${this.baseUrl}report`, { translation })
+            .post(this.baseUrl + "report", { translation: translation })
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    highScores() {
+    };
+    GameService.prototype.highScores = function () {
         return this.http
-            .get(`${this.baseUrl}highscores`)
+            .get(this.baseUrl + "highscores")
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    history() {
+    };
+    GameService.prototype.history = function () {
         return this.http
-            .get(`${this.baseUrl}history`)
+            .get(this.baseUrl + "history")
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    breakdown(id) {
+    };
+    GameService.prototype.breakdown = function (id) {
         return this.http
-            .get(`${this.baseUrl}breakdown/?gameId=${id}`)
+            .get(this.baseUrl + "breakdown/?gameId=" + id)
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    extractData(res) {
+    };
+    GameService.prototype.extractData = function (res) {
         if (res.status < 200 || res.status >= 300) {
             throw new Error('Bad response status: ' + res.status);
         }
-        const body = res.json();
+        var body = res.json();
         return body || {};
-    }
-    handleError(error) {
+    };
+    GameService.prototype.handleError = function (error) {
         // In a real world app, we might send the error to remote logging infrastructure
-        const errMsg = error.message || 'Server error';
+        var errMsg = error.message || 'Server error';
         return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(errMsg);
-    }
-};
+    };
+    return GameService;
+}());
 GameService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["C" /* Injectable */])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */]) === "function" && _a || Object])
@@ -1027,30 +1056,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-let InitService = class InitService {
-    constructor(http) {
+var InitService = (function () {
+    function InitService(http) {
         this.http = http;
         this.baseUrl = 'init/';
     }
-    get() {
+    InitService.prototype.get = function () {
         return this.http
-            .get(`${this.baseUrl}get`)
+            .get(this.baseUrl + "get")
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    extractData(res) {
+    };
+    InitService.prototype.extractData = function (res) {
         if (res.status < 200 || res.status >= 300) {
             throw new Error('Bad response status: ' + res.status);
         }
-        const body = res.json();
+        var body = res.json();
         return body || {};
-    }
-    handleError(error) {
+    };
+    InitService.prototype.handleError = function (error) {
         // In a real world app, we might send the error to remote logging infrastructure
-        const errMsg = error.message || 'Server error';
+        var errMsg = error.message || 'Server error';
         return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(errMsg);
-    }
-};
+    };
+    return InitService;
+}());
 InitService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["C" /* Injectable */])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */]) === "function" && _a || Object])
@@ -1082,44 +1112,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-let SettingsService = class SettingsService {
-    constructor(http) {
+var SettingsService = (function () {
+    function SettingsService(http) {
         this.http = http;
         this.baseUrl = '/settings';
     }
-    get() {
+    SettingsService.prototype.get = function () {
         return this.http
             .get(this.baseUrl)
             .map(this.extractData)
             .catch(this.handleError);
-    }
+    };
     // todo impure api update call, think about refactoring
-    update(data) {
-        const reqObj = JSON.stringify(data);
+    SettingsService.prototype.update = function (data) {
+        var reqObj = JSON.stringify(data);
         return this.http
             .post(this.baseUrl + '/handle', reqObj)
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    languages() {
+    };
+    SettingsService.prototype.languages = function () {
         return this.http
             .get('../json/languageMapping.json')
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    extractData(res) {
+    };
+    SettingsService.prototype.extractData = function (res) {
         if (res.status < 200 || res.status >= 300) {
             throw new Error('Bad response status: ' + res.status);
         }
-        const body = res.json();
+        var body = res.json();
         return body || {};
-    }
-    handleError(error) {
+    };
+    SettingsService.prototype.handleError = function (error) {
         // In a real world app, we might send the error to remote logging infrastructure
-        const errMsg = error.message || 'Server error';
+        var errMsg = error.message || 'Server error';
         return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(errMsg);
-    }
-};
+    };
+    return SettingsService;
+}());
 SettingsService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["C" /* Injectable */])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */]) === "function" && _a || Object])
@@ -1151,36 +1182,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-let UserService = class UserService {
-    constructor(http) {
+var UserService = (function () {
+    function UserService(http) {
         this.http = http;
         this.baseUrl = 'user/';
     }
-    update(updateObj) {
+    UserService.prototype.update = function (updateObj) {
         return this.http
-            .put(`${this.baseUrl}update`, updateObj)
+            .put(this.baseUrl + "update", updateObj)
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    setLocale(locale) {
+    };
+    UserService.prototype.setLocale = function (locale) {
         return this.http
-            .put(`${this.baseUrl}setLocale`, { locale })
+            .put(this.baseUrl + "setLocale", { locale: locale })
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    extractData(res) {
+    };
+    UserService.prototype.extractData = function (res) {
         if (res.status < 200 || res.status >= 300) {
             throw new Error('Bad response status: ' + res.status);
         }
-        const body = res.json();
+        var body = res.json();
         return body || {};
-    }
-    handleError(error) {
+    };
+    UserService.prototype.handleError = function (error) {
         // In a real world app, we might send the error to remote logging infrastructure
-        const errMsg = error.message || 'Server error';
+        var errMsg = error.message || 'Server error';
         return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(errMsg);
-    }
-};
+    };
+    return UserService;
+}());
 UserService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["C" /* Injectable */])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */]) === "function" && _a || Object])
@@ -1212,64 +1244,65 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-let WordService = class WordService {
-    constructor(http) {
+var WordService = (function () {
+    function WordService(http) {
         this.http = http;
         this.baseUrl = 'word/';
     }
-    search(value) {
+    WordService.prototype.search = function (value) {
         return this.http
-            .get(`${this.baseUrl}search?value=` + value)
+            .get(this.baseUrl + "search?value=" + value)
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    count() {
+    };
+    WordService.prototype.count = function () {
         return this.http
-            .get(`${this.baseUrl}count`)
+            .get(this.baseUrl + "count")
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    add(data) {
-        const reqObj = JSON.stringify(data);
+    };
+    WordService.prototype.add = function (data) {
+        var reqObj = JSON.stringify(data);
         return this.http
-            .post(`${this.baseUrl}create`, reqObj)
+            .post(this.baseUrl + "create", reqObj)
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    destroy(data) {
+    };
+    WordService.prototype.destroy = function (data) {
         return this.http
             .delete(this.baseUrl + data.id)
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    update(data) {
-        const headers = new __WEBPACK_IMPORTED_MODULE_0__angular_http__["a" /* Headers */]();
-        const url = `${this.baseUrl}${data.id}`;
+    };
+    WordService.prototype.update = function (data) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_0__angular_http__["a" /* Headers */]();
+        var url = "" + this.baseUrl + data.id;
         headers.append('Content-Type', 'application/json');
         return this.http
             .put(url, JSON.stringify(data), { headers: headers })
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    checkAnswer(pickedWord) {
+    };
+    WordService.prototype.checkAnswer = function (pickedWord) {
         return this.http
-            .get(`${this.baseUrl}${pickedWord.term}/translations/${pickedWord.id}`)
+            .get("" + this.baseUrl + pickedWord.term + "/translations/" + pickedWord.id)
             .map(this.extractData)
             .catch(this.handleError);
-    }
-    extractData(res) {
+    };
+    WordService.prototype.extractData = function (res) {
         if (res.status < 200 || res.status >= 300) {
             throw new Error('Bad response status: ' + res.status);
         }
-        const body = res.json();
+        var body = res.json();
         return body || {};
-    }
-    handleError(error) {
+    };
+    WordService.prototype.handleError = function (error) {
         error = error.json();
-        const errMsg = error.message || 'Server error';
+        var errMsg = error.message || 'Server error';
         return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(errMsg);
-    }
-};
+    };
+    return WordService;
+}());
 WordService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["C" /* Injectable */])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */]) === "function" && _a || Object])
@@ -1305,34 +1338,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-let StatsComponent = class StatsComponent {
-    constructor(_gameService) {
+var StatsComponent = (function () {
+    function StatsComponent(_gameService) {
         this._gameService = _gameService;
         this.history = [];
         this.breakdown = [];
         this.highScores = [];
     }
-    ngOnInit() {
+    StatsComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this._gameService
             .history()
-            .subscribe((history) => {
-            this.history = history;
+            .subscribe(function (history) {
+            _this.history = history;
         });
         this._gameService
             .highScores()
-            .subscribe((highScores) => {
-            this.highScores = highScores;
+            .subscribe(function (highScores) {
+            _this.highScores = highScores;
         });
-    }
-    onSelect(game) {
+    };
+    StatsComponent.prototype.onSelect = function (game) {
+        var _this = this;
         this._gameService
             .breakdown(game.id)
-            .subscribe((breakdown) => {
-            this.breakdown = breakdown;
-            this.gameSelected = true;
+            .subscribe(function (breakdown) {
+            _this.breakdown = breakdown;
+            _this.gameSelected = true;
         });
-    }
-};
+    };
+    return StatsComponent;
+}());
 StatsComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'stats-component',
@@ -1374,26 +1410,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-let WordDisplayComponent = class WordDisplayComponent {
-    constructor(_gameService) {
+var WordDisplayComponent = (function () {
+    function WordDisplayComponent(_gameService) {
         this._gameService = _gameService;
         this.onGameOver = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
     }
-    onSelect(pickedWord) {
+    WordDisplayComponent.prototype.onSelect = function (pickedWord) {
+        var _this = this;
         this._gameService.checkAnswer(pickedWord)
-            .subscribe(data => {
-            this.points = data.points;
+            .subscribe(function (data) {
+            _this.points = data.points;
             sessionStorage.setItem('points', data.points);
             if (data.isAnswer) {
-                this.word = data;
+                _this.word = data;
                 sessionStorage.setItem('guessWord', JSON.stringify(data));
             }
             if (data.isStarted === false) {
-                this.onGameOver.emit(data.correctAnswer);
+                _this.onGameOver.emit(data.correctAnswer);
             }
         });
-    }
-};
+    };
+    return WordDisplayComponent;
+}());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_word__["a" /* Word */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_word__["a" /* Word */]) === "function" && _a || Object)
@@ -1457,11 +1495,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-let WordLongestComponent = class WordLongestComponent {
-    constructor() { }
-    ngOnInit() {
+var WordLongestComponent = (function () {
+    function WordLongestComponent() {
     }
-};
+    WordLongestComponent.prototype.ngOnInit = function () {
+    };
+    return WordLongestComponent;
+}());
 WordLongestComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-word-longest',
@@ -1479,16 +1519,15 @@ WordLongestComponent = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 // The file contents for the current environment will overwrite these during build.
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 // The file contents for the current environment will overwrite these during build.
-const environment = {
+var environment = {
     production: false
 };
-/* harmony export (immutable) */ __webpack_exports__["a"] = environment;
-
 //# sourceMappingURL=environment.js.map
 
 /***/ }),
@@ -1510,7 +1549,7 @@ if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment *
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_23" /* enableProdMode */])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */])
-    .catch(err => console.log(err));
+    .catch(function (err) { return console.log(err); });
 //# sourceMappingURL=main.js.map
 
 /***/ }),
