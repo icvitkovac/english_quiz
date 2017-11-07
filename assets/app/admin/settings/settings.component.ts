@@ -21,7 +21,10 @@ export class SettingsComponent implements OnInit {
 
 
 
-  constructor(private _settingsService: SettingsService, private _notificationService: NotificationService, private _userService: UserService) {
+  constructor(
+    private _settingsService: SettingsService,
+    private _notificationService: NotificationService,
+    private _userService: UserService) {
 ***REMOVED***
 
   ngOnInit(): void {
