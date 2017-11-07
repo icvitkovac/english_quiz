@@ -1,6 +1,6 @@
 webpackJsonp(["main"],{
 
-/***/ "../../../../../assets/$$_gendir lazy recursive":
+/***/ "../../../../../assets/$$_lazy_route_resource lazy recursive":
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -13,7 +13,7 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = "../../../../../assets/$$_gendir lazy recursive";
+webpackEmptyAsyncContext.id = "../../../../../assets/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
@@ -29,8 +29,8 @@ module.exports = "<div class=\"row\">\n  <div class=\"one-third column\">\n    <
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_word_service__ = __webpack_require__("../../../../../assets/app/services/word.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__word_update_word_update_component__ = __webpack_require__("../../../../../assets/app/admin/word-update/word-update.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__word_add_word_add_component__ = __webpack_require__("../../../../../assets/app/admin/word-add/word-add.component.ts");
@@ -54,7 +54,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var AdminComponent = (function () {
+var AdminComponent = /** @class */ (function () {
     function AdminComponent(_wordService, _notificationService) {
         var _this = this;
         this._wordService = _wordService;
@@ -62,18 +62,13 @@ var AdminComponent = (function () {
         this.searchForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormGroup */]({
             searchField: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */]()
         });
-        this.searchFieldValue().valueChanges
+        this.searchForm.get('searchField').valueChanges
             .debounceTime(400)
             .flatMap(function (term) { return _this._wordService.search(term); })
             .subscribe(function (result) {
             _this.words = result;
         });
     }
-    Object.defineProperty(AdminComponent.prototype, "searchFieldValue", {
-        get: function () { return this.searchForm.get('searchField'); },
-        enumerable: true,
-        configurable: true
-    });
     AdminComponent.prototype.onSelect = function (word) {
         this.selectedWord = word;
     };
@@ -86,19 +81,19 @@ var AdminComponent = (function () {
             _this._notificationService.show({ type: 'success', message: 'Word deleted.', hasCloseButton: true, autoClose: true });
         });
     };
+    AdminComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'admin-component',
+            providers: [__WEBPACK_IMPORTED_MODULE_2__services_word_service__["a" /* WordService */], __WEBPACK_IMPORTED_MODULE_6__notification_notification_service__["a" /* NotificationService */], __WEBPACK_IMPORTED_MODULE_3__word_update_word_update_component__["a" /* WordUpdateComponent */], __WEBPACK_IMPORTED_MODULE_4__word_add_word_add_component__["a" /* WordAddComponent */], __WEBPACK_IMPORTED_MODULE_5__settings_settings_component__["a" /* SettingsComponent */], __WEBPACK_IMPORTED_MODULE_7__notification_notification_component__["a" /* NotificationComponent */]],
+            template: __webpack_require__("../../../../../assets/app/admin/admin.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_word_service__["a" /* WordService */],
+            __WEBPACK_IMPORTED_MODULE_6__notification_notification_service__["a" /* NotificationService */]])
+    ], AdminComponent);
     return AdminComponent;
 }());
-AdminComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'admin-component',
-        providers: [__WEBPACK_IMPORTED_MODULE_2__services_word_service__["a" /* WordService */], __WEBPACK_IMPORTED_MODULE_6__notification_notification_service__["a" /* NotificationService */], __WEBPACK_IMPORTED_MODULE_3__word_update_word_update_component__["a" /* WordUpdateComponent */], __WEBPACK_IMPORTED_MODULE_4__word_add_word_add_component__["a" /* WordAddComponent */], __WEBPACK_IMPORTED_MODULE_5__settings_settings_component__["a" /* SettingsComponent */], __WEBPACK_IMPORTED_MODULE_7__notification_notification_component__["a" /* NotificationComponent */]],
-        template: __webpack_require__("../../../../../assets/app/admin/admin.component.html")
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_word_service__["a" /* WordService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_word_service__["a" /* WordService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_6__notification_notification_service__["a" /* NotificationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__notification_notification_service__["a" /* NotificationService */]) === "function" && _b || Object])
-], AdminComponent);
 
-var _a, _b;
-//# sourceMappingURL=admin.component.js.map
+
 
 /***/ }),
 
@@ -132,7 +127,7 @@ module.exports = "<div class=\"row\" *ngIf=\"!isLanguageSet && languages.length\
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingsComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_settings_service__ = __webpack_require__("../../../../../assets/app/services/settings.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_service__ = __webpack_require__("../../../../../assets/app/services/user.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__notification_notification_service__ = __webpack_require__("../../../../../assets/app/notification/notification.service.ts");
@@ -149,7 +144,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var SettingsComponent = (function () {
+var SettingsComponent = /** @class */ (function () {
     function SettingsComponent(_settingsService, _notificationService, _userService) {
         this._settingsService = _settingsService;
         this._notificationService = _notificationService;
@@ -199,20 +194,21 @@ var SettingsComponent = (function () {
             });
         });
     };
+    SettingsComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'settings',
+            template: __webpack_require__("../../../../../assets/app/admin/settings/settings.component.html"),
+            styles: [__webpack_require__("../../../../../assets/app/admin/settings/settings.component.css")],
+            providers: [__WEBPACK_IMPORTED_MODULE_3__notification_notification_service__["a" /* NotificationService */], __WEBPACK_IMPORTED_MODULE_2__services_user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_1__services_settings_service__["a" /* SettingsService */]]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_settings_service__["a" /* SettingsService */],
+            __WEBPACK_IMPORTED_MODULE_3__notification_notification_service__["a" /* NotificationService */],
+            __WEBPACK_IMPORTED_MODULE_2__services_user_service__["a" /* UserService */]])
+    ], SettingsComponent);
     return SettingsComponent;
 }());
-SettingsComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'settings',
-        template: __webpack_require__("../../../../../assets/app/admin/settings/settings.component.html"),
-        styles: [__webpack_require__("../../../../../assets/app/admin/settings/settings.component.css")],
-        providers: [__WEBPACK_IMPORTED_MODULE_3__notification_notification_service__["a" /* NotificationService */], __WEBPACK_IMPORTED_MODULE_2__services_user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_1__services_settings_service__["a" /* SettingsService */]]
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_settings_service__["a" /* SettingsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_settings_service__["a" /* SettingsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__notification_notification_service__["a" /* NotificationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__notification_notification_service__["a" /* NotificationService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_user_service__["a" /* UserService */]) === "function" && _c || Object])
-], SettingsComponent);
 
-var _a, _b, _c;
-//# sourceMappingURL=settings.component.js.map
+
 
 /***/ }),
 
@@ -228,7 +224,7 @@ module.exports = "<h5>Add new word</h5>\n<form (ngSubmit)=\"onSubmit()\" #wordFo
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WordAddComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_word_service__ = __webpack_require__("../../../../../assets/app/services/word.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_word__ = __webpack_require__("../../../../../assets/app/models/word.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__notification_notification_service__ = __webpack_require__("../../../../../assets/app/notification/notification.service.ts");
@@ -247,7 +243,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var WordAddComponent = (function () {
+var WordAddComponent = /** @class */ (function () {
     function WordAddComponent(_wordService, _notificationService) {
         this._wordService = _wordService;
         this._notificationService = _notificationService;
@@ -265,23 +261,22 @@ var WordAddComponent = (function () {
             _this._notificationService.show({ type: 'error', message: "There has been an error: " + err + ".", hasCloseButton: true });
         });
     };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", Object)
+    ], WordAddComponent.prototype, "submitted", void 0);
+    WordAddComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'word-add',
+            template: __webpack_require__("../../../../../assets/app/admin/word-add/word-add.component.html"),
+            providers: [__WEBPACK_IMPORTED_MODULE_1__services_word_service__["a" /* WordService */], __WEBPACK_IMPORTED_MODULE_3__notification_notification_service__["a" /* NotificationService */], __WEBPACK_IMPORTED_MODULE_4__notification_notification_component__["a" /* NotificationComponent */]]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_word_service__["a" /* WordService */], __WEBPACK_IMPORTED_MODULE_3__notification_notification_service__["a" /* NotificationService */]])
+    ], WordAddComponent);
     return WordAddComponent;
 }());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", Object)
-], WordAddComponent.prototype, "submitted", void 0);
-WordAddComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'word-add',
-        template: __webpack_require__("../../../../../assets/app/admin/word-add/word-add.component.html"),
-        providers: [__WEBPACK_IMPORTED_MODULE_1__services_word_service__["a" /* WordService */], __WEBPACK_IMPORTED_MODULE_3__notification_notification_service__["a" /* NotificationService */], __WEBPACK_IMPORTED_MODULE_4__notification_notification_component__["a" /* NotificationComponent */]]
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_word_service__["a" /* WordService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_word_service__["a" /* WordService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__notification_notification_service__["a" /* NotificationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__notification_notification_service__["a" /* NotificationService */]) === "function" && _b || Object])
-], WordAddComponent);
 
-var _a, _b;
-//# sourceMappingURL=word-add.component.js.map
+
 
 /***/ }),
 
@@ -297,7 +292,7 @@ module.exports = "<div *ngIf=\"word\">\n  <h5>{{word.value}} details!</h5>\n  <d
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WordUpdateComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_word__ = __webpack_require__("../../../../../assets/app/models/word.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_word_service__ = __webpack_require__("../../../../../assets/app/services/word.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__notification_notification_service__ = __webpack_require__("../../../../../assets/app/notification/notification.service.ts");
@@ -316,7 +311,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var WordUpdateComponent = (function () {
+var WordUpdateComponent = /** @class */ (function () {
     function WordUpdateComponent(_wordService, _notificationService) {
         this._wordService = _wordService;
         this._notificationService = _notificationService;
@@ -330,23 +325,22 @@ var WordUpdateComponent = (function () {
             _this._notificationService.show({ type: 'success', message: 'Word successfully updated.', autoClose: true });
         });
     };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__models_word__["a" /* Word */])
+    ], WordUpdateComponent.prototype, "word", void 0);
+    WordUpdateComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'word-update',
+            template: __webpack_require__("../../../../../assets/app/admin/word-update/word-update.component.html"),
+            providers: [__WEBPACK_IMPORTED_MODULE_2__services_word_service__["a" /* WordService */], __WEBPACK_IMPORTED_MODULE_3__notification_notification_service__["a" /* NotificationService */], __WEBPACK_IMPORTED_MODULE_4__notification_notification_component__["a" /* NotificationComponent */]],
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_word_service__["a" /* WordService */], __WEBPACK_IMPORTED_MODULE_3__notification_notification_service__["a" /* NotificationService */]])
+    ], WordUpdateComponent);
     return WordUpdateComponent;
 }());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_word__["a" /* Word */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_word__["a" /* Word */]) === "function" && _a || Object)
-], WordUpdateComponent.prototype, "word", void 0);
-WordUpdateComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'word-update',
-        template: __webpack_require__("../../../../../assets/app/admin/word-update/word-update.component.html"),
-        providers: [__WEBPACK_IMPORTED_MODULE_2__services_word_service__["a" /* WordService */], __WEBPACK_IMPORTED_MODULE_3__notification_notification_service__["a" /* NotificationService */], __WEBPACK_IMPORTED_MODULE_4__notification_notification_component__["a" /* NotificationComponent */]],
-    }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_word_service__["a" /* WordService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_word_service__["a" /* WordService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__notification_notification_service__["a" /* NotificationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__notification_notification_service__["a" /* NotificationService */]) === "function" && _c || Object])
-], WordUpdateComponent);
 
-var _a, _b, _c;
-//# sourceMappingURL=word-update.component.js.map
+
 
 /***/ }),
 
@@ -355,8 +349,8 @@ var _a, _b, _c;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppRoutingModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__admin_admin_component__ = __webpack_require__("../../../../../assets/app/admin/admin.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__main_main_component__ = __webpack_require__("../../../../../assets/app/main/main.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__stats_stats_component__ = __webpack_require__("../../../../../assets/app/stats/stats.component.ts");
@@ -402,20 +396,20 @@ var routes = [
         component: __WEBPACK_IMPORTED_MODULE_6__word_longest_word_longest_component__["a" /* WordLongestComponent */]
     },
 ];
-var AppRoutingModule = (function () {
+var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
     }
+    AppRoutingModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forRoot(routes)],
+            exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */]],
+            providers: []
+        })
+    ], AppRoutingModule);
     return AppRoutingModule;
 }());
-AppRoutingModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
-        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forRoot(routes)],
-        exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */]],
-        providers: []
-    })
-], AppRoutingModule);
 
-//# sourceMappingURL=app-routing.module.js.map
+
 
 /***/ }),
 
@@ -449,7 +443,7 @@ module.exports = "<div class=\"row header\">\n  <div class=\"nine columns\">\n  
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -460,7 +454,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var AppComponent = (function () {
+var AppComponent = /** @class */ (function () {
     function AppComponent() {
         try {
             this.name = window['Globals'].name;
@@ -469,18 +463,18 @@ var AppComponent = (function () {
             this.name = 'Unknown';
         }
     }
+    AppComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-english-quiz',
+            template: __webpack_require__("../../../../../assets/app/app.component.html"),
+            styles: [__webpack_require__("../../../../../assets/app/app.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AppComponent);
     return AppComponent;
 }());
-AppComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-english-quiz',
-        template: __webpack_require__("../../../../../assets/app/app.component.html"),
-        styles: [__webpack_require__("../../../../../assets/app/app.component.css")]
-    }),
-    __metadata("design:paramtypes", [])
-], AppComponent);
 
-//# sourceMappingURL=app.component.js.map
+
 
 /***/ }),
 
@@ -489,12 +483,12 @@ AppComponent = __decorate([
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("../../../platform-browser/esm5/platform-browser.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/esm5/animations.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__("../../../../../assets/app/app.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_routing_module__ = __webpack_require__("../../../../../assets/app/app-routing.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__admin_admin_component__ = __webpack_require__("../../../../../assets/app/admin/admin.component.ts");
@@ -534,41 +528,41 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AppModule = (function () {
+var AppModule = /** @class */ (function () {
     function AppModule() {
     }
+    AppModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__admin_admin_component__["a" /* AdminComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__admin_settings_settings_component__["a" /* SettingsComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__admin_word_add_word_add_component__["a" /* WordAddComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__admin_word_update_word_update_component__["a" /* WordUpdateComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__directives_highlight_directive__["a" /* HighlightDirective */],
+                __WEBPACK_IMPORTED_MODULE_11__game_picker_game_picker_component__["a" /* GamePickerComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__main_main_component__["a" /* MainComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__notification_notification_component__["a" /* NotificationComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__stats_stats_component__["a" /* StatsComponent */],
+                __WEBPACK_IMPORTED_MODULE_18__word_display_word_display_component__["a" /* WordDisplayComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__word_longest_word_longest_component__["a" /* WordLongestComponent */]
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
+                __WEBPACK_IMPORTED_MODULE_5__angular_forms__["c" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_7__app_routing_module__["a" /* AppRoutingModule */],
+                __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_3__angular_http__["c" /* HttpModule */],
+                __WEBPACK_IMPORTED_MODULE_5__angular_forms__["d" /* ReactiveFormsModule */],
+                __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */]
+            ],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
+        })
+    ], AppModule);
     return AppModule;
 }());
-AppModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["M" /* NgModule */])({
-        declarations: [
-            __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_8__admin_admin_component__["a" /* AdminComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__admin_settings_settings_component__["a" /* SettingsComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__admin_word_add_word_add_component__["a" /* WordAddComponent */],
-            __WEBPACK_IMPORTED_MODULE_15__admin_word_update_word_update_component__["a" /* WordUpdateComponent */],
-            __WEBPACK_IMPORTED_MODULE_16__directives_highlight_directive__["a" /* HighlightDirective */],
-            __WEBPACK_IMPORTED_MODULE_11__game_picker_game_picker_component__["a" /* GamePickerComponent */],
-            __WEBPACK_IMPORTED_MODULE_9__main_main_component__["a" /* MainComponent */],
-            __WEBPACK_IMPORTED_MODULE_17__notification_notification_component__["a" /* NotificationComponent */],
-            __WEBPACK_IMPORTED_MODULE_10__stats_stats_component__["a" /* StatsComponent */],
-            __WEBPACK_IMPORTED_MODULE_18__word_display_word_display_component__["a" /* WordDisplayComponent */],
-            __WEBPACK_IMPORTED_MODULE_12__word_longest_word_longest_component__["a" /* WordLongestComponent */]
-        ],
-        imports: [
-            __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_5__angular_forms__["c" /* FormsModule */],
-            __WEBPACK_IMPORTED_MODULE_7__app_routing_module__["a" /* AppRoutingModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClientModule */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_http__["c" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_5__angular_forms__["d" /* ReactiveFormsModule */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */]
-        ],
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
-    })
-], AppModule);
 
-//# sourceMappingURL=app.module.js.map
+
 
 /***/ }),
 
@@ -577,7 +571,7 @@ AppModule = __decorate([
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HighlightDirective; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -588,7 +582,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var HighlightDirective = (function () {
+var HighlightDirective = /** @class */ (function () {
     function HighlightDirective(el) {
         this._defaultColor = '#0FA0CE';
         this.el = el.nativeElement;
@@ -602,25 +596,24 @@ var HighlightDirective = (function () {
     HighlightDirective.prototype.highlight = function (color) {
         this.el.style.backgroundColor = color;
     };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])('myHighlight'),
+        __metadata("design:type", String)
+    ], HighlightDirective.prototype, "highlightColor", void 0);
+    HighlightDirective = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["s" /* Directive */])({
+            selector: '[myHighlight]',
+            host: {
+                '(mouseenter)': 'onMouseEnter()',
+                '(mouseleave)': 'onMouseLeave()'
+            }
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]])
+    ], HighlightDirective);
     return HighlightDirective;
 }());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])('myHighlight'),
-    __metadata("design:type", String)
-], HighlightDirective.prototype, "highlightColor", void 0);
-HighlightDirective = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Directive */])({
-        selector: '[myHighlight]',
-        host: {
-            '(mouseenter)': 'onMouseEnter()',
-            '(mouseleave)': 'onMouseLeave()'
-        }
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _a || Object])
-], HighlightDirective);
 
-var _a;
-//# sourceMappingURL=highlight.directive.js.map
+
 
 /***/ }),
 
@@ -636,7 +629,7 @@ module.exports = "<div class=\"row\">\n  <div class=\"two columns\">&nbsp;</div>
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GamePickerComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__notification_notification_service__ = __webpack_require__("../../../../../assets/app/notification/notification.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_init_service__ = __webpack_require__("../../../../../assets/app/services/init.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -652,7 +645,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 // import * as notificationCodes from '../constants/constants';
-var GamePickerComponent = (function () {
+var GamePickerComponent = /** @class */ (function () {
     function GamePickerComponent(_notificationService, _initService) {
         this._notificationService = _notificationService;
         this._initService = _initService;
@@ -676,19 +669,18 @@ var GamePickerComponent = (function () {
             _this._notificationService.show({ type: 'error', message: "There has been an error: " + err + ".", hasCloseButton: true });
         });
     };
+    GamePickerComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'selector',
+            providers: [__WEBPACK_IMPORTED_MODULE_1__notification_notification_service__["a" /* NotificationService */], __WEBPACK_IMPORTED_MODULE_2__services_init_service__["a" /* InitService */]],
+            template: __webpack_require__("../../../../../assets/app/game-picker/game-picker.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__notification_notification_service__["a" /* NotificationService */], __WEBPACK_IMPORTED_MODULE_2__services_init_service__["a" /* InitService */]])
+    ], GamePickerComponent);
     return GamePickerComponent;
 }());
-GamePickerComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'selector',
-        providers: [__WEBPACK_IMPORTED_MODULE_1__notification_notification_service__["a" /* NotificationService */], __WEBPACK_IMPORTED_MODULE_2__services_init_service__["a" /* InitService */]],
-        template: __webpack_require__("../../../../../assets/app/game-picker/game-picker.component.html")
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__notification_notification_service__["a" /* NotificationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__notification_notification_service__["a" /* NotificationService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_init_service__["a" /* InitService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_init_service__["a" /* InitService */]) === "function" && _b || Object])
-], GamePickerComponent);
 
-var _a, _b;
-//# sourceMappingURL=game-picker.component.js.map
+
 
 /***/ }),
 
@@ -704,11 +696,10 @@ module.exports = "<div class=\"row\">\n  <p> There are total of {{wordCount}} wo
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MainComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_word_service__ = __webpack_require__("../../../../../assets/app/services/word.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_game_service__ = __webpack_require__("../../../../../assets/app/services/game.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__("../../../../rxjs/_esm5/Rx.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -722,7 +713,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var MainComponent = (function () {
+var MainComponent = /** @class */ (function () {
     function MainComponent(_wordService, _gameService) {
         this._wordService = _wordService;
         this._gameService = _gameService;
@@ -768,7 +759,7 @@ var MainComponent = (function () {
         var _this = this;
         var isStarted = sessionStorage.getItem('isStarted');
         if (isStarted === 'undefined' || isStarted === null) {
-            var timer = __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["Observable"].timer(1000, 1000).take(3);
+            var timer = __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["a" /* Observable */].timer(1000, 1000).take(3);
             this.timerSubscription = timer.subscribe(function (t) { return _this.tickerFunc(t); });
         }
         else {
@@ -805,19 +796,18 @@ var MainComponent = (function () {
             this.startGame();
         }
     };
+    MainComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'main-component',
+            providers: [__WEBPACK_IMPORTED_MODULE_1__services_word_service__["a" /* WordService */], __WEBPACK_IMPORTED_MODULE_2__services_game_service__["a" /* GameService */]],
+            template: __webpack_require__("../../../../../assets/app/main/main.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_word_service__["a" /* WordService */], __WEBPACK_IMPORTED_MODULE_2__services_game_service__["a" /* GameService */]])
+    ], MainComponent);
     return MainComponent;
 }());
-MainComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'main-component',
-        providers: [__WEBPACK_IMPORTED_MODULE_1__services_word_service__["a" /* WordService */], __WEBPACK_IMPORTED_MODULE_2__services_game_service__["a" /* GameService */]],
-        template: __webpack_require__("../../../../../assets/app/main/main.component.html")
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_word_service__["a" /* WordService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_word_service__["a" /* WordService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_game_service__["a" /* GameService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_game_service__["a" /* GameService */]) === "function" && _b || Object])
-], MainComponent);
 
-var _a, _b;
-//# sourceMappingURL=main.component.js.map
+
 
 /***/ }),
 
@@ -826,7 +816,7 @@ var _a, _b;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Word; });
-var Word = (function () {
+var Word = /** @class */ (function () {
     function Word(id, value, isHard, translations) {
         this.id = id;
         this.value = value;
@@ -836,7 +826,7 @@ var Word = (function () {
     return Word;
 }());
 
-//# sourceMappingURL=word.js.map
+
 
 /***/ }),
 
@@ -852,7 +842,7 @@ module.exports = "<div class=\"notification\">\n  <div class=\"{{ note.type }}\"
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotificationComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__notification_service__ = __webpack_require__("../../../../../assets/app/notification/notification.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -865,7 +855,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var NotificationComponent = (function () {
+var NotificationComponent = /** @class */ (function () {
     function NotificationComponent(_notificationService) {
         var _this = this;
         this._notificationService = _notificationService;
@@ -882,18 +872,17 @@ var NotificationComponent = (function () {
             this._notifications.delete(note);
         }
     };
+    NotificationComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'notification',
+            template: __webpack_require__("../../../../../assets/app/notification/notification.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__notification_service__["a" /* NotificationService */]])
+    ], NotificationComponent);
     return NotificationComponent;
 }());
-NotificationComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'notification',
-        template: __webpack_require__("../../../../../assets/app/notification/notification.component.html")
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__notification_service__["a" /* NotificationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__notification_service__["a" /* NotificationService */]) === "function" && _a || Object])
-], NotificationComponent);
 
-var _a;
-//# sourceMappingURL=notification.component.js.map
+
 
 /***/ }),
 
@@ -902,9 +891,8 @@ var _a;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotificationService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__ = __webpack_require__("../../../../rxjs/Subject.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__ = __webpack_require__("../../../../rxjs/_esm5/Subject.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -913,21 +901,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 
 
-var NotificationService = (function () {
+var NotificationService = /** @class */ (function () {
     function NotificationService() {
-        this._notifications = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__["Subject"]();
+        this._notifications = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__["b" /* Subject */]();
         this.noteAdded = this._notifications.asObservable();
     }
     NotificationService.prototype.show = function (notification) {
         this._notifications.next(notification);
     };
+    NotificationService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])()
+    ], NotificationService);
     return NotificationService;
 }());
-NotificationService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])()
-], NotificationService);
 
-//# sourceMappingURL=notification.service.js.map
+
 
 /***/ }),
 
@@ -936,10 +924,9 @@ NotificationService = __decorate([
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GameService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -952,7 +939,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var GameService = (function () {
+var GameService = /** @class */ (function () {
     function GameService(http) {
         this.http = http;
         this.baseUrl = 'game/';
@@ -1027,17 +1014,16 @@ var GameService = (function () {
     GameService.prototype.handleError = function (error) {
         // In a real world app, we might send the error to remote logging infrastructure
         var errMsg = error.message || 'Server error';
-        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(errMsg);
+        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["a" /* Observable */].throw(errMsg);
     };
+    GameService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */]])
+    ], GameService);
     return GameService;
 }());
-GameService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */]) === "function" && _a || Object])
-], GameService);
 
-var _a;
-//# sourceMappingURL=game.service.js.map
+
 
 /***/ }),
 
@@ -1046,10 +1032,9 @@ var _a;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InitService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1062,7 +1047,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var InitService = (function () {
+var InitService = /** @class */ (function () {
     function InitService(http) {
         this.http = http;
         this.baseUrl = 'init/';
@@ -1083,17 +1068,16 @@ var InitService = (function () {
     InitService.prototype.handleError = function (error) {
         // In a real world app, we might send the error to remote logging infrastructure
         var errMsg = error.message || 'Server error';
-        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(errMsg);
+        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["a" /* Observable */].throw(errMsg);
     };
+    InitService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */]])
+    ], InitService);
     return InitService;
 }());
-InitService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */]) === "function" && _a || Object])
-], InitService);
 
-var _a;
-//# sourceMappingURL=init.service.js.map
+
 
 /***/ }),
 
@@ -1102,10 +1086,9 @@ var _a;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingsService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1118,7 +1101,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var SettingsService = (function () {
+var SettingsService = /** @class */ (function () {
     function SettingsService(http) {
         this.http = http;
         this.baseUrl = '/settings';
@@ -1153,17 +1136,16 @@ var SettingsService = (function () {
     SettingsService.prototype.handleError = function (error) {
         // In a real world app, we might send the error to remote logging infrastructure
         var errMsg = error.message || 'Server error';
-        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(errMsg);
+        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["a" /* Observable */].throw(errMsg);
     };
+    SettingsService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */]])
+    ], SettingsService);
     return SettingsService;
 }());
-SettingsService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */]) === "function" && _a || Object])
-], SettingsService);
 
-var _a;
-//# sourceMappingURL=settings.service.js.map
+
 
 /***/ }),
 
@@ -1172,10 +1154,9 @@ var _a;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1188,7 +1169,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var UserService = (function () {
+var UserService = /** @class */ (function () {
     function UserService(http) {
         this.http = http;
         this.baseUrl = 'user/';
@@ -1215,17 +1196,16 @@ var UserService = (function () {
     UserService.prototype.handleError = function (error) {
         // In a real world app, we might send the error to remote logging infrastructure
         var errMsg = error.message || 'Server error';
-        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(errMsg);
+        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["a" /* Observable */].throw(errMsg);
     };
+    UserService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */]])
+    ], UserService);
     return UserService;
 }());
-UserService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */]) === "function" && _a || Object])
-], UserService);
 
-var _a;
-//# sourceMappingURL=user.service.js.map
+
 
 /***/ }),
 
@@ -1234,10 +1214,9 @@ var _a;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WordService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1250,7 +1229,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var WordService = (function () {
+var WordService = /** @class */ (function () {
     function WordService(http) {
         this.http = http;
         this.baseUrl = 'word/';
@@ -1305,17 +1284,16 @@ var WordService = (function () {
     WordService.prototype.handleError = function (error) {
         error = error.json();
         var errMsg = error.message || 'Server error';
-        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(errMsg);
+        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["a" /* Observable */].throw(errMsg);
     };
+    WordService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */]])
+    ], WordService);
     return WordService;
 }());
-WordService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */]) === "function" && _a || Object])
-], WordService);
 
-var _a;
-//# sourceMappingURL=word.service.js.map
+
 
 /***/ }),
 
@@ -1331,7 +1309,7 @@ module.exports = "<div class=\"row\">\n  <div class=\"one-half column\">\n    <h
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatsComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_game_service__ = __webpack_require__("../../../../../assets/app/services/game.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1344,7 +1322,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var StatsComponent = (function () {
+var StatsComponent = /** @class */ (function () {
     function StatsComponent(_gameService) {
         this._gameService = _gameService;
         this.history = [];
@@ -1373,19 +1351,18 @@ var StatsComponent = (function () {
             _this.gameSelected = true;
         });
     };
+    StatsComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'stats-component',
+            providers: [__WEBPACK_IMPORTED_MODULE_1__services_game_service__["a" /* GameService */]],
+            template: __webpack_require__("../../../../../assets/app/stats/stats.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_game_service__["a" /* GameService */]])
+    ], StatsComponent);
     return StatsComponent;
 }());
-StatsComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'stats-component',
-        providers: [__WEBPACK_IMPORTED_MODULE_1__services_game_service__["a" /* GameService */]],
-        template: __webpack_require__("../../../../../assets/app/stats/stats.component.html")
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_game_service__["a" /* GameService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_game_service__["a" /* GameService */]) === "function" && _a || Object])
-], StatsComponent);
 
-var _a;
-//# sourceMappingURL=stats.component.js.map
+
 
 /***/ }),
 
@@ -1401,7 +1378,7 @@ module.exports = "<div class=\"row\">\n  <div class=\"two columns\">\n    <div *
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WordDisplayComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_word__ = __webpack_require__("../../../../../assets/app/models/word.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_game_service__ = __webpack_require__("../../../../../assets/app/services/game.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1416,10 +1393,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var WordDisplayComponent = (function () {
+var WordDisplayComponent = /** @class */ (function () {
     function WordDisplayComponent(_gameService) {
         this._gameService = _gameService;
-        this.onGameOver = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.onGameOver = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
     }
     WordDisplayComponent.prototype.onSelect = function (pickedWord) {
         var _this = this;
@@ -1436,27 +1413,26 @@ var WordDisplayComponent = (function () {
             }
         });
     };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__models_word__["a" /* Word */])
+    ], WordDisplayComponent.prototype, "word", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Output */])(),
+        __metadata("design:type", Object)
+    ], WordDisplayComponent.prototype, "onGameOver", void 0);
+    WordDisplayComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'random-word',
+            template: __webpack_require__("../../../../../assets/app/word-display/word-display.component.html"),
+            providers: [__WEBPACK_IMPORTED_MODULE_2__services_game_service__["a" /* GameService */]]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_game_service__["a" /* GameService */]])
+    ], WordDisplayComponent);
     return WordDisplayComponent;
 }());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_word__["a" /* Word */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_word__["a" /* Word */]) === "function" && _a || Object)
-], WordDisplayComponent.prototype, "word", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
-    __metadata("design:type", Object)
-], WordDisplayComponent.prototype, "onGameOver", void 0);
-WordDisplayComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'random-word',
-        template: __webpack_require__("../../../../../assets/app/word-display/word-display.component.html"),
-        providers: [__WEBPACK_IMPORTED_MODULE_2__services_game_service__["a" /* GameService */]]
-    }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_game_service__["a" /* GameService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_game_service__["a" /* GameService */]) === "function" && _b || Object])
-], WordDisplayComponent);
 
-var _a, _b;
-//# sourceMappingURL=word-display.component.js.map
+
 
 /***/ }),
 
@@ -1490,7 +1466,7 @@ module.exports = "<p>Hey man</p>"
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WordLongestComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1501,23 +1477,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var WordLongestComponent = (function () {
+var WordLongestComponent = /** @class */ (function () {
     function WordLongestComponent() {
     }
     WordLongestComponent.prototype.ngOnInit = function () {
     };
+    WordLongestComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-word-longest',
+            template: __webpack_require__("../../../../../assets/app/word-longest/word-longest.component.html"),
+            styles: [__webpack_require__("../../../../../assets/app/word-longest/word-longest.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], WordLongestComponent);
     return WordLongestComponent;
 }());
-WordLongestComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-word-longest',
-        template: __webpack_require__("../../../../../assets/app/word-longest/word-longest.component.html"),
-        styles: [__webpack_require__("../../../../../assets/app/word-longest/word-longest.component.css")]
-    }),
-    __metadata("design:paramtypes", [])
-], WordLongestComponent);
 
-//# sourceMappingURL=word-longest.component.js.map
+
 
 /***/ }),
 
@@ -1530,11 +1506,10 @@ WordLongestComponent = __decorate([
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
-// The file contents for the current environment will overwrite these during build.
 var environment = {
     production: false
 };
-//# sourceMappingURL=environment.js.map
+
 
 /***/ }),
 
@@ -1543,8 +1518,8 @@ var environment = {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__("../../../platform-browser-dynamic/@angular/platform-browser-dynamic.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__("../../../platform-browser-dynamic/esm5/platform-browser-dynamic.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__("../../../../../assets/app/app.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("../../../../../assets/environments/environment.ts");
 
@@ -1552,11 +1527,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_23" /* enableProdMode */])();
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* enableProdMode */])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */])
     .catch(function (err) { return console.log(err); });
-//# sourceMappingURL=main.js.map
+
 
 /***/ }),
 
