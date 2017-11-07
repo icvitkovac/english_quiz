@@ -20,7 +20,7 @@ webpackEmptyAsyncContext.id = "../../../../../assets/$$_gendir lazy recursive";
 /***/ "../../../../../assets/app/admin/admin.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"one-third column\">\n    <h5>Edit or delete words that you added</h5>\n    <ul class=\"words\">\n      <form [formGroup]=\"adminForm\"><input formControlName=\"searchField\" placeholder=\"Start typing the word\"></form>\n      <li *ngFor=\"let word of words\" (click)=\"onSelect(word)\">\n        <span [myHighlight] class=\"badge\">{{word.value}}</span>\n        <button class=\"delete-button\" (click)=\"onDelete(word, $event)\">Delete</button>\n      </li>\n    </ul>\n\n    <word-update [word]=\"selectedWord\"></word-update>\n\n  </div>\n\n  <div class=\"two-thirds column\">\n    <word-add></word-add>\n  </div>\n</div>\n\n<div class=\"row\">\n  <settings></settings>\n</div>\n\n<notification></notification>"
+module.exports = "<div class=\"row\">\n  <div class=\"one-third column\">\n    <h5>Edit or delete words that you added</h5>\n    <ul class=\"words\">\n      <form [formGroup]=\"searchForm\"><input formControlName=\"searchField\" placeholder=\"Start typing the word\"></form>\n      <li *ngFor=\"let word of words\" (click)=\"onSelect(word)\">\n        <span [myHighlight] class=\"badge\">{{word.value}}</span>\n        <button class=\"delete-button\" (click)=\"onDelete(word, $event)\">Delete</button>\n      </li>\n    </ul>\n\n    <word-update [word]=\"selectedWord\"></word-update>\n\n  </div>\n\n  <div class=\"two-thirds column\">\n    <word-add></word-add>\n  </div>\n</div>\n\n<div class=\"row\">\n  <settings></settings>\n</div>\n\n<notification></notification>"
 
 /***/ }),
 
@@ -56,18 +56,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var AdminComponent = (function () {
     function AdminComponent(_wordService, _notificationService) {
+        var _this = this;
         this._wordService = _wordService;
         this._notificationService = _notificationService;
-        this.adminForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormGroup */]({
+        this.searchForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormGroup */]({
             searchField: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */]()
     ***REMOVED***);
-        // this.adminForm.searchField.valueChanges
-        //   .debounceTime(400)
-        //   .flatMap((term: string) => this._wordService.search(term))
-        //   .subscribe((result: Word[]) => {
-        //     this.words = result;
-        // ***REMOVED***);
+        this.searchFieldValue().valueChanges
+            .debounceTime(400)
+            .flatMap(function (term) { return _this._wordService.search(term); })
+            .subscribe(function (result) {
+            _this.words = result;
+    ***REMOVED***);
 ***REMOVED***
+    Object.defineProperty(AdminComponent.prototype, "searchFieldValue", {
+        get: function () { return this.searchForm.get('searchField'); },
+        enumerable: true,
+        configurable: true
+***REMOVED***);
     AdminComponent.prototype.onSelect = function (word) {
         this.selectedWord = word;
 ***REMOVED***;
