@@ -18,25 +18,24 @@ import { NotificationComponent } from '../notification/notification.component';
 
 export class AdminComponent {
 
-  adminForm = new FormGroup ({
+  searchForm = new FormGroup({
     searchField: new FormControl()
   });
 
   private words: Word[];
   private selectedWord: Word;
 
-  constructor(private _wordService: WordService,
+  constructor(
+    private _wordService: WordService,
     private _notificationService: NotificationService
   ) {
 
-
-
-    // this.adminForm.searchField.valueChanges
-    //   .debounceTime(400)
-    //   .flatMap((term: string) => this._wordService.search(term))
-    //   .subscribe((result: Word[]) => {
-    //     this.words = result;
-    //   });
+    this.searchForm.get('searchField').valueChanges
+      .debounceTime(400)
+      .flatMap((term: string) => this._wordService.search(term))
+      .subscribe((result: Word[]) => {
+        this.words = result;
+      });
   }
 
   onSelect(word: Word): void {
