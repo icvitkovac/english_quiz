@@ -10,10 +10,10 @@ import { GameService } from '../services/game.service';
 
 export class StatsComponent implements OnInit {
 
-  private history = [];
-  private breakdown = [];
-  private highScores = [];
-  private gameSelected: boolean;
+  public history = [];
+  public breakdown = [];
+  public highScores = [];
+  public gameSelected: boolean;
 
   constructor(private _gameService: GameService) {
 

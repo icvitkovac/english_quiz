@@ -15,9 +15,9 @@ import { NotificationService } from '../../notification/notification.service';
 
 export class SettingsComponent implements OnInit {
 
-  private settings: Settings;
-  private languages = [];
-  private isLanguageSet = false;
+  public settings: Settings;
+  public languages = [];
+  public isLanguageSet = false;
 
 
 

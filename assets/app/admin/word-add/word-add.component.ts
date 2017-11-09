@@ -12,8 +12,9 @@ import { NotificationComponent } from '../../notification/notification.component
 
 export class WordAddComponent {
   @Input()
-  private submitted = false;
-  private word = new Word(0, '', false, []);
+  public submitted = false;
+  public word = new Word(0, '', false, []);
+  public errorMessage = false;
 
   constructor(private _wordService: WordService, private _notificationService: NotificationService) { }
 
