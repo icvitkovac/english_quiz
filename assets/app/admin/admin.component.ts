@@ -8,6 +8,9 @@ import { SettingsComponent } from './settings/settings.component';
 import { HighlightDirective } from '../directives/highlight.directive';
 import { NotificationService } from '../notification/notification.service';
 import { NotificationComponent } from '../notification/notification.component';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/mergeMap';
+
 
 @Component({
   selector: 'admin-component',
@@ -22,8 +25,8 @@ export class AdminComponent {
     searchField: new FormControl()
   });
 
-  private words: Word[];
-  private selectedWord: Word;
+  public words: Word[];
+  public selectedWord: Word;
 
   constructor(
     private _wordService: WordService,
@@ -32,7 +35,7 @@ export class AdminComponent {
 
     this.searchForm.get('searchField').valueChanges
       .debounceTime(400)
-      .flatMap((term: string) => this._wordService.search(term))
+      .mergeMap((term: string) => this._wordService.search(term))
       .subscribe((result: Word[]) => {
         this.words = result;
       });

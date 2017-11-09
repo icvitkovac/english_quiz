@@ -8,7 +8,7 @@ import { Notification } from './notification.model';
      templateUrl: './notification.component.html'
 })
 export class NotificationComponent {
-    private _notifications;
+    public _notifications;
 
     constructor(private _notificationService: NotificationService) {
         this._notifications = new Set<Notification>();
