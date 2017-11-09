@@ -38,10 +38,10 @@ var jsFilesToInject = [
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
-  'dist/inline.*',
-  'dist/polyfills.*',
-  'dist/main.*',
-  
+  'dist/inline.*js',
+  'dist/polyfills.*js',
+  'dist/vendor.*js',  
+  'dist/main.*js'  
   
 
   // Use the "exclude" operator to ignore files
