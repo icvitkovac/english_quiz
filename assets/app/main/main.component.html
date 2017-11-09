@@ -12,14 +12,11 @@
 </div>
 
 <div class="row">
-  <div *ngIf="settings">
+  <!-- <div *ngIf="settings">
     {{settings.questionsNumber}} questions in the game.
-  </div>
+  </div> -->
 </div>
 
-<div class="row">
-  <h3 *ngIf="countDown">Game starting in {{countDown}}</h3>
-</div>
 
 <div *ngIf="correctAnswer">
   <span class="row">Correct answer: {{correctAnswer}}</span>
