@@ -11,7 +11,7 @@ import {NotificationComponent} from '../../notification/notification.component';
 })
 export class WordUpdateComponent {
   @Input()
-  private word: Word;
+  public word: Word;
 
   constructor(private _wordService: WordService, private _notificationService: NotificationService) {
 

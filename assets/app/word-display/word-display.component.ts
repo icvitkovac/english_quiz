@@ -11,7 +11,7 @@ export class WordDisplayComponent {
   @Input() word: Word;
   @Output() onGameOver = new EventEmitter<string>();
 
-  private points: number;
+  public points: number;
 
   constructor(private _gameService: GameService) {
 
