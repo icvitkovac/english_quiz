@@ -14,15 +14,15 @@ module.exports = {
     questionsNumber: {
       type: 'int',
       defaultsTo: 3
-***REMOVED***,
+    },
     practiceMode: {
       type: 'boolean',
       defaultsTo: true
-***REMOVED***,
+    },
     userId: {
       model: 'user'
-***REMOVED***
+    }
 
-***REMOVED***
-***REMOVED***
+  }
+};
 

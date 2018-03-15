@@ -20,7 +20,7 @@ export class MainComponent implements OnInit {
 
   constructor(private _wordService: WordService, private _gameService: GameService) {
 
-***REMOVED***
+  }
 
   startGame(type: string = 'quiz'): void {
     this._gameService.on(type)
@@ -38,17 +38,17 @@ export class MainComponent implements OnInit {
             sessionStorage.setItem('guessWord', JSON.stringify(guessWord));
             sessionStorage.setItem('points', JSON.stringify(this.points));
 
-      ***REMOVED***);
-  ***REMOVED***, err => console.log(err));
-***REMOVED***
+          });
+      }, err => console.log(err));
+  }
 
   endGame(): void {
     this._gameService.over()
       .subscribe(gameData => {
         // clear word on game over
         this.onGameOver(gameData.correctAnswer);
-  ***REMOVED***, err => console.log(err));
-***REMOVED***
+      }, err => console.log(err));
+  }
 
   ngOnInit(): void {
 
@@ -61,32 +61,32 @@ export class MainComponent implements OnInit {
         if (this.isStarted) {
           this.guessWord = JSON.parse(sessionStorage.getItem('guessWord'));
           this.points = JSON.parse(sessionStorage.getItem('points'));
-    ***REMOVED***
+        }
 
-  ***REMOVED***);
+      });
 
     this._wordService.count()
       .subscribe(result => {
         this.wordCount = result.count;
-  ***REMOVED***);
+      });
 
-***REMOVED***
+  }
 
   buttonState(): boolean {
     return this.wordCount === 0;
-***REMOVED***
+  }
 
   onGameOver(correctAnswer: string): void {
     this.isStarted = false;
     this.guessWord = null;
     this.correctAnswer = correctAnswer;
     sessionStorage.clear();
-***REMOVED***
+  }
 
   reportTranslation() {
     this._gameService.report(this.correctAnswer)
       .subscribe(result => alert('Reported! Thank you.'),
       err => console.log(err));
-***REMOVED***
+  }
 
 }

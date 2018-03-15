@@ -25,7 +25,7 @@ module.exports = function serverError (data, options) {
   // Log error to console
   if (data !== undefined) {
     sails.log.error('Sending 500 ("Server Error") response: \n',data);
-***REMOVED***
+  }
   else sails.log.error('Sending empty 500 ("Server Error") response');
 
   // Only include errors in response if application environment
@@ -33,24 +33,24 @@ module.exports = function serverError (data, options) {
   // send back any identifying information about errors.
   if (sails.config.environment === 'production' && sails.config.keepResponseErrors !== true) {
     data = undefined;
-***REMOVED***
+  }
 
   // If the user-agent wants JSON, always respond with JSON
   // If views are disabled, revert to json
   if (req.wantsJSON || sails.config.hooks.views === false) {
     return res.jsonx(data);
-***REMOVED***
+  }
 
   // If second argument is a string, we take that to mean it refers to a view.
   // If it was omitted, use an empty object (`{}`)
-  options = (typeof options === 'string') ? { view: options } : options || {***REMOVED***
+  options = (typeof options === 'string') ? { view: options } : options || {};
 
   // If a view was provided in options, serve it.
   // Otherwise try to guess an appropriate view, or if that doesn't
   // work, just send JSON.
   if (options.view) {
     return res.view(options.view, { data: data });
-***REMOVED***
+  }
 
   // If no second argument provided, try to serve the default view,
   // but fall back to sending JSON(P) if any errors occur.
@@ -63,16 +63,16 @@ module.exports = function serverError (data, options) {
       // • If the view was missing, ignore the error but provide a verbose log.
       if (err.code === 'E_VIEW_FAILED') {
         sails.log.verbose('res.serverError() :: Could not locate view for error page (sending JSON instead).  Details: ',err);
-  ***REMOVED***
+      }
       // Otherwise, if this was a more serious error, log to the console with the details.
       else {
         sails.log.warn('res.serverError() :: When attempting to render error page view, an error occured (sending JSON instead).  Details: ', err);
-  ***REMOVED***
+      }
       return res.jsonx(data);
-***REMOVED***
+    }
 
     return res.send(html);
-***REMOVED***);
+  });
 
-***REMOVED***
+};
 

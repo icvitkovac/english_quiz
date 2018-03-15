@@ -1,4 +1,4 @@
-***REMOVED***
+'use strict';
 /* globals User */
 module.exports = {
 
@@ -7,13 +7,13 @@ module.exports = {
             .exec((err, userData) => {
               if (err) return errCb(err);
               return successCb(userData);
-        ***REMOVED***);
-***REMOVED***,
+            });
+  },
   setLocale: function(userId, locale, errCb, successCb) {
     User.update(userId, {locale})
             .exec((err, userData) => {
               if (err) return errCb(err);
               return successCb(userData);
-        ***REMOVED***);
-***REMOVED***
-***REMOVED***
+            });
+  }
+};

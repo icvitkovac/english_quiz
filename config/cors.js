@@ -18,8 +18,8 @@
  *   action: 'bar',
  *   cors: {
  *     origin: 'http://foobar.com,https://owlhoot.com'
- * ***REMOVED***
- ****REMOVED***
+ *   }
+ *  }
  *
  *  For more information on this configuration file, see:
  *  http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.cors.html
@@ -75,4 +75,4 @@ module.exports.cors = {
 
   // headers: 'content-type'
 
-***REMOVED***
+};

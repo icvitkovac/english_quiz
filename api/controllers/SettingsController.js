@@ -15,18 +15,18 @@ module.exports = {
 
     SettingsService.update(req.session.user.id, reqObj, err => {
       res.badRequest(err);
-***REMOVED***, data => {
+    }, data => {
       req.session.settings = data[0];
       return res.json(data[0]);
-***REMOVED***);
-***REMOVED***,
+    });
+  },
 
   find: function(req, res) {
     SettingsService.init(req.session.user.id, err => {
       res.badRequest(err);
-***REMOVED***, data => {
+    }, data => {
       req.session.settings = data;
       return res.json(data);
-***REMOVED***);
-***REMOVED***
-***REMOVED***
+    });
+  }
+};

@@ -9,17 +9,17 @@ describe('GamePickerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ GamePickerComponent ]
-***REMOVED***)
+    })
     .compileComponents();
-***REMOVED***));
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(GamePickerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-***REMOVED***);
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-***REMOVED***);
+  });
 });

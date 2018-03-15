@@ -9,17 +9,17 @@ describe('WordDisplayComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ WordDisplayComponent ]
-***REMOVED***)
+    })
     .compileComponents();
-***REMOVED***));
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(WordDisplayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-***REMOVED***);
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-***REMOVED***);
+  });
 });

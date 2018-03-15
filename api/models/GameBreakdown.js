@@ -14,15 +14,15 @@ module.exports = {
       type: 'integer',
       primaryKey: true,
       autoIncrement: true
-***REMOVED***,
+    },
     gameId: {
       model: 'game'
-***REMOVED***,
+    },
     questionId: {
       model: 'word'
-***REMOVED***,
+    },
     correct: {
       type: 'boolean'
-***REMOVED***
-***REMOVED***
-***REMOVED***
+    }
+  }
+};

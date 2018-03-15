@@ -5,4 +5,4 @@ module.exports = function (grunt) {
 		'clean:build',
 		'copy:build'
 	]);
-***REMOVED***
+};

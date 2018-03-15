@@ -80,7 +80,7 @@ module.exports.connections = {
     url: process.env.DATABASE_URL,
     ssl: true,
     pool: false
-***REMOVED***
+  }
 
 
   /***************************************************************************
@@ -89,4 +89,4 @@ module.exports.connections = {
    *                                                                          *
    ***************************************************************************/
 
-***REMOVED***
+};

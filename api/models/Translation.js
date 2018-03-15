@@ -11,21 +11,21 @@ module.exports = {
 
     term: {
       model: 'word'
-***REMOVED***,
+    },
     value: {
       type: 'string',
       required: true
-***REMOVED***,
+    },
     id: {
       type: 'integer',
       primaryKey: true,
       unique: true,
       autoIncrement: true
-***REMOVED***,
+    },
     isAnswer: {
       type: 'boolean',
       defaultsTo: 'false'
-***REMOVED***
-***REMOVED***
-***REMOVED***
+    }
+  }
+};
 

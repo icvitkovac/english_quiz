@@ -4,5 +4,5 @@ export class Word {
                   public value: string,
                   public isHard: boolean,
                   public translations) {
-  ***REMOVED***
-***REMOVED***
+      }
+    }

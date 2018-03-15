@@ -2,7 +2,7 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
     "name": "english-quiz"
-***REMOVED***,
+  },
   "apps": [
     {
       "root": "assets",
@@ -26,32 +26,32 @@
       "environments": {
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
-  ***REMOVED***
-***REMOVED***
+      }
+    }
   ],
   "e2e": {
     "protractor": {
       "config": "./protractor.conf.js"
-***REMOVED***
-***REMOVED***,
+    }
+  },
   "lint": [
     {
       "project": "src/tsconfig.app.json"
-***REMOVED***,
+    },
     {
       "project": "src/tsconfig.spec.json"
-***REMOVED***,
+    },
     {
       "project": "e2e/tsconfig.e2e.json"
-***REMOVED***
+    }
   ],
   "test": {
     "karma": {
       "config": "./karma.conf.js"
-***REMOVED***
-***REMOVED***,
+    }
+  },
   "defaults": {
     "styleExt": "css",
     "component": {}
-***REMOVED***
+  }
 }
