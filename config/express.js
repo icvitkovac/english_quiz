@@ -12,7 +12,7 @@ module.exports.http = {
     if (env === 'dev') {
       fbStrategyConfig = {
         clientID: '579029875603851',
-        clientSecret: '3b95ba53fa22a8ae7f304c9572f6d9a9',
+        clientSecret: process.env.FB_SECRET,
         callbackURL: `http://localhost:${sails.config.port}/auth/facebook/callback`,
         profileFields: ['id', 'first_name', 'last_name', 'gender', 'picture', 'locale']
 
@@ -20,7 +20,7 @@ module.exports.http = {
     } else {
       fbStrategyConfig = {
         clientID: '566624130177759',
-        clientSecret: '4400b12009fc53fed297653a30e0a99b',
+        clientSecret: process.env.FB_SECRET,
         callbackURL: '/auth/facebook/callback',
         profileFields: ['id', 'first_name', 'last_name', 'gender', 'picture', 'locale']
       };
