@@ -11,11 +11,11 @@ module.exports = {
   attributes: {
     reportedWord: {
       model: 'word'
-***REMOVED***,
+    },
     reporter: {
       model: 'user'
-***REMOVED***
+    }
 
-***REMOVED***
-***REMOVED***
+  }
+};
 

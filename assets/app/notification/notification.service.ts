@@ -11,5 +11,5 @@ export class NotificationService {
 
   public show(notification: Notification) {
     this._notifications.next(notification);
-***REMOVED***
+  }
 }

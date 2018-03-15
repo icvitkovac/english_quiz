@@ -6,4 +6,4 @@ module.exports = function (grunt) {
 		'copy:dev',
 		'coffee:dev'
 	]);
-***REMOVED***
+};

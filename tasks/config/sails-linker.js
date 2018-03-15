@@ -264,4 +264,4 @@ module.exports = function(grunt) {
 	});
 
 	grunt.loadNpmTasks('grunt-sails-linker');
-***REMOVED***
+};

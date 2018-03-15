@@ -11,9 +11,9 @@ export class AppComponent {
   constructor() {
     try {
       this.name = window['Globals'].name;
-***REMOVED*** catch (e) {
+    } catch (e) {
       this.name = 'Unknown';
-***REMOVED***
-***REMOVED***
+    }
+  }
 
 }

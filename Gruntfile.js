@@ -47,7 +47,7 @@ module.exports = function(grunt) {
 		return includeAll({
 			dirname: require('path').resolve(__dirname, relPath),
 			filter: /(.+)\.js$/
-		}) || {***REMOVED***
+		}) || {};
 	}
 
 	/**
@@ -71,11 +71,11 @@ module.exports = function(grunt) {
 
 	// (ensure that a default task exists)
 	if (!registerDefinitions.default) {
-		registerDefinitions.default = function (grunt) { grunt.registerTask('default', []); ***REMOVED***
+		registerDefinitions.default = function (grunt) { grunt.registerTask('default', []); };
 	}
 
 	// Run task functions to configure Grunt.
 	invokeConfigFn(taskConfigurations);
 	invokeConfigFn(registerDefinitions);
 
-***REMOVED***
+};

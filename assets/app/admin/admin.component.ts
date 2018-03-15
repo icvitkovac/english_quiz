@@ -23,7 +23,7 @@ export class AdminComponent {
 
   searchForm = new FormGroup({
     searchField: new FormControl()
-***REMOVED***);
+  });
 
   public words: Word[];
   public selectedWord: Word;
@@ -38,12 +38,12 @@ export class AdminComponent {
       .mergeMap((term: string) => this._wordService.search(term))
       .subscribe((result: Word[]) => {
         this.words = result;
-  ***REMOVED***);
-***REMOVED***
+      });
+  }
 
   onSelect(word: Word): void {
     this.selectedWord = word;
-***REMOVED***
+  }
 
   onDelete(word: Word, event: any): void {
     event.stopPropagation();
@@ -52,8 +52,8 @@ export class AdminComponent {
       .destroy(word)
       .subscribe(() => {
         this._notificationService.show({ type: 'success', message: 'Word deleted.', hasCloseButton: true, autoClose: true });
-  ***REMOVED***);
-***REMOVED***
+      });
+  }
 
 }
 

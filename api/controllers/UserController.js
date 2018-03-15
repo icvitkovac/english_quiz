@@ -11,7 +11,7 @@ module.exports = {
     delete updateObj.id;
 
     UserService.update(req.session.user.id, updateObj, err => res.badRequest(err), data => res.json(data));
-***REMOVED***,
+  },
 
   setLocale: function(req, res) {
     UserService.setLocale(req.session.user.id,
@@ -20,7 +20,7 @@ module.exports = {
        data => {
          req.session.user.locale = data[0].locale;
          res.json(data[0]);
-   ***REMOVED***);
-***REMOVED***
-***REMOVED***
+       });
+  }
+};
 

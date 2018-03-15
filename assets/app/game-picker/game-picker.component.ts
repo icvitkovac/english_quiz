@@ -13,14 +13,14 @@ import { InitService } from '../services/init.service';
 export class GamePickerComponent implements OnInit {
   private locale: string = window['Globals'].locale;
   constructor(private _notificationService: NotificationService, private _initService: InitService) {
-***REMOVED***
+  }
 
   ngOnInit() {
 
     if (this.locale === 'null' || this.locale.startsWith('en')) {
       this._notificationService.show({ type: 'warn', message: 'Please set desired language in order to play!' });
 
-***REMOVED***
+    }
 
     this._initService.get()
       .subscribe((data) => {
@@ -29,12 +29,12 @@ export class GamePickerComponent implements OnInit {
             this._notificationService.show({
               type: 'warn', message: `Word ${element.reportedWord.value} has
                          been reported as inaccurate by other users, please review its translations`, autoClose: true
-        ***REMOVED***);
-      ***REMOVED***
-    ***REMOVED***);
-  ***REMOVED***, err => {
+            });
+          }
+        });
+      }, err => {
         this._notificationService.show({ type: 'error', message: `There has been an error: ${err}.`, hasCloseButton: true });
-  ***REMOVED***);
-***REMOVED***
+      });
+  }
 
 }

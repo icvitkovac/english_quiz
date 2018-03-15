@@ -10,23 +10,23 @@ module.exports = {
   attributes: {
     name: {
       type: 'string'
-***REMOVED***,
+    },
     id: {
       type: 'integer',
       primaryKey: true,
       autoIncrement: true
-***REMOVED***,
+    },
     facebookId: {
       type: 'string',
       required: true
 
-***REMOVED***,
+    },
     pictureUrl: {
       type: 'string'
-***REMOVED***,
+    },
     locale: {
       type: 'string'
-***REMOVED***
-***REMOVED***
-***REMOVED***
+    }
+  }
+};
 

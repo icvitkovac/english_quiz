@@ -24,10 +24,10 @@ export class WordAddComponent {
       .subscribe(() => {
         this.submitted = true;
         this._notificationService.show({ type: 'success', message: 'Word successfully added.', autoClose: true });
-  ***REMOVED***, err => {
+      }, err => {
         this._notificationService.show({ type: 'error', message: `There has been an error: ${err}.`, hasCloseButton: true });
-  ***REMOVED***);
+      });
 
-***REMOVED***
+  }
 
 }

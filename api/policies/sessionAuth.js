@@ -13,10 +13,10 @@ module.exports = function(req, res, next) {
   // or if this is the last policy, the controller
   if (req.session.authenticated) {
     return next();
-***REMOVED***
+  }
 
 
   // User is not allowed
   // (default res.forbidden() behavior can be overridden in `config/403.js`)
   return res.redirect('/login');
-***REMOVED***
+};

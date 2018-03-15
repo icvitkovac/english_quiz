@@ -18,14 +18,14 @@ export class NotificationComponent {
 
             if (note.autoClose) {
               setTimeout(() => { this.hide.bind(this)(note); }, 5000);
-        ***REMOVED***
+            }
 
-    ***REMOVED***);
-***REMOVED***
+        });
+    }
 
     private hide(note) {
         if(this._notifications.has(note)) {
           this._notifications.delete(note);
-    ***REMOVED***
-  ***REMOVED***
+        }
+      }
 }

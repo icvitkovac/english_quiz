@@ -6,10 +6,10 @@ describe('WordService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [WordService]
-***REMOVED***);
-***REMOVED***);
+    });
+  });
 
   it('should be created', inject([WordService], (service: WordService) => {
     expect(service).toBeTruthy();
-***REMOVED***));
+  }));
 });

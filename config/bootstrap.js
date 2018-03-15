@@ -22,10 +22,10 @@ module.exports.bootstrap = function (cb) {
     if (err) return;
     for (let element of obj) {
       Word.dictionary.push(element.word);
-***REMOVED***
+    }
 
     cb();
-***REMOVED***);
+  });
 
 
-***REMOVED***
+};
