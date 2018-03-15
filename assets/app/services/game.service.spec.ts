@@ -6,10 +6,10 @@ describe('GameService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [GameService]
-***REMOVED***);
-***REMOVED***);
+    });
+  });
 
   it('should be created', inject([GameService], (service: GameService) => {
     expect(service).toBeTruthy();
-***REMOVED***));
+  }));
 });

@@ -15,7 +15,7 @@ export class WordDisplayComponent {
 
   constructor(private _gameService: GameService) {
 
-***REMOVED***
+  }
 
   onSelect(pickedWord: {}): void {
     this._gameService.checkAnswer(pickedWord)
@@ -27,15 +27,15 @@ export class WordDisplayComponent {
         if (data.isAnswer) {
           this.word = data;
           sessionStorage.setItem('guessWord', JSON.stringify(data));
-    ***REMOVED***
+        }
 
         if (data.isStarted === false) {
           this.onGameOver.emit(data.correctAnswer);
-    ***REMOVED***
+        }
 
-  ***REMOVED***);
+      });
 
-***REMOVED***
+  }
 
 }
 

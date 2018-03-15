@@ -9,17 +9,17 @@ describe('StatsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ StatsComponent ]
-***REMOVED***)
+    })
     .compileComponents();
-***REMOVED***));
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(StatsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-***REMOVED***);
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-***REMOVED***);
+  });
 });

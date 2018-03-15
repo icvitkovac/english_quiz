@@ -13,16 +13,16 @@ module.exports = {
       type: 'integer',
       primaryKey: true,
       autoIncrement: true
-***REMOVED***,
+    },
     userId: {
       model: 'user'
-***REMOVED***,
+    },
     code: {
       type: 'string',
       required: true,
       enum: ['reportedWord', 'generalNotification', 'comment']
-***REMOVED***
+    }
 
-***REMOVED***
-***REMOVED***
+  }
+};
 

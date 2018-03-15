@@ -10,6 +10,6 @@ export class WordLongestComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-***REMOVED***
+  }
 
 }

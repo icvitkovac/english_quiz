@@ -35,38 +35,38 @@ module.exports.routes = {
   '/': {
     controller: 'HomeController',
     action: 'homepage'
-***REMOVED***,
+  },
   '/main': {
     controller: 'HomeController',
     action: 'homepage'
-***REMOVED***,
+  },
   '/administration': {
     controller: 'HomeController',
     action: 'homepage'
-***REMOVED***,
+  },
   '/stats': {
     controller: 'HomeController',
     action: 'homepage'
-***REMOVED***,
+  },
   '/pick': {
     controller: 'HomeController',
     action: 'homepage'
-***REMOVED***,
+  },
   '/longest-word': {
     controller: 'HomeController',
     action: 'homepage'
-***REMOVED***,
+  },
   '/login': {
     controller: 'AuthController',
     action: 'login',
     locals: {
       layout: 'layout-public'
-***REMOVED***
-***REMOVED***,
+    }
+  },
   '/logout': {
     controller: 'AuthController',
     action: 'logout'
-***REMOVED***,
+  },
 
   /***************************************************************************
    *                                                                          *
@@ -82,4 +82,4 @@ module.exports.routes = {
 
   'GET /game/check/:translationId': 'GameController.checkAnswer'
 
-***REMOVED***
+};

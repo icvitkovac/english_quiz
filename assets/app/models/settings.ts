@@ -5,5 +5,5 @@ export class Settings {
         public onlyHard: boolean,
         public userId: number
       ) {
-  ***REMOVED***
-***REMOVED***
+      }
+    }

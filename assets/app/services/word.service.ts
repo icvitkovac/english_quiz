@@ -10,21 +10,21 @@ export class WordService {
 
   constructor(private http: Http) {
     this.baseUrl = 'word/';
-***REMOVED***
+  }
 
   search(value: string) {
     return this.http
       .get(`${this.baseUrl}search?value=` + value)
       .map(this.extractData)
       .catch(this.handleError);
-***REMOVED***
+  }
 
   count() {
     return this.http
       .get(`${this.baseUrl}count`)
       .map(this.extractData)
       .catch(this.handleError);
-***REMOVED***
+  }
 
   add(data) {
     const reqObj = JSON.stringify(data);
@@ -32,7 +32,7 @@ export class WordService {
       .post(`${this.baseUrl}create`, reqObj)
       .map(this.extractData)
       .catch(this.handleError);
-***REMOVED***
+  }
 
   destroy(data) {
 
@@ -40,7 +40,7 @@ export class WordService {
       .delete(this.baseUrl + data.id)
       .map(this.extractData)
       .catch(this.handleError);
-***REMOVED***
+  }
 
   update(data) {
 
@@ -53,27 +53,27 @@ export class WordService {
       .put(url, JSON.stringify(data), { headers: headers })
       .map(this.extractData)
       .catch(this.handleError);
-***REMOVED***
+  }
 
   checkAnswer(pickedWord) {
     return this.http
       .get(`${this.baseUrl}${pickedWord.term}/translations/${pickedWord.id}`)
       .map(this.extractData)
       .catch(this.handleError);
-***REMOVED***
+  }
 
   private extractData(res: Response) {
     if (res.status < 200 || res.status >= 300) {
       throw new Error('Bad response status: ' + res.status);
-***REMOVED***
+    }
     const body = res.json();
-    return body || {***REMOVED***
-***REMOVED***
+    return body || {};
+  }
 
   private handleError(error: any) {
     error = error.json();
     const errMsg = error.message || 'Server error';
     return Observable.throw(errMsg);
-***REMOVED***
+  }
 
 }
