@@ -28,9 +28,9 @@ module.exports.connections = {
    * Installed by default.                                                    *
    *                                                                          *
    ***************************************************************************/
-  localDiskDb: {
-    adapter: 'sails-disk'
-***REMOVED***,
+  // localDiskDb: {
+  //   adapter: 'sails-disk'
+  // },
 
   /***************************************************************************
    *                                                                          *
@@ -40,13 +40,13 @@ module.exports.connections = {
    * Run: npm install sails-mysql                                             *
    *                                                                          *
    ***************************************************************************/
-  someMysqlServer: {
-    adapter: 'sails-mysql',
-    host: 'localhost',
-    user: 'YOUR_MYSQL_USER',
-    password: 'YOUR_MYSQL_PASSWORD',
-    database: 'YOUR_MYSQL_DB'
-***REMOVED***,
+  // someMysqlServer: {
+  //   adapter: 'sails-mysql',
+  //   host: 'localhost',
+  //   user: 'YOUR_MYSQL_USER',
+  //   password: 'YOUR_MYSQL_PASSWORD',
+  //   database: 'YOUR_MYSQL_DB'
+  // },
 
   /***************************************************************************
    *                                                                          *
@@ -56,14 +56,14 @@ module.exports.connections = {
    * Run: npm install sails-mongo                                             *
    *                                                                          *
    ***************************************************************************/
-  someMongodbServer: {
-    adapter: 'sails-mongo',
-    host: 'localhost',
-    port: 27017
-    // user: 'username',
-    // password: 'password',
-    // database: 'your_mongo_db_name_here'
-***REMOVED***,
+  // someMongodbServer: {
+  //   adapter: 'sails-mongo',
+  //   host: 'localhost',
+  //   port: 27017
+  //   // user: 'username',
+  //   // password: 'password',
+  //   // database: 'your_mongo_db_name_here'
+  // },
 
   /***************************************************************************
    *                                                                          *
@@ -74,13 +74,12 @@ module.exports.connections = {
    *                                                                          *
    *                                                                          *
    ***************************************************************************/
-  postgresdb: {
+
+  postgresql: {
     adapter: 'sails-postgresql',
-    host: 'ec2-54-228-219-2.eu-west-1.compute.amazonaws.com',
-    user: 'jqgvmngpvacxir',
-    password: 'PbGOBbD6TkNHZo8JxVMLw8y5qS',
-    database: 'd45pi5dnmv3967',
-    ssl: true
+    url: process.env.DATABASE_URL,
+    ssl: true,
+    pool: false
 ***REMOVED***
 
 

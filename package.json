@@ -3,7 +3,8 @@
   "private": true,
   "version": "0.2.1",
   "engines": {
-    "node": "8.10.0"
+    "node": "8.10.0",
+    "npm": "5.7.1"
 ***REMOVED***,
   "description": "English quiz adjusted to your needs.",
   "keywords": [],
@@ -17,7 +18,9 @@
     "@angular/platform-browser": "^5.2.8",
     "@angular/platform-browser-dynamic": "^5.2.8",
     "@angular/router": "^5.2.8",
+    "connect-redis": "^3.3.3",
     "core-js": "^2.5.3",
+    "dotenv": "^5.0.1",
     "ejs": "^2.5.7",
     "es6-shim": "^0.35.3",
     "grunt": "^1.0.2",
@@ -33,7 +36,7 @@
     "grunt-sails-linker": "^1.0.4",
     "grunt-sync": "^0.7.0",
     "include-all": "^4.0.3",
-    "nodemon": "^1.17.1",
+    "nodemon": "^1.17.2",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-local": "^1.0.0",

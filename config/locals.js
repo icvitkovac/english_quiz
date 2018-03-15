@@ -1,3 +1,3 @@
 module.exports = {
-   hookTimeout: 90000
+   hookTimeout: 60000
 }
