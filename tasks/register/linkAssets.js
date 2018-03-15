@@ -7,4 +7,4 @@ module.exports = function (grunt) {
 		'sails-linker:devStylesJade',
 		'sails-linker:devTplJade'
 	]);
-***REMOVED***
+};

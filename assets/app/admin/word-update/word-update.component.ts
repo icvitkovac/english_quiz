@@ -15,7 +15,7 @@ export class WordUpdateComponent {
 
   constructor(private _wordService: WordService, private _notificationService: NotificationService) {
 
-***REMOVED***
+  }
 
   onSave(word: Word): void {
     this._wordService
@@ -23,6 +23,6 @@ export class WordUpdateComponent {
       .subscribe((updatedWord: Word) => {
         this.word = updatedWord;
         this._notificationService.show({ type: 'success', message: 'Word successfully updated.', autoClose: true });
-  ***REMOVED***);
-***REMOVED***
+      });
+  }
 }

@@ -17,21 +17,21 @@ export class StatsComponent implements OnInit {
 
   constructor(private _gameService: GameService) {
 
-***REMOVED***
+  }
 
   ngOnInit(): void {
     this._gameService
       .history()
       .subscribe((history: any) => {
         this.history = history;
-  ***REMOVED***);
+      });
 
     this._gameService
       .highScores()
       .subscribe((highScores: any) => {
         this.highScores = highScores;
-  ***REMOVED***);
-***REMOVED***
+      });
+  }
 
   onSelect(game): void {
     this._gameService
@@ -39,8 +39,8 @@ export class StatsComponent implements OnInit {
       .subscribe((breakdown: any) => {
         this.breakdown = breakdown;
         this.gameSelected = true;
-  ***REMOVED***);
+      });
 
-***REMOVED***
+  }
 
 }

@@ -11,27 +11,27 @@ const routes: Routes = [
         path: '',
         pathMatch: 'full',
         redirectTo: 'pick'
-***REMOVED***,
+    },
     {
         path: 'administration',
         component: AdminComponent
-***REMOVED***,
+    },
     {
         path: 'stats',
         component: StatsComponent
-***REMOVED***,
+    },
     {
         path: 'main',
         component: MainComponent
-***REMOVED***,
+    },
     {
         path: 'pick',
         component: GamePickerComponent
-***REMOVED***,
+    },
     {
         path: 'longest-word',
         component: WordLongestComponent
-***REMOVED***,
+    },
 ];
 
 @NgModule({

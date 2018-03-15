@@ -1,4 +1,4 @@
-***REMOVED***
+'use strict';
 /* globals Notification, ReportedTranslations */
 module.exports = {
   addLazy: function(userId, code, errCb, successCb) {
@@ -6,8 +6,8 @@ module.exports = {
             .exec((err, notificationData) => {
               if (err) return errCb(err);
               return successCb(notificationData);
-        ***REMOVED***);
-***REMOVED***,
+            });
+  },
   get: function(userId, errCb, successCb) {
     Notification.find({userId})
             .then(notificationData => {
@@ -18,16 +18,16 @@ module.exports = {
                         .then(data => {
                           data = data.filter(item => item.reportedWord.author === userId);
                           return successCb(data);
-                    ***REMOVED***)
+                        })
                         .catch(err => {
                           return errCb(err);
-                    ***REMOVED***);
-          ***REMOVED***
+                        });
+              } else {
                 return successCb(notificationData);
-          ***REMOVED***
-        ***REMOVED***)
+              }
+            })
             .catch(err => {
               return errCb(err);
-        ***REMOVED***);
-***REMOVED***
-***REMOVED***
+            });
+  }
+};

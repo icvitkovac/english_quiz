@@ -25,7 +25,7 @@ export class SettingsComponent implements OnInit {
     private _settingsService: SettingsService,
     private _notificationService: NotificationService,
     private _userService: UserService) {
-***REMOVED***
+  }
 
   ngOnInit(): void {
     this.isLanguageSet = window['Globals'].locale !== 'null' && !window['Globals'].locale.startsWith('en');
@@ -37,17 +37,17 @@ export class SettingsComponent implements OnInit {
 
             if (languages.hasOwnProperty(key)) {
               this.languages.push({ name: languages[key], value: key });
-        ***REMOVED***
+            }
 
-      ***REMOVED***
+          }
 
-    ***REMOVED***);
-***REMOVED***
+        });
+    }
     this._settingsService.get()
       .subscribe((settings: Settings) => {
         this.settings = settings;
-  ***REMOVED***);
-***REMOVED***
+      });
+  }
 
   onSave(settings: Settings): void {
     this._settingsService
@@ -56,8 +56,8 @@ export class SettingsComponent implements OnInit {
         this.settings = serviceSettings;
         this._notificationService.show({ type: 'success', message: 'Settings saved.', hasCloseButton: true, autoClose: true });
 
-  ***REMOVED***);
-***REMOVED***
+      });
+  }
 
   updateUser(languageSelection: string): void {
     this._userService
@@ -71,8 +71,8 @@ export class SettingsComponent implements OnInit {
           message: 'Language set, thank you very much!',
           hasCloseButton: true,
           autoClose: true
-    ***REMOVED***);
-  ***REMOVED***);
-***REMOVED***
+        });
+      });
+  }
 }
 

@@ -10,6 +10,6 @@ module.exports = {
     NotificationService.get(req.session.user.id,
             err => res.badRequest(err),
             notificationData => res.json(notificationData));
-***REMOVED***
-***REMOVED***
+  }
+};
 

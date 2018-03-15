@@ -21,7 +21,7 @@ module.exports = function(grunt) {
 			// options: {
 			//   templateSettings: {
 			//     interpolate: /\{\{(.+?)\}\}/g
-			// ***REMOVED***
+			//   }
 			// },
 
 			// Note that the interpolate setting above is simply an example of overwriting lodash's
@@ -38,4 +38,4 @@ module.exports = function(grunt) {
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-jst');
-***REMOVED***
+};

@@ -5,9 +5,9 @@ module.exports = function(req, res, next) {
 
   if (!id || req.session.user.id === id) {
     return next();
-***REMOVED***
+  }
 
   // User is not allowed
   // (default res.forbidden() behavior can be overridden in `config/403.js`)
   return res.forbidden();
-***REMOVED***
+};

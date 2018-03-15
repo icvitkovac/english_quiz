@@ -14,21 +14,21 @@ module.exports = {
       type: 'integer',
       primaryKey: true,
       autoIncrement: true
-***REMOVED***,
+    },
     value: {
       type: 'string',
       required: true
-***REMOVED***,
+    },
     translations: {
       collection: 'translation',
       via: 'term'
-***REMOVED***,
+    },
     author: {
       type: 'integer',
       required: true
-***REMOVED***,
+    },
     languageCode: {
       type: 'string'
-***REMOVED***
-***REMOVED***
-***REMOVED***
+    }
+  }
+};

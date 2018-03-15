@@ -6,10 +6,10 @@ describe('NotificationService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [NotificationService]
-***REMOVED***);
-***REMOVED***);
+    });
+  });
 
   it('should be created', inject([NotificationService], (service: NotificationService) => {
     expect(service).toBeTruthy();
-***REMOVED***));
+  }));
 });

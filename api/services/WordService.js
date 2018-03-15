@@ -1,4 +1,4 @@
-***REMOVED***
+'use strict';
 /* global Word, SettingsService */
 module.exports = {
 
@@ -14,7 +14,7 @@ module.exports = {
 
         if (wordData.author !== user.id || Date.parse(wordData.updatedAt) !== Date.parse(wordData.createdAt)) {
           return successCb(409);
-    ***REMOVED***
+        }
 
         currentDate = new Date().getTime();
         wordCreatedAt = new Date(wordData.createdAt).getTime();
@@ -22,7 +22,7 @@ module.exports = {
         // todo: not very scalable
         if ((currentDate - wordCreatedAt) > 3000) {
           return successCb(409);
-    ***REMOVED***
+        }
 
         // populate child collection
         wordData.translations.add(translations);
@@ -30,9 +30,9 @@ module.exports = {
         wordData.save(function(err) {
           if (err) return errCb(err);
           return successCb(wordData.value);
-    ***REMOVED***);
-  ***REMOVED***);
-***REMOVED***,
+        });
+      });
+  },
 
   findOne: function(id, errCb, successCb) {
     Word.findOne(id)
@@ -40,8 +40,8 @@ module.exports = {
     .exec(function(err, WordData) {
       if (err) return errCb(err);
       return successCb(WordData.translations.filter(value => value.isAnswer)[0].value);
-***REMOVED***);
-***REMOVED***,
+    });
+  },
 
   count: function(session, errCb, successCb) {
     let query;
@@ -49,44 +49,44 @@ module.exports = {
 
     /** @function */
     function _countRequest() {
-      query = session.settings.practiceMode ? {author: userId} : {languageCode: session.user.locale***REMOVED***
+      query = session.settings.practiceMode ? {author: userId} : {languageCode: session.user.locale};
       Word.count(query)
         .exec(function(err, count) {
           if (err) return errCb(err);
           session.wordCount = parseInt(count, 10);
           return successCb({count});
-    ***REMOVED***);
-***REMOVED***
+        });
+    }
 
     if (!session.settings) {
-      session.settings = {***REMOVED***
+      session.settings = {};
       SettingsService.init(userId,
         err => {
           return errCb(err);
-    ***REMOVED***,
+        },
         settings => {
           session.settings = settings;
-          if (session.settings.practiceMode) query = {author: userId***REMOVED***
+          if (session.settings.practiceMode) query = {author: userId};
           _countRequest();
-    ***REMOVED***);
-***REMOVED***
+        });
+    } else {
       _countRequest();
-***REMOVED***
-***REMOVED***,
+    }
+  },
 
   search: function(value, author, errCb, successCb) {
     Word.find({
       value: {startsWith: value},
       author: author
-***REMOVED***)
+    })
       .limit(10)
       .sort('value ASC')
       .populate('translations')
       .exec(function(err, data) {
         if (err) return errCb(err);
         return successCb(data);
-  ***REMOVED***);
-***REMOVED***,
+      });
+  },
 
   update: function(reqObj, errCb, successCb) {
     var id = parseInt(reqObj.id, 10);
@@ -96,6 +96,6 @@ module.exports = {
       .exec(function(err, data) {
         if (err) return errCb(err);
         return successCb(data[0]);
-  ***REMOVED***);
-***REMOVED***
-***REMOVED***
+      });
+  }
+};

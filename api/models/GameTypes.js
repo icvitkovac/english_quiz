@@ -14,11 +14,11 @@ module.exports = {
       type: 'integer',
       primaryKey: true,
       autoIncrement: true
-***REMOVED***,
+    },
     name: {
       type: 'string'
-***REMOVED***
+    }
 
-***REMOVED***
-***REMOVED***
+  }
+};
 
