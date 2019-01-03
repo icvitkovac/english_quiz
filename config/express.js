@@ -21,7 +21,7 @@ module.exports.http = {
       fbStrategyConfig = {
         clientID: '566624130177759',
         clientSecret: process.env.FB_SECRET,
-        callbackURL: '/auth/facebook/callback',
+        callbackURL: 'https://english-quiz.herokuapp.com/auth/facebook/callback',
         profileFields: ['id', 'first_name', 'last_name', 'gender', 'picture', 'locale']
       };
     }
