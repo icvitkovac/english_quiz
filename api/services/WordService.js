@@ -2,14 +2,20 @@
 /* global Word, SettingsService */
 module.exports = {
 
-  create: function(value, user, translations, errCb, successCb) {
+  create: function (value, user, translations, errCb, successCb) {
     let currentDate;
     let wordCreatedAt;
 
     if (user.locale === null || user.locale.startsWith('en')) return errCb('Translation language not set');
 
-    Word.findOrCreate({value}, {value, author: user.id, languageCode: user.locale})
-      .exec(function(err, wordData) {
+    Word.findOrCreate({
+        value
+      }, {
+        value,
+        author: user.id,
+        languageCode: user.locale
+      })
+      .exec((err, wordData) => {
         if (err) return errCb(err);
 
         if (wordData.author !== user.id || Date.parse(wordData.updatedAt) !== Date.parse(wordData.createdAt)) {
@@ -27,34 +33,40 @@ module.exports = {
         // populate child collection
         wordData.translations.add(translations);
 
-        wordData.save(function(err) {
+        wordData.save((err) => {
           if (err) return errCb(err);
           return successCb(wordData.value);
         });
       });
   },
 
-  findOne: function(id, errCb, successCb) {
+  findOne: function (id, errCb, successCb) {
     Word.findOne(id)
-    .populate('translations')
-    .exec(function(err, WordData) {
-      if (err) return errCb(err);
-      return successCb(WordData.translations.filter(value => value.isAnswer)[0].value);
-    });
+      .populate('translations')
+      .exec((err, WordData) => {
+        if (err) return errCb(err);
+        return successCb(WordData.translations.filter(value => value.isAnswer)[0].value);
+      });
   },
 
-  count: function(session, errCb, successCb) {
+  count: function (session, errCb, successCb) {
     let query;
     let userId = session.user.id;
 
     /** @function */
     function _countRequest() {
-      query = session.settings.practiceMode ? {author: userId} : {languageCode: session.user.locale};
+      query = session.settings.practiceMode ? {
+        author: userId
+      } : {
+        languageCode: session.user.locale
+      };
       Word.count(query)
-        .exec(function(err, count) {
+        .exec((err, count) => {
           if (err) return errCb(err);
           session.wordCount = parseInt(count, 10);
-          return successCb({count});
+          return successCb({
+            count
+          });
         });
     }
 
@@ -66,7 +78,9 @@ module.exports = {
         },
         settings => {
           session.settings = settings;
-          if (session.settings.practiceMode) query = {author: userId};
+          if (session.settings.practiceMode) query = {
+            author: userId
+          };
           _countRequest();
         });
     } else {
@@ -74,26 +88,28 @@ module.exports = {
     }
   },
 
-  search: function(value, author, errCb, successCb) {
+  search: function (value, author, errCb, successCb) {
     Word.find({
-      value: {startsWith: value},
-      author: author
-    })
+        value: {
+          startsWith: value
+        },
+        author: author
+      })
       .limit(10)
       .sort('value ASC')
       .populate('translations')
-      .exec(function(err, data) {
+      .exec((err, data) => {
         if (err) return errCb(err);
-        return successCb(data);
+        return successCb(data[0]);
       });
   },
 
-  update: function(reqObj, errCb, successCb) {
+  update: function (reqObj, errCb, successCb) {
     var id = parseInt(reqObj.id, 10);
     delete reqObj.id;
 
     Word.update(id, reqObj)
-      .exec(function(err, data) {
+      .exec((err, data) => {
         if (err) return errCb(err);
         return successCb(data[0]);
       });
